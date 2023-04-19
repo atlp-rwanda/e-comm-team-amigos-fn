@@ -1,0 +1,12 @@
+{
+"printWidth": 80,
+"singleQuote": true,
+"trailingComma": "all",
+"jsxSingleQuote": false,
+"useTabs": true,
+"tabWidth": 4,
+"ignorePatterns": ["node_modules/", "dist/"],
+"parser": "typescript",
+"disableLanguages": ["html", "markdown"],
+"proseWrap": "always"
+}
