@@ -10,13 +10,13 @@ blocks:
       jobs:
         - name: Test
           commands:
-            - checkout
-            - sem-version node 16
+            - 'checkout '
+            - sem-version node 14
             - 'curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter'
             - chmod +x ./cc-test-reporter
             - ./cc-test-reporter before-build
             - 'npm install '
-            - npm test
+            - npm run test
       env_vars:
         - name: CC_TEST_REPORTER_ID
           value: 30b7c6c0e0de6133a2902965d21a6275c5752825379571a7a1c746d0ab64f57b
