@@ -14,7 +14,8 @@
     "node_modules/(?!(react-qr-reader)/)"
   ],
   "scripts": {
-    "test": "react-scripts test --transformIgnorePatterns --coverage --watchAll --timeout=30000 --runInBand",
+    "test": "react-scripts test --transformIgnorePatterns --coverage --timeout=5000 --runInBand",
+    "after_success": "cat ./coverage/lcov.info | coveralls",
     "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "start": "npm run build && serve -s dist",
@@ -51,6 +52,7 @@
     "@testing-library/react": "^14.0.0",
     "babel-jest": "^29.5.0",
     "babel-loader": "^9.1.2",
+    "codeclimate-test-reporter": "^0.5.1",
     "html-webpack-plugin": "^5.5.1",
     "jest-watch-typeahead": "^0.6.5",
     "react-test-renderer": "^18.2.0",

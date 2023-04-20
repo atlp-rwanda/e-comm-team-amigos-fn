@@ -1,0 +1,5 @@
+version: "2"
+plugins:
+  jest:
+    enabled: true
+    output_format: "lcov"
