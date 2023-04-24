@@ -24,13 +24,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i,
+        test: /\.(c|sc)ss$/i,
+
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: { publicPath: "" },
-          },
+          // Creates `style` nodes from JS strings
+          process.env.NODE_ENV !== "production"
+            ? "style-loader"
+            : MiniCssExtractPlugin.loader,
+          // Translates CSS into CommonJS
           "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
         ],
       },
       {

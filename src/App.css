@@ -1,13 +1,17 @@
-*{
-    padding: 0;
-    margin: 0;
-    height: 100vh;
+* {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
 }
-.container{
-    width: 100%;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #D9F6EC;
+.container {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d9f6ec;
+}
+
+.css-styled {
+  color: red;
 }
