@@ -3,8 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "testTimeout": 10000,
+  "transform": {
+    "^.+\\.js$": "babel-jest",
+    "^.+\\.css$": "jest-transform-css",
+    "\\.js$": "<rootDir>/node_modules/babel-jest",
+    "^.+\\.(js|ts)$": "ts-jest"
+  },
+  "transformIgnorePatterns": [
+    "node_modules/(?!(react-qr-reader)/)"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "react-scripts test --transformIgnorePatterns --coverage --watchAll --timeout=30000 --runInBand",
     "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "start": "npm run build && serve -s dist",
@@ -15,12 +25,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "babel-plugin-styled-components": "^2.1.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
     "css-loader": "^6.7.3",
     "mini-css-extract-plugin": "^2.7.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "serve": "^14.2.0",
     "react-router-dom": "^6.10.0",
+    "react-scripts": "^5.0.1",
+    "serve": "^14.2.0",
     "style-loader": "^3.3.2"
   },
   "devDependencies": {
@@ -34,8 +48,12 @@
     "@storybook/react": "^7.0.5",
     "@storybook/react-webpack5": "^7.0.5",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@testing-library/react": "^14.0.0",
+    "babel-jest": "^29.5.0",
     "babel-loader": "^9.1.2",
     "html-webpack-plugin": "^5.5.1",
+    "jest-watch-typeahead": "^0.6.5",
+    "react-test-renderer": "^18.2.0",
     "storybook": "^7.0.5",
     "webpack": "^5.79.0",
     "webpack-cli": "^5.0.1",
