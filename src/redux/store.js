@@ -5,4 +5,3 @@ import rootReducer from './rootReducer';
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;
-

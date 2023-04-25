@@ -1,7 +1,8 @@
 import { LOGIN_SUCCESS,LOGIN_START } from "../types";
 
-const initialState = { loginSuccess: "" ,  loginFail: "", loginStart:false };
-export default function (state = initialState, {type, payload}) {
+const loginState = { loginSuccess: "" ,  loginFail: "", loginStart:false };
+
+const loginReducer = (state = loginState, {type, payload})=> {
 	switch (type) {
 		case LOGIN_SUCCESS:
 			return {
@@ -18,3 +19,5 @@ export default function (state = initialState, {type, payload}) {
 			return state;
 	}
 }
+
+export default loginReducer;
