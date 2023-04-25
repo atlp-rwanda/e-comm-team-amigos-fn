@@ -1,12 +1,12 @@
-import LoginForm from "./LoginForm.jsx";
-<<<<<<< HEAD:src/views/login/LoginPage.jsx
-=======
-
->>>>>>> feat(login): Create login page:src/views/login/LoginPage.jsx
+import LoginForm from './LoginForm.jsx';
+import GoogleAuth from '../../components/GoogleAuth.jsx';
 export default function LoginPage() {
-  return (
-     <>
-      <LoginForm />
-    </>
-    );
+	return (
+		<>
+			<div className="google-auth">
+				<LoginForm />
+				<GoogleAuth />
+			</div>
+		</>
+	);
 }

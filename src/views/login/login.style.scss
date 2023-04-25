@@ -9,12 +9,12 @@ $font-family_1: "Poppins";
 	color: $color_1;
 	text-align: center;
 	width: fit-content;
-	margin: 150px 10px 20px 400px;
+	margin: 150px 10px 20px 250px;
 }
 .login-form {
-	margin: 20px 10px 20px 250px;
+	margin: 20px 10px 20px 150px;
 	width: 90%;
-	max-width: 550px;
+	max-width: 700px;
 	letter-spacing: 1px;
 	display: flex;
 	flex-direction: column;
@@ -133,4 +133,14 @@ $font-family_1: "Poppins";
 			font-size: 12px;
 		}
 	}
+}
+
+.google-auth {
+	display: flex;
+	flex-direction: row;
+
+	@media screen and (max-width: 768px) {
+		flex-direction: column;
+	  }
+
 }

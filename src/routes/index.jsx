@@ -9,7 +9,13 @@ const index = () => {
 	return (
 		<Routes>
 			<Route exact path="/" element={<HomePage />} />
+			<Route exact path="/sign-up" element={<SignUp />} />
 			<Route exact path="/login" element={<LoginPage />} />
+			<Route
+				exact
+				path="/user/verify_email/:token"
+				element={<VerrifyAccPage />}
+			/>
 		</Routes>
 	);
 };

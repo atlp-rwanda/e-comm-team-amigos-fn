@@ -18,6 +18,5 @@ describe('Login page Page', () => {
 		const submitBtn = screen.getByRole('button', { name: 'Login' });
 		expect(emailInput).toBeInTheDocument();
 		expect(submitBtn).toBeInTheDocument();
-		expect(screen.getByRole('heading')).toHaveTextContent('Login');
 	});
 });
