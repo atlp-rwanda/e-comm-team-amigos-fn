@@ -19,7 +19,7 @@ import relatedProductReducer from "./RelatedProducts/reducer";
 import profileReducer from "./profile/reducer";
 import paymentReducer from "./reducer/payment";
 import clearCartReducer from "./reducer/clearCartReducer";
-
+import UpdatePasswordReducer from './reducer/updatePassword';
 
 import UpdateCartReducer from "./reducer/updateCartReducer";
 const rootReducer = combineReducers({
@@ -44,6 +44,7 @@ const rootReducer = combineReducers({
 	payment: paymentReducer,
 	clearCart:clearCartReducer,
 	updateCartState: UpdateCartReducer,
+	updatePasswordState: UpdatePasswordReducer
 });
 
 export default rootReducer;
