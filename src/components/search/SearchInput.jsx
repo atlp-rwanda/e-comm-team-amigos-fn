@@ -1,32 +1,31 @@
-import InputBase from '@mui/material/InputBase';
-import { styled } from '@mui/material/styles';
-import SvgIcon from '@mui/material/SvgIcon';
+import InputBase from "@mui/material/InputBase";
+import { styled } from "@mui/material/styles";
+import SvgIcon from "@mui/material/SvgIcon";
 import "./style.scss";
 
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled("div")(({ theme }) => ({
 	padding: theme.spacing(0, 2),
-	height: '100%',
-	position: 'absolute',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-	right: '0',
-	left: 'auto',
-	top: '0',
-	bottom: 'auto',
-	cursor: 'pointer',
+	height: "100%",
+	position: "absolute",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	right: "0",
+	left: "auto",
+	top: "0",
+	bottom: "auto",
+	cursor: "pointer",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-	color: 'inherit',
-	'& .MuiInputBase-input': {
+	color: "inherit",
+	"& .MuiInputBase-input": {
 		padding: theme.spacing(1, 0, 1, 1),
 		paddingRight: `calc(1em + ${theme.spacing(4)})`,
-		transition: theme.transitions.create('width'),
-		width: '100%',
-		[theme.breakpoints.up('md')]: {
-			width: '20ch',
+		transition: theme.transitions.create("width"),
+		width: "100%",
+		[theme.breakpoints.up("md")]: {
+			width: "20ch",
 		},
 	},
 }));
@@ -44,10 +43,10 @@ function SearchIcon(props) {
 
 export default function SearchInput() {
 	return (
-		<div className='search-field'>
+		<div className="search-field">
 			<StyledInputBase
 				placeholder="Search product"
-				inputProps={{ 'aria-label': 'search' }}
+				inputProps={{ "aria-label": "search" }}
 			/>
 			<SearchIconWrapper>
 				<SearchIcon />

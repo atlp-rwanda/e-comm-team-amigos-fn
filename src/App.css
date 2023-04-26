@@ -3,15 +3,21 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
-
 body{
   font-family: 'Poppins', sans-serif;
   background-color: #f4f4f4;
   box-sizing: border-box;
 }
 
+@media (min-width:1440px) {
+  body {
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 @media (min-width:1440px) {
   body {
     width: 1440px;
