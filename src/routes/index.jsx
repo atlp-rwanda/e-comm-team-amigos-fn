@@ -21,6 +21,7 @@ import IsAdmin from "../utils/auth/isAuthorized.js";
 import ProductDetailsPage from "../views/ProductDetailsPage.jsx";
 import SearchPage from "../views/SearchPage.jsx";
 import ViewCart from "../views/addToCart/viewCart.jsx";
+import UserUpdate from '../components/userProfileEdit.jsx';
 import CheckoutPage from "../views/CheckoutPage.jsx";
 import CheckoutSuccessPage from "../views/payment/checkoutSuccessPage.jsx";
 import CancelPaymentPage from "../views/payment/checkoutCancel.jsx";
@@ -105,7 +106,9 @@ const index = () => {
 						exact
 						path="/dashboard/update-password"
 						element={<UpdatePasswordPage />}
-					/>
+					/>	
+					<Route exact path="/dashboard/userUpdate" element={<UserUpdate />} />
+				
 					<Route path="users" element={<Users />} />
 					<Route
 						exact
@@ -115,7 +118,10 @@ const index = () => {
 					<Route path="/dashboard/disable-account" element={<IsAdmin> <DisableAccount /> </IsAdmin> } />
 					<Route exact path="roles" element={<Roles socket={socket}/>} />
 				</Route>
-
+				<Route exact path="/customer/profile" element={
+				<CustomerProtected>
+					<UserUpdate/>
+					</CustomerProtected>} />
 				<Route
 					exact
 					path="/customer/orders"
@@ -125,6 +131,7 @@ const index = () => {
 						</CustomerProtected>
 					}
 				>
+	
 					<Route path="history" element={<Orders />} />
 					<Route path=":orderId" element={<Order />} />
 				</Route>

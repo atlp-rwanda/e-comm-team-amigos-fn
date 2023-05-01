@@ -155,7 +155,9 @@ function HeaderNav({socket}) {
                   />
                 </div>
                 <div className="menu-list">
-                  <Link className="menu-title">Profile</Link>
+                <Link 
+                to={"/dashboard/userUpdate"}
+                className="menu-title">Profile</Link>
                   <Unicons.UilAngleRight
                     size="24"
                     color="#848181"

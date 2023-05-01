@@ -6,15 +6,15 @@ const editUserProfileReducer = (state = editUserProfileState, {type, payload}) =
         case EDIT_USER_PROFILE_START:
             return{
                 ...state,
-                editingStart: payload
+                editingStart: payload,
             };
         case EDIT_USER_PROFILE_SUCCESS:
             return{
                 ...state,
                 editingSuccess: payload
-            }
+            };
 		default:
 			return state;
-	}
-}
+	} 
+};
 export default editUserProfileReducer;

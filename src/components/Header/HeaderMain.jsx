@@ -27,7 +27,7 @@ import "./header-menu.styles.scss";
 import { cartBadge } from "../../redux/actions/cartAction";
 import logout from "../../utils/logout";
 import BackToTop from "../Button/back-to-top";
-
+import { getUserRole } from "../../utils/auth/isAuthorized";
 const MenuContainer = styled(Box)(({ theme }) => ({
 	zIndex: "40",
 	position: "fixed",
@@ -288,6 +288,30 @@ export default function HeaderMain() {
 										</div>
 									</button>
 									<div className="dropDownCard main-nav-dropdown-card">
+										{getUserRole().includes("Customer") && !getUserRole().includes("Merchant") ? <div className="menu-list">
+											<RouterLink
+												to="/customer/profile"
+												className="menu-title"
+											>
+												My Profile
+											</RouterLink>
+											<Unicons.UilAngleRight
+												size="24"
+												color="#848181"
+											/>
+										</div> : <div className="menu-list">
+											<RouterLink
+												to="/dashboard"
+												className="menu-title"
+											>
+												DASHBOARD
+											</RouterLink>
+											<Unicons.UilAngleRight
+												size="24"
+												color="#848181"
+											/>
+										</div>}
+										
 										<div className="menu-list">
 											<RouterLink
 												to="/customer/orders/history"

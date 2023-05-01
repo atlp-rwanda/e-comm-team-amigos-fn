@@ -6,7 +6,7 @@ import {
   const initialState = {
     profileViewSuccess: {},
     profileViewError: "",
-    profilViewStart: false,
+    profileViewStart: false,
   };
 
   const viewProfileReducer = (state = initialState, { type, payload }) => {
@@ -15,16 +15,18 @@ import {
         return {
           ...state,
           profileViewSuccess: payload,
+          profileViewStart: false,
         };
       case VIEW_USER_PROFILE_ERROR:
         return {
           ...state,
           profileViewError: payload,
+          profileViewStart: false,
         };
       case VIEW_USER_PROFILE_START:
         return {
           ...state,
-          profilViewStart: payload,
+          profileViewStart: true,
         };
       default:
         return state;

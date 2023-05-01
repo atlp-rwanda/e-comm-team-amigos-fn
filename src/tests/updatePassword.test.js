@@ -9,7 +9,7 @@ describe("updatePassword", () => {
 	beforeAll(() => {
 		localStorage.setItem(
 			"token",
-			"eyJhbCI6IkhTMjU2IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VyRW1haWwiOiJleGFtcGxlQGVtYWlsLmNvbSIsIm5hbWUiOiJleGFtcGxlIGtoZXZlbiJ9.0W_oxKuvUO2ptpXhS4i77jOCZfKzhN1kjGnLC9rXygY",
+			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMDAzOTc0Mi04YWMzLTRmMWQtYWRkYy03M2I0ODZhOWFkZGMiLCJ1c2VyRW1haWwiOiJyd2lidXNlcmdlQGdtYWlsLmNvbSIsImlhdCI6MTY4NTY5NDY4MiwiZXhwIjoxNjg2Mjk5NDgyfQ.OmJt1ax4SyXm051OgqaFZ1D_rSZwA__nX4yZiaDpINI",
 		);
 	});
 	it("should update password", () => {

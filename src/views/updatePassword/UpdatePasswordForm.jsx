@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
 
 const UpdatePasswordForm = () => {
 	const { updatingSuccess } = useSelector(
-		(state) => state.updatePasswordState,
+		(state) => state.updatePasswordState || {},
 	);
 	const dispatch = useDispatch();
 	const navigation = useNavigate();
