@@ -1,0 +1,45 @@
+$primary-color: #163C2A;
+
+.logo {
+  width: 240px;
+  height: 70px;
+  margin-top: 35px;
+}
+
+.heading {
+  margin-top: 50px;
+  color: $primary-color;
+  text-align: center;
+  width: fit-content;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.social {
+  margin-left: 70px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 100px;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 40px;
+  }
+
+  @media screen and (max-width: 500px) {
+    margin-left: 40px;
+  }
+}
+
+.vl {
+  border-left: 3px solid #000;
+  height: 400px;
+  margin: auto;
+  padding-right: 30px;
+  margin-top: 20px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
