@@ -1,0 +1,6 @@
+export const actionTypes = {
+	SIGNING_UP: 'SIGNING_UP',
+	SIGNUP_SUCCESS: 'SIGNUP_SUCCESS',
+	SIGNUP_FAIL: 'SIGNUP_FAIL',
+	ON_CHANGE: 'ON_CHANGE',
+};

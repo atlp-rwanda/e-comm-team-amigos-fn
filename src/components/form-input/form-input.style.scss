@@ -1,0 +1,17 @@
+ .form-input{
+    background: #FFFFFF;
+    border: 0.989903px solid #999999;
+    border-radius: 8px;
+    padding: 10px;
+    outline: none;
+    transition: .5s;
+    &--valid{    
+        border:none;
+        box-shadow: #02af28 0px 0px 0px 2px;
+    }
+    &--invalid{
+        border:none;
+        box-shadow: red 0px 0px 0px 2px;
+    }
+
+}

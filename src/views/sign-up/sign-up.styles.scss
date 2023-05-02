@@ -1,0 +1,40 @@
+.signup-heading{
+    color:#163C2A;
+    text-align:center;
+    width: fit-content;
+    margin: 25px auto;
+    margin-bottom: -20px
+}
+
+.sign-up-form{
+    margin: 50px auto;
+    width: 90%;
+    max-width: 550px;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .form-input-group{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5px;
+        
+    }
+}
+
+.acc-created{
+    margin: 100px auto;
+    border: 1.5px solid #0a9d58;;
+    max-width: max-content;
+    width: 95%;
+    padding: 30px;
+    border-radius: 8px;
+ p{
+    font-size: 22px;
+    letter-spacing: 3px;
+    font-weight: 100 !important;
+    text-align: center
+}
+    
+}

@@ -1,0 +1,4 @@
+export const actionTypes = {
+	VERIFYING_SUCCESS: 'VERIFYING_SUCCESS',
+	VERIFYING_FAIL: 'VERIFYING_FAIL',
+};
