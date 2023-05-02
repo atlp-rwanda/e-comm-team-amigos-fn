@@ -1,0 +1,136 @@
+$color_1: #163C2A;
+$color_2: #333;
+$color_3: white;
+$color_4: #096F3E;
+$color_5: red;
+$font-family_1: "Poppins";
+
+.login-heading {
+	color: $color_1;
+	text-align: center;
+	width: fit-content;
+	margin: 150px 10px 20px 400px;
+}
+.login-form {
+	margin: 20px 10px 20px 250px;
+	width: 90%;
+	max-width: 550px;
+	letter-spacing: 1px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	.form-input-group {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5px;
+		.form-input {
+			background: #FFFFFF;
+			border: 0.989903px solid #999999;
+			border-radius: 8px;
+			padding: 10px;
+			outline: none;
+			width: 400px;
+			transition: .5s;
+			box-sizing: border-box;
+		}
+		.input-label {
+			color: $color_2;
+			font-size: 14px;
+		}
+	}
+}
+.input-label {
+	color: $color_2;
+}
+.primary-btn {
+	width: 400px;
+	height: 40px;
+	background: #096F3E;
+	border-radius: 8px;
+	color: $color_3;
+	border: 0;
+	box-sizing: border-box;
+	margin: 1.2rem 0 ;
+}
+.form-footer {
+	width: 400px;
+}
+.reset_password {
+	font-family: $font-family_1;
+	font-style: normal;
+	font-size: 14px;
+	line-height: 27px;
+	text-decoration: 0;
+	color: $color_4;
+}
+.sign-up {
+	display: flex;
+	text-align: center;
+	align-items: center;
+	padding-right: 150px;
+	a {
+		color: $color_4;
+		text-decoration: 0;
+		font-size: 14px;
+	}
+	p {
+		margin-right: 10px;
+		font-size: 14px;
+	}
+}
+.no-account {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 550px;
+}
+.error {
+	color: red;
+	background-color: white;
+	text-align: left;
+
+}
+@media only screen and (max-width: 767px) {
+	.login-heading {
+		margin: 50px 5px 20px 10px;
+	}
+	.login-form {
+		margin: 20px 5px 20px 10px;
+	}
+}
+@media (max-width: 768px) {
+	.login-heading {
+		margin: 150px 10px 20px 20px;
+	}
+	.login-form {
+		.form-input-group {
+			.form-input {
+				width: 100%;
+			}
+		}
+		
+		margin: 20px 10px 20px 20px;
+	}
+	.primary-btn {
+		width: 100%;
+		width: 100%;
+	}
+	.form-footer {
+		width: 100%;
+	}
+	.no-account {
+		width: 100%;
+	}
+	.reset_password {
+		font-size: 12px;
+	}
+	.sign-up {
+		padding-right: 20px;
+		a {
+			font-size: 12px;
+		}
+		p {
+			font-size: 12px;
+		}
+	}
+}

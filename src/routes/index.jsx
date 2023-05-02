@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import HomePage from '../views/HomePage.jsx';
-import LoginPage from '../views/LoginPage.jsx';
+import LoginPage from "../views/login/LoginPage.jsx";
 import SignUp from '../views/sign-up/SignUp.jsx';
 import VerrifyAccPage from '../views/verify-account/VerrifyAccPage.jsx';
 
@@ -18,5 +18,8 @@ const index = () => {
 			/>
 		</Routes>
 	);
+
+
 };
+
 export default index;
