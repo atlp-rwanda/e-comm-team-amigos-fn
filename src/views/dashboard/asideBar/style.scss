@@ -1,0 +1,46 @@
+.aside-bar-container{
+    width: 20%;
+    height: 100vh;
+    background-color:  #096E3E;
+    border-radius: 0 48px 48px 0;
+}
+
+ ul {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin: 30% 20%;
+}
+
+ li {
+    list-style-type: none;
+    margin-top: 20%;
+}
+
+a {
+    text-decoration: none;
+    color: #D9D9D9;
+}
+
+.fa {
+    padding-right: 5px;
+    width: 20%;
+}
+
+.cart-content {
+    display: flex;
+    margin-top: 30%;
+    margin-left: 20%;
+}
+
+.cart-content h3 {
+    margin-top: 10px;
+    color: #D9D9D9;
+    padding-left: 5px;
+}
+
+.down-content {
+    margin-top: 70%;
+}
+
+
