@@ -6,6 +6,7 @@ import LoginPage from '../views/login/LoginPage.jsx';
 import SignUp from '../views/sign-up/SignUp.jsx';
 import VerrifyAccPage from '../views/verify-account/VerrifyAccPage.jsx';
 import SuccessPage from '../components/SuccessPage.jsx';
+import DashboardNav from '../views/dashboard/navigation/index.jsx';
 
 const index = () => {
 	return (
@@ -17,6 +18,9 @@ const index = () => {
 			<Route exact path="/user/verify_email/:token" element={<VerrifyAccPage />} />
 			<Route exact path="/reset-password" element={<ResetPassword />} />
       		<Route exact path="/user/resetPassword/:token" element={<ConfirmNewPassword />} />
+			<Route exact path='dashboard' element={<DashboardNav/>}>
+				<Route exact path="" element={<h1>Dashboard</h1>} />
+			</Route>
 		</Routes>
 	);
 };
