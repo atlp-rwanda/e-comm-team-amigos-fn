@@ -1,12 +1,17 @@
 import React from 'react';
 import Header from '../header/index.jsx';
 import AsideBar from '../asideBar/index.jsx';
+import { Outlet } from 'react-router-dom';
+import './style.scss';
 
 function DashboardNav() {
   return (
-    <div style={{display:'flex'}}>
+    <div className='dashboard-container'>
         <AsideBar/>
-        <Header/>
+        <div className='main-layout'>
+          <Header/>
+          <Outlet/>
+        </div>
     </div>
   );
 }
