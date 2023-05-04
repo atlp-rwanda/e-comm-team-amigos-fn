@@ -4,12 +4,13 @@ import ProductSchema from './ProductSchema.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { create_product } from '../../redux/create-product/create_product.js';
 import { handleProductResponse } from '../../utils/product/handleProductSuccess.js';
-import './product.style.scss';
 import ImageUploader from './ImageUploader.jsx';
-const CreateProduct = () => {
+import './product.style.scss';
+import 'react-toastify/dist/ReactToastify.css';
+
+const CreateProduct = ({setCreateProduct}) => {
 	const dispatch = useDispatch();
 	const [imageUrl, setImageUrl] = useState();
 	const { productSuccess, productStart } = useSelector(
@@ -54,7 +55,6 @@ const CreateProduct = () => {
 			>
 				{({ values }) => (
 					<Form className="super-container">
-						<h1 className="header">Create Product</h1>
 						<div className="product-container">
 							<div className="left">
 								<div className="input">
@@ -97,18 +97,6 @@ const CreateProduct = () => {
 									/>
 									<ErrorMessage name="ec" />
 								</div>
-								<div>
-									<button
-										className="btn"
-										type="submit"
-										id="create"
-										data-testid="create"
-									>
-										{productStart
-											? 'Creating ....'
-											: 'Create'}
-									</button>
-								</div>
 							</div>
 							<div className="right">
 								<div className="input">
@@ -138,15 +126,27 @@ const CreateProduct = () => {
 									<ErrorMessage name="expiryDate" />
 								</div>
 								<ImageUploader onUpload={handleUpload} />
-								<button
-									className="btn"
-									type="reset"
-									id="cancel"
-									data-testid="cancel"
-								>
-									Cancel
-								</button>
 							</div>
+						</div>
+						<div className="buttons-container">
+							<button
+								className="btn"
+								type="submit"
+								data-testid="create"
+							>
+								{productStart
+									? 'Creating ....'
+									: 'Create'}
+							</button>
+							<button
+								onClick={()=>setCreateProduct(false)}
+								className="btn"
+								type="reset"
+								data-testid="cancel"
+								style={{backgroundColor:"#E4002B"}}
+							>
+								Cancel
+							</button>
 						</div>
 					</Form>
 				)}
