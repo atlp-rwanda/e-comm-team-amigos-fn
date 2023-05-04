@@ -3,6 +3,10 @@
     height: 100vh;
     background-image: linear-gradient(to bottom, #fff 50%, '#FAF9FF' 50%);
     box-sizing: border-box;
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
 }
 .aside-bar-container{
     width: 100%;
