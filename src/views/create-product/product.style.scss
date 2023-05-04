@@ -1,11 +1,6 @@
-.header {
-    margin-left: 35%;
-    margin-top: 40px;
-    color: #096F3E;
-}
 .input {
     height: 84px;
-    width: 80%;
+    width: 100%;
 }
 
 .input label {
@@ -22,60 +17,32 @@
 } 
 
 .product-container {
+    width: 100%;
     display: flex;
-    margin-left: 50px;
-    margin-bottom: 40px;
-    justify-content: space-between;
-    width: 90%;
-
-    @media screen and (max-width: 768px) {
-        width: 100%;
-        
-    }
+    justify-content:space-between;
+    align-items: center;
+    padding: 1rem;
+    gap:1rem
 }
 
 .super-container {
-    width: 90%;
+    width: 100%;
     margin: auto;
-    padding: 2rem;
-    border: 1px solid #848181;
-    border-radius: 10px;
-
-    @media screen and (max-width: 768px) {
-        width: 95%;
-        flex-wrap: wrap;
-        
-    }
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
 }
-
-
 
 .btn {
     background-color: #096F3E;
     color: white;
     border: none;
-    width: 80%;
-    margin-top: 40px;
+    width: 50%;
+    height: 40px;
     font-weight: 400;
-    padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-size: 1rem;
     cursor: pointer;
-    margin-right: 0.5rem;
-
-}
-
-#create {
-    margin-top: 35px;
-
-    @media screen and (max-width: 768px) {
-        margin-top: 55px;
-        
-    }
-}
-
-#cancel {
-    margin-top: 43px;
 }
 
 .error {
@@ -105,5 +72,35 @@
     }
 }
 
+.buttons-container{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 1rem;
+    gap:1rem
+}
 
-
+/* For mobile phones: */
+@media only screen and (max-width: 768px) {
+    .product-container{
+        flex-direction: column;
+        margin-top: 20rem;
+    }
+    .left {
+        width: 100%;
+    }
+    
+    .right {
+        width: 100%;
+    }
+    .files{
+        width: 100%;
+    }
+    .buttons-container{
+        flex-direction: column;
+    }
+    .btn{
+        width: 100%;
+    }
+}
