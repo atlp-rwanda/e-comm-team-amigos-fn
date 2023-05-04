@@ -12,11 +12,9 @@ import Users from "../components/users/Users.jsx";
 import Roles from "../components/roles/Roles.jsx";
 import Dashboard from "../views/dashboard/index.jsx";
 import Product from "../views/dashboard/product/index.jsx";
-import CreateProduct from "../views/create-product/CreateProduct.jsx";
 import Unauthorized from "../views/protectedRoutes/unauthorized.jsx";
 import Layout from "../views/protectedRoutes/layout.js";
 import IsAuthorized from "../utils/auth/isAuthorized.js";
-import { useState } from "react";
 
 const index = () => {
 	return (
