@@ -1,0 +1,19 @@
+.swiper-button-prev:after {
+    font-family: swiper-icons;
+    font-size: 700 !important;
+    text-transform: none !important;
+    letter-spacing: 0;
+    font-variant: initial;
+    line-height: 1;
+    color: #096F3E;
+}
+
+.swiper-button-next:after {
+    font-family: swiper-icons;
+    font-size: 700 !important;
+    text-transform: none !important;
+    letter-spacing: 0;
+    font-variant: initial;
+    line-height: 1;
+    color: #096F3E;
+}

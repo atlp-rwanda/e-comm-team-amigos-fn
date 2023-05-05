@@ -1,0 +1,15 @@
+sharp {
+    border-radius: 0;
+}
+
+medium {
+    border-radius: 10.16px;
+}
+
+oval80 {
+    border-radius: 80px;
+}
+
+oval50{
+    border-radius: 50px;
+}

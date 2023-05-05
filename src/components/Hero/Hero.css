@@ -1,0 +1,46 @@
+.bulletContainer {
+    width: 124px;
+    height: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.active {
+    width: 50px;
+    height: 24px;
+    background: #163C2A;
+}
+
+.bullet {
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
+    border-radius: 50px;
+}
+
+.swiper-pagination-bullets {
+    /*  Container */
+    display: flex;
+    margin-top: 5px;
+    z-index: 50;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-pagination-bullet {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
+    border-radius: 50px;
+    border: .2px solid #163C2A;
+}
+
+.swiper-pagination-bullet-active {
+    display: block;
+    width: 50px;
+    height: 24px;
+    background: #163C2A;
+}
