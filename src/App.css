@@ -69,6 +69,13 @@ letter-spacing: 2px;
   height: 120px;
   -webkit-animation: spin .8s ease-in-out infinite; /* Safari */
   animation: spin .8s ease-in-out infinite;
+  margin:auto
+}
+
+
+.loading-spinner--medium {
+  width: 60px;
+  height: 60px;
 }
 
 .error{
