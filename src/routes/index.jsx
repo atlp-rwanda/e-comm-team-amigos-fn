@@ -8,6 +8,8 @@ import VerrifyAccPage from '../views/verify-account/VerrifyAccPage.jsx';
 import SuccessPage from '../components/SuccessPage.jsx';
 import Users from '../components/users/Users.jsx';
 
+import DashboardNav from '../views/dashboard/navigation/index.jsx';
+import Dashboard from '../views/dashboard/index.jsx';
 const index = () => {
 	return (
 		<Routes>
@@ -26,7 +28,10 @@ const index = () => {
 				path="/user/resetPassword/:token"
 				element={<ConfirmNewPassword />}
 			/>
-			<Route path="/users" element={<Users />} />
+			<Route exact path="dashboard" element={<DashboardNav />}>
+				<Route index element={<Dashboard />} />
+				<Route path="users" element={<Users />} />
+			</Route>
 		</Routes>
 	);
 };
