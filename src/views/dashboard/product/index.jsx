@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProduct } from "../../../redux/actions";
 import PrimaryBtn from "../../../components/button/PrimaryButton.jsx";
 import ProductCard from "../../../components/product-card/index.jsx";
 import imagePlaceHolder from "../../../assets/img/placeholder-image.png";
@@ -10,36 +9,31 @@ import "./style.scss";
 import ProductLayout from "./product-layout";
 import CreateProduct from "../../create-product/CreateProduct.jsx";
 import UpdateProduct from "../../../components/UpdateProduct/UpdateProduct.jsx";
+import ViewSingleProduct from "./ViewSingleProduct.jsx";
+import { ToastContainer } from "react-toastify";
+import { viewSingleProduct } from "../../../redux/actions/product.js";
 
 const Product = () => {
-	const { products, fetchProductStart } = useSelector(
-		(state) => state.fetchProductState,
-	);
-	const [productId, setProductId] = useState(null);
-	const [page, setPage] = useState(1);
-	const [createProduct, setCreateProduct] = useState(false);
+	const { products, fetchProductStart, detailsProductId, updateProductId } =
+		useSelector((state) => state.fetchProductState);
 	const [updateProduct, setUpdateProduct] = useState(false);
-	const [imageIsVisible, setImageIsVisible] = useState(null);
-	const productDetails = products?.product?.filter(
-		(product) => product?.id === productId,
-	);
 	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(fetchProduct(page));
-	}, [page]);
-
-	const handlePrevious = () => {
-		setPage(page - 1);
-	};
-	const handleNext = () => {
-		setPage(page + 1);
+	const [createProduct, setCreateProduct] = useState(false);
+	const productDetails = products?.product?.filter(
+		(product) => product.id === detailsProductId,
+	);
+	function handleUnmountProduct() {
+		dispatch(viewSingleProduct(""));
+	}
+	const handleCreateProduct = () => {
+		setCreateProduct(true);
 	};
 
 	return (
 		<div className="dashboard-content">
+			<ToastContainer />
 			<div className="product-header-content">
-				{updateProduct ? (
+				{updateProductId ? (
 					<span
 						data-testid="seller-collection-title"
 						className="seller-collection-title"
@@ -58,7 +52,7 @@ const Product = () => {
 
 			<div className="product-controller">
 				<PrimaryBtn
-					onClick={() => setCreateProduct(true)}
+					onClick={() => handleCreateProduct()}
 					title={"Create product"}
 					width={"150px"}
 				/>
@@ -68,15 +62,12 @@ const Product = () => {
 				<div className="product-details-indicator">
 					<span
 						data-testid="seller-collection-sub-title"
-						onClick={() => {
-							setProductId(null);
-							setUpdateProduct(false);
-						}}
+						onClick={() => handleUnmountProduct()}
 						className="seller-collection-sub-title"
 					>
 						{createProduct ? "" : "Products"}
 					</span>
-					{productId && (
+					{detailsProductId && (
 						<>
 							<Unicons.UilAngleRight size="24" color="#096E3E" />
 							{productDetails?.map((product) => {
@@ -94,103 +85,21 @@ const Product = () => {
 				<ProductCard>
 					<CreateProduct setCreateProduct={setCreateProduct} />
 				</ProductCard>
-			) : updateProduct ? (
+			) : updateProductId ? (
 				<ProductCard>
 					<UpdateProduct
-						setUpdateProduct={setUpdateProduct}
-						productId={productId}
-						setProductId={setProductId}
+						// setUpdateProduct={setUpdateProduct}
+						// productId={productId}
+						// setProductId={setProductId}
 						currentPage={products?.currentPage}
 					/>
 				</ProductCard>
-			) : productId ? (
+			) : detailsProductId ? (
 				<ProductCard data-testid="product-card">
-					{productDetails?.map((product) => {
-						return (
-							<>
-								<div
-									key={product?.id}
-									style={{ padding: "2rem" }}
-									className="product-detail-information"
-								>
-									<div className="product-details">
-										<div className="image-container">
-											{!imageIsVisible ? (
-												<img
-													className="product-cover"
-													src={
-														product?.images[0]
-															? product?.images[0]
-															: imagePlaceHolder
-													}
-													alt="product images"
-												/>
-											) : (
-												<img
-													className="product-cover"
-													src={imageIsVisible}
-													alt="product images"
-												/>
-											)}
-										</div>
-										<div className="product-detailed-info">
-											<span className="item-title">
-												{product?.name}
-											</span>
-											<span className="item-title">
-												In stock: {product?.quantity}
-											</span>
-											<span className="item-title">
-												Product price: {product?.price}
-											</span>
-											<span className="item-title">
-												Status:{" "}
-												{product?.available
-													? "Available"
-													: "Not available"}
-											</span>
-										</div>
-									</div>
-								</div>
-								<div className="product-mages">
-									{product?.images.map((img) => {
-										return (
-											<img
-												onClick={() =>
-													setImageIsVisible(img)
-												}
-												style={{
-													width: "100px",
-													height: "70px",
-													borderRadius: "1rem",
-												}}
-												className="product-image-1"
-												src={
-													img ? img : imagePlaceHolder
-												}
-												alt="product images"
-											/>
-										);
-									})}
-								</div>
-							</>
-						);
-					})}
-				</ProductCard>
-			) : fetchProductStart ? (
-				<ProductCard>
-					<Loader />
+					<ViewSingleProduct productDetails={productDetails} />
 				</ProductCard>
 			) : (
-				<ProductCard>
-					<ProductLayout
-						products={products}
-						handleNext={handleNext}
-						handlePrevious={handlePrevious}
-						setProductId={setProductId}
-						setUpdateProduct={setUpdateProduct}
-					/>
-				</ProductCard>
+				<ProductLayout />
 			)}
 		</div>
 	);

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./style.scss";
 import ProductCard from "../../../components/product-card/index.jsx";
 import imagePlaceHolder from "../../../assets/img/placeholder-image.png";
@@ -7,6 +8,14 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { useSelector, useDispatch } from "react-redux";
+import ConfirmDeleteModal from "../../../components/product-card/ConfirmDeleteModal";
+import {
+	fetchProduct,
+	updateProductAction,
+	viewSingleProduct,
+} from "../../../redux/actions";
+import Loader from "../../../components/loader/index.jsx";
 
 const columns = [
 	{ id: "picture", label: "Photo", minWidth: 170 },
@@ -33,39 +42,67 @@ const columns = [
 	},
 ];
 
-function createData(product, actionEdit, actionDelete, setProductId) {
+function createData(product, actionEdit, actionDelete, handleViewProduct) {
 	const picture = (
 		<img
 			className="product-image"
 			src={product.images[0] ? product.images[0] : imagePlaceHolder}
 			alt="product image"
-			onClick={() => setProductId(product.id)} // set the productId state on click
+			onClick={() => handleViewProduct(product.id)}
 		/>
 	);
 	const name = product.name;
 	const price = product.price;
 	const category = product.category;
-	const id = product.id; // add the id property
+	const id = product.id;
 
 	return { picture, name, price, category, actionEdit, actionDelete, id };
 }
 
-export default function ProductLayout({
-	products,
-	setProductId,
-	handleNext,
-	handlePrevious,
-	setUpdateProduct,
-}) {
+export default function ProductLayout() {
+	const dispatch = useDispatch();
+	const { products, fetchProductStart } = useSelector(
+		(state) => state.fetchProductState,
+	);
+	const [page, setPage] = useState(1);
+
+	const handlePrevious = () => {
+		setPage(page - 1);
+	};
+	const handleNext = () => {
+		setPage(page + 1);
+	};
+
+	useEffect(() => {
+		dispatch(fetchProduct(page));
+	}, [page]);
+
+	const [rows, setRows] = useState();
+	const [openDeleteModal, setOpenDeleteModal] = useState(false);
+	const handleCloseDeleteModal = () => setOpenDeleteModal(false);
+	const [selectedProduct, setSelectedProduct] = useState(null);
+	const handleOpenDeleteModal = (product) => {
+		setSelectedProduct(product);
+		setOpenDeleteModal(true);
+	};
+
+	const handleDelete = async (id) => {};
+
+	const handleViewProduct = (productId) => {
+		dispatch(viewSingleProduct(productId));
+	};
+
 	const createProducts = (products) => {
-		const data = products?.map((product) =>
+		return products?.map((product) =>
 			createData(
 				product,
 				<button
 					className="primary-button"
 					onClick={() => {
-						setProductId(product.id);
-						setUpdateProduct(true);
+						// setProductId(product.id);
+						// setUpdateProduct(true);
+						dispatch(updateProductAction(product.id));
+						console.log("clicked");
 					}}
 				>
 					Edit
@@ -74,17 +111,20 @@ export default function ProductLayout({
 					className="primary-button"
 					style={{ backgroundColor: "#BB0D02" }}
 					onClick={() => handleOpenDeleteModal(product)}
+					data-testid="delete-btn-seller"
 				>
 					DELETE
 				</button>,
-				setProductId,
+				handleViewProduct,
 			),
 		);
-		return data;
 	};
-	const rows = createProducts(products?.product);
+	useEffect(() => {
+		setRows(createProducts(products?.product));
+	}, [products]);
+
 	return (
-		<>
+		<ProductCard>
 			<TableContainer sx={{ maxHeight: 440 }}>
 				<Table stickyHeader aria-label="sticky table">
 					<TableHead>
@@ -101,31 +141,46 @@ export default function ProductLayout({
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{rows?.map((row, index) => {
-							return (
-								<TableRow
-									hover
-									role="checkbox"
-									tabIndex={-1}
-									key={index}
-								>
-									{columns?.map((column) => {
-										const value = row[column.id];
-										return (
-											<TableCell
-												key={column.id}
-												align={column.align}
-											>
-												{column.format &&
-												typeof value === "number"
-													? column.format(value)
-													: value}
-											</TableCell>
-										);
-									})}
-								</TableRow>
-							);
-						})}
+						{fetchProductStart ? (
+							<TableRow data-testid="loader-product-list">
+								<TableCell colSpan={6} align="center">
+									<Loader />
+								</TableCell>
+							</TableRow>
+						) : (
+							<>
+								{rows?.map((row, index) => {
+									return (
+										<TableRow
+											// set the productId state on click
+											hover
+											role="checkbox"
+											tabIndex={-1}
+											key={index}
+											data-testid="row-product-list"
+										>
+											{columns?.map((column) => {
+												const value = row[column.id];
+												return (
+													<TableCell
+														key={column.id}
+														align={column.align}
+													>
+														{column.format &&
+														typeof value ===
+															"number"
+															? column.format(
+																	value,
+															  )
+															: value}
+													</TableCell>
+												);
+											})}
+										</TableRow>
+									);
+								})}
+							</>
+						)}
 					</TableBody>
 				</Table>
 			</TableContainer>
@@ -137,21 +192,25 @@ export default function ProductLayout({
 					{products?.previousPage && (
 						<button
 							className="btn-controller"
-							onClick={() => handlePrevious()}
+							onClick={handlePrevious}
 						>
 							Previous Page
 						</button>
 					)}
 					{products?.nextPage && (
-						<button
-							className="btn-controller"
-							onClick={() => handleNext()}
-						>
+						<button className="btn-controller" onClick={handleNext}>
 							Next Page
 						</button>
 					)}
 				</div>
 			</div>
-		</>
+			<ConfirmDeleteModal
+				open={openDeleteModal}
+				handleClose={handleCloseDeleteModal}
+				product={selectedProduct}
+				onDelete={handleDelete}
+				page={page}
+			/>
+		</ProductCard>
 	);
 }
