@@ -18,8 +18,7 @@ const SearchedProduct = () => {
 		const fetchData = async () => {
 			try {
 				setLoading(true);
-				let url =
-					"https://e-comm-team-amigos-bn-project.onrender.com/product";
+				let url = "https://e-comm-team-amigos-bn-project.onrender.com/product";
 				if (searchValue) {
 					url += `/search?name=${searchValue}`;
 					const response = await fetch(url);
@@ -52,7 +51,8 @@ const SearchedProduct = () => {
 	}, [searchValue, page]);
 
 	const handleClick = (id) => {
-		navigate(`/product/${id}`);
+		// navigate(`/product/${id}`);
+		navigate("/cart", { state: { id } });
 	};
 
 	const handleLoadMore = () => {

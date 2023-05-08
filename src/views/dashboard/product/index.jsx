@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import PrimaryBtn from "../../../components/button/PrimaryButton.jsx";
+import PrimaryBtn from "../../../components/Button/PrimaryButton.jsx";
 import ProductCard from "../../../components/product-card/index.jsx";
+// eslint-disable-next-line no-unused-vars
 import imagePlaceHolder from "../../../assets/img/placeholder-image.png";
+// eslint-disable-next-line no-unused-vars
 import Loader from "../../../components/loader/index.jsx";
 import * as Unicons from "@iconscout/react-unicons";
 import "./style.scss";
@@ -14,8 +16,10 @@ import { ToastContainer } from "react-toastify";
 import { viewSingleProduct } from "../../../redux/actions/product.js";
 
 const Product = () => {
+	// eslint-disable-next-line no-unused-vars
 	const { products, fetchProductStart, detailsProductId, updateProductId } =
 		useSelector((state) => state.fetchProductState);
+	// eslint-disable-next-line no-unused-vars
 	const [updateProduct, setUpdateProduct] = useState(false);
 	const dispatch = useDispatch();
 	const [createProduct, setCreateProduct] = useState(false);
@@ -72,6 +76,7 @@ const Product = () => {
 							<Unicons.UilAngleRight size="24" color="#096E3E" />
 							{productDetails?.map((product) => {
 								return (
+									// eslint-disable-next-line react/jsx-key
 									<span className="seller-collection-sub-title-item">
 										{product?.name}
 									</span>
