@@ -5,6 +5,7 @@ import resetPasswordReducer from './reducer/resetPassword';
 import loginReducer from './reducer/login';
 import usersReducer from './users/usersReducer';
 import rolesReducer from './roles/rolesReducer';
+import homeDataReducer from './homeData.reducer';
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
 	loginState: loginReducer,
 	users: usersReducer,
 	roles: rolesReducer,
+	homeData: homeDataReducer,
 });
 
 export default rootReducer;

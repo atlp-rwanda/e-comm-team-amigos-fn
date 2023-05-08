@@ -19,10 +19,11 @@ const RoleButton = ({
 	onAddOrRemoveRole,
 	addOrRemovingRole,
 	role,
+	rolePos,
 }) => {
 	return (
 		<Button
-			data-roleid={roles[0].id}
+			data-roleid={roles[+rolePos].id}
 			data-isset={user.userRoles.includes(role)}
 			isSet={user.userRoles.includes(role)}
 			onClick={onAddOrRemoveRole}
@@ -127,6 +128,7 @@ export default function Roles() {
 									onAddOrRemoveRole={onAddOrRemoveRole}
 									addOrRemovingRole={addOrRemovingRole}
 									role="admin"
+									rolePos="0"
 								/>
 
 								<RoleButton
@@ -135,6 +137,7 @@ export default function Roles() {
 									onAddOrRemoveRole={onAddOrRemoveRole}
 									addOrRemovingRole={addOrRemovingRole}
 									role="merchant"
+									rolePos="1"
 								/>
 
 								<RoleButton
@@ -143,6 +146,7 @@ export default function Roles() {
 									onAddOrRemoveRole={onAddOrRemoveRole}
 									addOrRemovingRole={addOrRemovingRole}
 									role="customer"
+									rolePos="2"
 								/>
 							</div>
 						</div>

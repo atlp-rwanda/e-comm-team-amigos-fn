@@ -59,6 +59,9 @@ module.exports = {
 			},
 		],
 	},
+	resolve: {
+		extensions: ['.js', '.jsx'],
+	},
 	devServer: {
 		hot: true,
 		port: 3000,
