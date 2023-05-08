@@ -7,6 +7,7 @@ import SignUp from '../views/sign-up/SignUp.jsx';
 import VerrifyAccPage from '../views/verify-account/VerrifyAccPage.jsx';
 import SuccessPage from '../components/SuccessPage.jsx';
 import Users from '../components/users/Users.jsx';
+import Roles from '../components/roles/Roles.jsx';
 
 import DashboardNav from '../views/dashboard/navigation/index.jsx';
 import Dashboard from '../views/dashboard/index.jsx';
@@ -23,6 +24,7 @@ const index = () => {
 				element={<VerrifyAccPage />}
 			/>
 			<Route exact path="/reset-password" element={<ResetPassword />} />
+
 			<Route
 				exact
 				path="/user/resetPassword/:token"
@@ -31,6 +33,7 @@ const index = () => {
 			<Route exact path="dashboard" element={<DashboardNav />}>
 				<Route index element={<Dashboard />} />
 				<Route path="users" element={<Users />} />
+				<Route exact path="roles" element={<Roles />} />
 			</Route>
 		</Routes>
 	);

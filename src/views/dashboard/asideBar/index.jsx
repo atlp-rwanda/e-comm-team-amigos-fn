@@ -3,7 +3,7 @@ import { FaTachometerAlt } from 'react-icons/fa';
 import { FaBoxOpen } from 'react-icons/fa';
 import { FaChartBar } from 'react-icons/fa';
 import { FaFileAlt } from 'react-icons/fa';
-import { FaUsers } from 'react-icons/fa';
+import { FaUsers, FaMinusCircle } from 'react-icons/fa';
 import { AiOutlineSetting, AiOutlineLogout } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import cart from '../../../assets/img/cart.png';
@@ -44,9 +44,15 @@ function AsideBar() {
 							</Link>
 						</li>
 						<li>
-							<Link to="/users">
+							<Link to="users">
 								<FaUsers className="fa" />
 								Users
+							</Link>
+						</li>
+						<li>
+							<Link to="roles">
+								<FaMinusCircle className="fa" />
+								Roles
 							</Link>
 						</li>
 						<div className="down-content">

@@ -1,6 +1,16 @@
 import axios from 'axios';
 import { actionTypes } from './actionTypes.js';
 
+const generatePayload = (res) => {
+	return {
+		users: res.data.response.users,
+		currPage: res.data.response.currentPage,
+		nextPage: res.data.response.nextPage,
+		prevPage: res.data.response.previousPage,
+		totalPages: res.data.response.totalPages,
+	};
+};
+
 export const getUsers = (page = 1) => {
 	return async (dispatch) => {
 		try {
@@ -18,13 +28,7 @@ export const getUsers = (page = 1) => {
 			if (res.status === 200) {
 				dispatch({
 					type: actionTypes.FETCHING_USERS_SUCCEED,
-					payload: {
-						users: res.data.response.users,
-						currPage: res.data.response.currentPage,
-						nextPage: res.data.response.nextPage,
-						prevPage: res.data.response.previousPage,
-						totalPages: res.data.response.totalPages,
-					},
+					payload: generatePayload(res),
 				});
 			}
 		} catch (error) {

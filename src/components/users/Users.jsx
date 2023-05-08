@@ -27,6 +27,78 @@ const TableHeader = ({ headers }) => {
 	);
 };
 
+const Pagination = ({ users, currPage, handleOnClick, totalPages }) => {
+	return (
+		<div className="users__pagination">
+			{users && currPage !== 1 && (
+				<img
+					src={prevIcon}
+					className="pagination-icon"
+					onClick={handleOnClick}
+					id="prev"
+					alt="Prev Logo"
+				/>
+			)}
+			{users && (
+				<span className="current-page">
+					{currPage}/{totalPages}
+				</span>
+			)}
+
+			{users && currPage !== totalPages && (
+				<img
+					src={nextIcon}
+					onClick={handleOnClick}
+					id="next"
+					className="pagination-icon"
+					alt="Next Logo"
+				/>
+			)}
+		</div>
+	);
+};
+
+function handleOnClick(e, dispatch, currPage) {
+	dispatch({
+		type: 'CHANGE_PAGE',
+		payload: e.target.id === 'prev' ? currPage - 1 : currPage + 1,
+	});
+}
+
+function generateRows(users) {
+	return users.map((user, i) => {
+		const userRoles = user.UserRoles.map((role) => role.Role.name).join(
+			', ',
+		);
+
+		const data = {
+			name: `${user.firstName} ${user.lastName}`,
+			email: user.email,
+			userRoles,
+		};
+
+		return <TableRaw key={i} data={data} />;
+	});
+}
+
+const Header = () => {
+	return (
+		<h1 className="users-header">
+			<img src={usersIcon} className="users-icon" alt="Prev Logo" />
+			Users
+		</h1>
+	);
+};
+
+const Table = ({ users }) => {
+	return (
+		<table className="users-table">
+			<TableHeader headers={['Name', 'Email', 'Roles']} />
+			<tbody>{users && generateRows(users)}</tbody>
+		</table>
+	);
+};
+
 export default function Users() {
 	const dispatch = useDispatch();
 	const { users, fetchingUsers, currPage, totalPages } = useSelector(
@@ -34,75 +106,25 @@ export default function Users() {
 	);
 
 	useEffect(() => {
-		dispatch(getUsers(currPage));
+		if (!users) dispatch(getUsers(currPage));
 	}, [dispatch, currPage]);
-
-	function handleOnClick(e) {
-		dispatch({
-			type: 'CHANGE_PAGE',
-			payload: e.target.id === 'prev' ? currPage - 1 : currPage + 1,
-		});
-	}
 
 	return (
 		<div className="users">
-			<h1 className="users-header">
-				<img src={usersIcon} className="users-icon" alt="Prev Logo" />
-				Users
-			</h1>
+			<Header />
 			<div className="users-table-container">
-				<table className="users-table">
-					<TableHeader headers={['Name', 'Email', 'Roles']} />
-
-					<tbody>
-						{users &&
-							users.map((user, i) => {
-								const userRoles = user.UserRoles.map(
-									(role) => role.Role.name,
-								).join(', ');
-
-								const data = {
-									name: `${user.firstName} ${user.lastName}`,
-									email: user.email,
-									userRoles,
-								};
-
-								return <TableRaw key={i} data={data} />;
-							})}
-					</tbody>
-				</table>
-				<br />
+				<Table users={users} />
 				{fetchingUsers && (
 					<div className="loading-spinner loading-spinner--medium"></div>
 				)}
 			</div>
 
-			<div className="users__pagination">
-				{users && currPage !== 1 && (
-					<img
-						src={prevIcon}
-						className="pagination-icon"
-						onClick={handleOnClick}
-						id="prev"
-						alt="Prev Logo"
-					/>
-				)}
-				{users && (
-					<span className="current-page">
-						{currPage}/{totalPages}
-					</span>
-				)}
-
-				{users && currPage !== totalPages && (
-					<img
-						src={nextIcon}
-						onClick={handleOnClick}
-						id="next"
-						className="pagination-icon"
-						alt="Next Logo"
-					/>
-				)}
-			</div>
+			<Pagination
+				users={users}
+				currPage={currPage}
+				handleOnClick={(e) => handleOnClick(e, dispatch, currPage)}
+				totalPages={totalPages}
+			/>
 		</div>
 	);
 }
