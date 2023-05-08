@@ -16,7 +16,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Model from "../Models/cartModel.jsx";
 import { openModel } from "../../redux/actions/cartOpenModel";
 const MenuContainer = styled(Box)(({ theme }) => ({
@@ -109,7 +109,6 @@ const HeaderAccount = styled(Box)(({ theme }) => ({
 }));
 
 export default function HeaderMain() {
-	const counter = useSelector((state) => state.counter);
 	const { width } = useWindowSize();
 	const [menuOpen, setMenuOpen] = React.useState(false);
 	const handleMenuClick = () => {
@@ -192,7 +191,7 @@ export default function HeaderMain() {
 						>
 							<Badge
 								color="primary"
-								badgeContent={counter}
+								badgeContent={0}
 								sx={{ marginRight: "10px" }}
 							>
 								<CartIcon sx={{ fill: "none" }} />

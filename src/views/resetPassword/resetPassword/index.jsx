@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { handleEmailResponse } from "../../../utils/resetPassword/handleSendingEmailResponse";
 import ResetPasswordForm from "../resetPasswordForm.jsx";
 import OnSuccess from "../onSuccess.jsx";
-import Back from "../../../components/button/Back.jsx";
+import Back from "../../../components/Button/Back.jsx";
 import Header from "../header.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import "./style.scss";

@@ -8,7 +8,7 @@ import '@testing-library/jest-dom';
 
 beforeEach(() => {
 	render(
-		<Provider store={store}>
+		< Provider store={store}>
 			<Router>
 				<CreateProduct />
 			</Router>

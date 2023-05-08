@@ -1,79 +1,98 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 import store from "../redux/store";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import HeaderMain from "../components/Header/HeaderMain";
-import { Provider } from "react-redux";
+
+beforeEach(() => {
+  render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <HeaderMain />
+      </BrowserRouter>
+    </Provider>
+  );
+});
 
 test("Renders the Header of App", () => {
-	render(
-		<Provider store={store}>
-			<BrowserRouter>
-				<Header />
-			</BrowserRouter>
-		</Provider>,
-	);
+  render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <Header />
+      </BrowserRouter>
+      ,
+    </Provider>
+  );
 
-	// expect(screen.getByRole('img')).toBeInTheDocument();
-	const headerElement = screen.getByText(/Amigos/i);
-	expect(headerElement).toBeInTheDocument();
+  const headerElements = screen.getAllByText(/Amigos/i);
+  expect(headerElements.length).toBeGreaterThan(0);
+  const headerElement = headerElements[0];
+  expect(headerElement).toBeInTheDocument();
 });
 
 test("Renders the Hero of App", () => {
-	render(
-		<Provider store={store}>
-			<BrowserRouter>
-				<Hero />
-			</BrowserRouter>
-		</Provider>,
-	);
+  render(
+    <BrowserRouter>
+      <Hero />
+    </BrowserRouter>
+  );
 
-	// expect(screen.getByRole('img')).toBeInTheDocument();
-	const textElement = screen.queryByTestId("heroText");
-	expect(textElement).toBeInTheDocument();
+  const textElement = screen.queryByTestId("heroText");
+  expect(textElement).toBeInTheDocument();
 });
 
 describe(HeaderMain, () => {
-	it("renders the logo name correctly", () => {
-		render(
-			<Provider store={store}>
-				<BrowserRouter>
-					<HeaderMain backgroundColor="white" />
-				</BrowserRouter>
-			</Provider>,
-		);
+  it("renders the logo name correctly", () => {
+    act(() => {
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <HeaderMain backgroundColor="white" />
+          </BrowserRouter>
+        </Provider>
+      );
+    });
 
-		const logoName = screen.queryByTestId("logoName");
-		expect(logoName).toBeInTheDocument();
-	});
+    const logoNames = screen.queryAllByTestId("logoName");
+    const logoName = logoNames[0];
+    expect(logoName).toBeInTheDocument();
+  });
 
-	it("opens and closes the menu when the menu icon is clicked", () => {
-		render(
-			<Provider store={store}>
-				<BrowserRouter>
-					<HeaderMain backgroundColor="white" />
-				</BrowserRouter>
-			</Provider>,
-		);
+  it("opens and closes the menu when the menu icon is clicked", () => {
+    act(() => {
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <HeaderMain backgroundColor="white" />
+          </BrowserRouter>
+        </Provider>
+      );
+    });
 
-		const menuIcon = screen.getByTestId("menu");
-		const navContainer = screen.getByTestId("nav-container");
+    const menuIcons = screen.queryAllByTestId("menu");
+    const navContainers = screen.queryAllByTestId("nav-container");
+    const menuIcon = menuIcons[0];
+    const navContainer = navContainers[0];
+    expect(navContainer).toBeVisible();
+    expect(menuIcons).toHaveLength(2);
+    expect(navContainer).toBeVisible();
 
-		expect(navContainer).toBeVisible();
-		// Menu should be hidden by default
+    act(() => {
+      menuIcon.click();
+    });
 
-		// Click the menu icon to open the menu
-		menuIcon.click();
+    expect(navContainer).not.toBeVisible();
 
-		navContainer.style.display = "none";
-		navContainer.style.visibility = "hidden";
+    act(() => {
+      menuIcon.click();
+    });
 
-		expect(navContainer).not.toBeVisible();
-		// Click the menu icon again to close the menu
-		menuIcon.click();
-		expect(navContainer).not.toBeVisible();
-	});
+    expect(navContainer).not.toBeVisible();
+  });
 });

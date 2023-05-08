@@ -2,9 +2,8 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
 import store from "../redux/store";
-
+import { Provider } from "react-redux";
 import HomePage from "../views/HomePage";
 
 test("renders the homepage", () => {
@@ -13,6 +12,7 @@ test("renders the homepage", () => {
 			<BrowserRouter>
 				<HomePage />
 			</BrowserRouter>
+			,
 		</Provider>,
 	);
 	expect(screen.queryAllByText("Amigos")[0]).toBeInTheDocument();

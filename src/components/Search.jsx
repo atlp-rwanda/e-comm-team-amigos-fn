@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ratings from "../assets/img/ratings.png";
 import "../assets/css/Search.scss";
-import Loader from "./Loader/Loader";
+import Loader from "./Loader/index.jsx";
 
 const SearchedProduct = () => {
 	const [loading, setLoading] = useState(true);
@@ -42,8 +42,6 @@ const SearchedProduct = () => {
 						setSearchCompleted(true); // Set searchCompleted to true when all pages are rendered
 					}
 				}
-
-				console.log("product:", products);
 			} finally {
 				setLoading(false);
 			}
@@ -53,8 +51,6 @@ const SearchedProduct = () => {
 	}, [searchValue, page]);
 
 	const handleClick = (id) => {
-		// navigate(`/product/${id}`);
-		navigate("/cart", { state: { id } });
 		navigate(`/product/${id}`);
 		localStorage.setItem("id", id);
 	};

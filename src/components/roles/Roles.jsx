@@ -11,7 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import "./roles.styles.scss";
 import "../../App.css";
-import Button from "../button/Button.jsx";
+import Button from "../Button/Button.jsx";
 
 const RoleButton = ({
 	roles,

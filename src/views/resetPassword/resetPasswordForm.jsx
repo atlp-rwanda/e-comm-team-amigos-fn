@@ -3,7 +3,7 @@ import { passwordReset } from '../../redux/actions';
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import "../../views/resetPassword/resetPassword/style.scss";
-import PrimaryButton from '../../components/button/ResetPassword.jsx';
+import PrimaryButton from '../../components/Button/ResetPassword.jsx';
 
 export default function ResetPasswordForm(){
     const dispatch = useDispatch();

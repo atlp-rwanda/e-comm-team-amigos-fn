@@ -3,7 +3,7 @@ import "../../App.css";
 import "./review.style.scss";
 import { FaStar, FaUserCircle } from "react-icons/fa";
 import { getReviews } from "../../redux/reviews/actions";
-import Button from "../button/Button";
+import Button from "../Button/Button.jsx";
 
 import {
 	handleOnChange,

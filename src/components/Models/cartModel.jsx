@@ -29,6 +29,9 @@ const Model = () => {
 							x
 						</button>
 					</div>
+					<div className="cleanupcart">
+						<button data-testid="clear">CLean Up Cart</button>
+					</div>
 					<div className="model-body">
 						<div className="colo-1">
 							<div className="order-title">
@@ -88,19 +91,16 @@ const Model = () => {
 													</div>
 													<div className="item-button">
 														<div className="item-quantity">
-															Qty: {
-																viewsuccess?.cartSummary.items
-															}
+															Qty: {item.quantity}
 														</div>
-														<button className="item-button-update">UPDATE</button>
-														<button className="item-button-delete">DELETE</button>
+														<button data-testid="update" className="item-button-update">UPDATE</button>
+														<button data-testid="delete" className="item-button-delete">REMOVE</button>
 													</div>
 												</div>
 												<div className="item-price">
-													US${item.price}.00
+													US${item.total}.00
 												</div>
 											</div>
-											
 										);
 									})
 								)}

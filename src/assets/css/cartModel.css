@@ -42,6 +42,25 @@
   border: none;
   font-size: 1.5em;
 }
+.model-container .cleanupcart {
+  width: 20%;
+  text-align: right;
+}
+.model-container .cleanupcart button {
+  background-color: rgb(192, 0, 6);
+  padding: 0.7rem 1.5rem;
+  font-size: 0.85em;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+}
+@media (max-width: 900px) {
+  .model-container .cleanupcart {
+    margin: 0rem auto;
+    width: 90%;
+  }
+}
 .model-container .model-body {
   width: 100%;
   display: flex;
@@ -50,12 +69,12 @@
   flex-wrap: wrap;
   gap: 3rem;
   flex-direction: row;
-  margin: 2rem auto;
+  margin: 1.5rem auto;
 }
 @media (max-width: 900px) {
   .model-container .model-body {
+    margin: 1.5rem auto;
     width: 100%;
-    margin: 0 auto;
   }
 }
 .model-container .model-body .colo-1, .model-container .model-body .colo-2 {
@@ -177,7 +196,7 @@
 .model-container .item-button-delete {
   padding: 0.3rem 1.5rem;
   font-size: 0.85em;
-  background-color: rgb(192, 0, 6);
+  background-color: rgb(192, 86, 0);
   color: white;
   font-weight: 500;
   border: none;
