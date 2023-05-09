@@ -1,0 +1,109 @@
+.header {
+    margin-left: 35%;
+    margin-top: 40px;
+    color: #096F3E;
+}
+.input {
+    height: 84px;
+    width: 80%;
+}
+
+.input label {
+    color: #0f0606;
+}
+
+.input .field {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+} 
+
+.product-container {
+    display: flex;
+    margin-left: 50px;
+    margin-bottom: 40px;
+    justify-content: space-between;
+    width: 90%;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        
+    }
+}
+
+.super-container {
+    width: 90%;
+    margin: auto;
+    padding: 2rem;
+    border: 1px solid #848181;
+    border-radius: 10px;
+
+    @media screen and (max-width: 768px) {
+        width: 95%;
+        flex-wrap: wrap;
+        
+    }
+}
+
+
+
+.btn {
+    background-color: #096F3E;
+    color: white;
+    border: none;
+    width: 80%;
+    margin-top: 40px;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
+
+}
+
+#create {
+    margin-top: 35px;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 55px;
+        
+    }
+}
+
+#cancel {
+    margin-top: 43px;
+}
+
+.error {
+    font-size: small;
+    width: 20px;
+    height: 40px;
+}
+
+.left {
+    width: 50%;
+}
+
+.right {
+    width: 50%;
+}
+
+.files {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    margin-top: 30px;
+
+    @media screen and (max-width: 768px) {
+        width: 70%;
+    }
+}
+
+
+

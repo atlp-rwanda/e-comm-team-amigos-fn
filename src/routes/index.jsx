@@ -10,6 +10,7 @@ import DashboardNav from "../views/dashboard/navigation/index.jsx";
 import Dashboard from "../views/dashboard/index.jsx";
 import Authentication from "../views/login/Authentication.jsx";
 
+import CreateProduct from "../views/create-product/CreateProduct.jsx";
 const index = () => {
 	return (
 		<Routes>
@@ -30,6 +31,11 @@ const index = () => {
 			/>
 			<Route exact path="dashboard" element={<DashboardNav />}>
 				<Route index element={<Dashboard />} />
+				<Route
+					exact
+					path="/dashboard/product/create"
+					element={<CreateProduct />}
+				/>
 			</Route>
 			<Route exact path="/authentication" element={<Authentication />} />
 		</Routes>
