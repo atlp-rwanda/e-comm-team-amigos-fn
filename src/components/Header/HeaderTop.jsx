@@ -12,8 +12,8 @@ const HeaderTop = ({ justifyContent, alignItems }) => {
 				width: "100%",
 				background: colors.darkGreen,
 				display: "flex",
-				justifyContent,
-				alignItems,
+				justifyContent: "space-between",
+				alignItems: "center",
 			}}
 		>
 			<Box component="p" sx={pText}>

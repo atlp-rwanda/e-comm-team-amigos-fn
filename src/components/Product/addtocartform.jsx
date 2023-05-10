@@ -11,8 +11,11 @@ import {
 	decrement,
 	addToCart,
 } from "../../redux/actions/cartAction.js";
+import { addToWishlist } from "../../redux/actions/Wishlist"
+import { handleWishlistResponse } from "../../utils/product/handleWishlistSucess";
 
 export default function AddtoCart({ product }) {
+	const { wishlistStart, wishlistSuccess } = useSelector(state => state.addToWishlist);
 	const user = JSON.parse(localStorage.getItem("user"));
 	const counter = useSelector((state) => state.counter);
 	const { cartsuccess, cartstart } = useSelector((state) => state.cart);
@@ -28,9 +31,13 @@ export default function AddtoCart({ product }) {
 			setisDisable(false);
 		}
 	};
+	const handleAddToWishlist = (id) => {
+		dispatch(addToWishlist(id));
+	};
 	useEffect(() => {
 		handleCartResponse(cartsuccess, toast);
-	}, [cartsuccess]);
+		handleWishlistResponse(wishlistSuccess, toast);
+	}, [cartsuccess, wishlistSuccess]);
 	return (
 		<>
 			<div className="col-2">
@@ -70,7 +77,7 @@ export default function AddtoCart({ product }) {
 						<div className="color color-5"></div>
 					</div>
 				</div>
-				<div className="row-3">
+				<div className={user ? "row-3" : "hidden"}>
 					<div className="count">
 						<div className="AddMinusButton">
 							<div>
@@ -119,6 +126,9 @@ export default function AddtoCart({ product }) {
 						>
 							{cartstart ? "Adding..." : "add to cart"}
 						</button>
+						<button className="btn-add-to-wishlist" onClick={() => handleAddToWishlist(product.id)}>
+                          {wishlistStart ? "Adding...": "Add to Wishlist"}
+                        </button>
 					</div>
 				</div>
 			</div>

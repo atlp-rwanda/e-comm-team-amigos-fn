@@ -18,14 +18,13 @@ import IsAuthorized from "../utils/auth/isAuthorized.js";
 import ProductDetailsPage from "../views/ProductDetailsPage.jsx";
 import SearchPage from "../views/SearchPage.jsx";
 import ViewCart from "../views/addToCart/viewCart.jsx";
-
 import AddToCart from "../views/addToCart/addtoCart.jsx";
 import CheckoutPage from "../views/CheckoutPage.jsx";
 import CheckoutSuccessPage from "../views/payment/checkoutSuccessPage.jsx";
 import CancelPaymentPage from "../views/payment/checkoutCancel.jsx";
 import UpdatePasswordPage from '../views/updatePassword/UpdatePasswordPage.jsx';
+import WishlistPage from '../views/wishlist/Wishlist.jsx';
 
-import UpdatePasswordPage from "../views/updatePassword/UpdatePasswordPage.jsx";
 const index = () => {
 	return (
 		<Routes>
@@ -94,15 +93,6 @@ const index = () => {
 			<Route exact path="/cart" element={<AddToCart />} />
 			<Route
 				exact
-				path="/viewcart"
-				element={
-					<IsAuthorized>
-						<ViewCart />
-					</IsAuthorized>
-				}
-			/>
-			<Route
-				exact
 				path="/checkout"
 				element={
 					<IsAuthorized>
@@ -110,6 +100,9 @@ const index = () => {
 					</IsAuthorized>
 				}
 			/>
+			<Route exact path="/user/wishlist" element={<IsAuthorized><WishlistPage /></IsAuthorized>}/>
+			<Route exact path="/user/viewcart" element={<IsAuthorized><ViewCart /></IsAuthorized>}/>
+
 		</Routes>
 	);
 };
