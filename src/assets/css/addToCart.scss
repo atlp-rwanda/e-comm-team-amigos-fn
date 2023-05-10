@@ -33,7 +33,6 @@ $breakpoint:768px;
 }
 .col-1{
     display: flex;
-    height:81vh;
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -168,7 +167,8 @@ $breakpoint:768px;
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content:space-around;
+            gap: 0.5rem;
+            justify-content:space-evenly;
             .buynow{
                 background-color:darkgreen;
                 color:white;
@@ -178,6 +178,15 @@ $breakpoint:768px;
                 outline: none;
                 border: none;
             }
+            .btn-add-to-wishlist {
+                background-color:rgb(255, 255, 255);
+                color:rgb(0, 0, 0);
+                border-radius: 20px;
+                padding: 0.7rem;
+                width: 40%;
+                outline: none;
+                border: 2px solid rgb(39, 37, 37);
+              }
             .addtocart{
                 background-color:rgb(255, 255, 255);
                 color:rgb(0, 0, 0);
@@ -188,6 +197,12 @@ $breakpoint:768px;
                 border: 2px solid rgb(39, 37, 37);
             }
             .addtocart:hover{
+                color:white;
+                background-color: darkgreen;
+                transition: 0.5s ease-in-out;
+                border: none;
+            }
+            .btn-add-to-wishlist:hover{
                 color:white;
                 background-color: darkgreen;
                 transition: 0.5s ease-in-out;

@@ -14,14 +14,15 @@ import reviewsReducer from "./reviews/reviewsReducer";
 import counterReducer from "./reducer/counter";
 import addToCartReducer from "./reducer/addToCartReducer";
 import isOpenReducer from "./reducer/isOpenModel";
-import viewcartReducer from "./reducer/viewCartReducer";
+import viewcartReducer from "./reducer/viewcartReducer";
 import relatedProductReducer from "./RelatedProducts/reducer";
 import profileReducer from "./profile/reducer";
 import paymentReducer from "./reducer/payment";
-import clearCartReducer from "./reducer/clearCartReducer";
 import UpdatePasswordReducer from './reducer/updatePassword';
+import viewWishlistReducer from "./reducer/wishlist/viewWishlist";
+import removeFromWishlistReducer from "./reducer/wishlist/removeFromWishlist";
+import addToWishlistReducer from "./reducer/wishlist/addTowishlist";
 
-import UpdateCartReducer from "./reducer/updateCartReducer";
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
 	verifyEmail: verifyEmailReducer,
@@ -42,9 +43,11 @@ const rootReducer = combineReducers({
 	relatedProductState: relatedProductReducer,
 	profile: profileReducer,
 	payment: paymentReducer,
-	clearCart:clearCartReducer,
-	updateCartState: UpdateCartReducer,
-	updatePasswordState: UpdatePasswordReducer
+	updatePasswordState: UpdatePasswordReducer,
+	wishlist: viewWishlistReducer,
+	removeWishlist: removeFromWishlistReducer,
+	addToWishlist: addToWishlistReducer,
+
 });
 
 export default rootReducer;

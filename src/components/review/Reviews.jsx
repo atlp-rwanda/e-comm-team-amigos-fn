@@ -99,8 +99,6 @@ export default function Reviews({ id }) {
 	);
 	const token = localStorage.getItem("token");
 	const user = JSON.parse(localStorage.getItem("user"));
-	console.log(user)
-
 	const [hoverRate, setHoverRate] = useState(0);
 	const [review, setReview] = useState("");
 	const [rate, setRate] = useState(0);

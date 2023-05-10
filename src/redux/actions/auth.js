@@ -14,7 +14,6 @@ import {
 } from "../types";
 import axios from "axios";
 import action from "./action";
-import axios from "axios";
 
 export const login = (email, password) => {
 	return async (dispatch) => {

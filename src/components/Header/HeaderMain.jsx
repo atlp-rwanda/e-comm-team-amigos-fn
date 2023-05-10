@@ -7,19 +7,19 @@ import logo from "./../../assets/img/logo.png";
 import colors from "../../constants/colors";
 import SearchInput from "../search/SearchInput.jsx";
 import SvgIcon from "@mui/material/SvgIcon";
-import Typography from "@mui/material/Typography";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
-
 import useWindowSize from "../../hooks/useWindowResize";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-
 import { useDispatch } from "react-redux";
 import Model from "../Models/cartModel.jsx";
 import { openModel } from "../../redux/actions/cartOpenModel";
 import { useNavigate } from "react-router-dom";
+import wishlistIcon from "../../assets/img/wishlistIconn.png";
+import "../../components/Header/wishlistIcon.style.scss";
+
 const MenuContainer = styled(Box)(({ theme }) => ({
 	zIndex: "40",
 	position: "fixed",
@@ -98,7 +98,7 @@ const SearchInputContainer = styled(Box)(({ theme }) => ({
 }));
 
 const HeaderAccount = styled(Box)(({ theme }) => ({
-	width: "202.65px",
+	width: "180.65px",
 	height: "24.7px",
 	display: "flex",
 	justifyContent: "space-between",
@@ -153,9 +153,7 @@ export default function HeaderMain() {
 	}));
 	const dispatch = useDispatch();
 	const user = JSON.parse(localStorage.getItem("user"));
-
 	const navigate = useNavigate();
-
 	return (
 		<ContainerFluid>
 			<Box sx={contentContainer}>
@@ -187,20 +185,10 @@ export default function HeaderMain() {
 					<SearchInputContainer>
 						<SearchInput />
 					</SearchInputContainer>
+					<Model/>
 					<HeaderAccount>
-						<Box component="div" sx={userAccount}>
-							<UserIcon sx={{ fill: "none" }} />
-							<Typography variant="p" sx={accountLabel}>
-								{user ? user.username : "Account"}
-							</Typography>
-						</Box>
-						<Model />
-						<NavLink
-							component={RouterLink}
-							to="/viewcart"
-							underline="none"
-						>
-							<Box
+					<NavLink component={RouterLink} to="/user/ViewCart" underline="none">
+					    <Box
 								onClick={() => dispatch(openModel())}
 								component="div"
 								sx={cartAccount}
@@ -208,16 +196,28 @@ export default function HeaderMain() {
 								<Badge
 									color="primary"
 									badgeContent={0}
-									sx={{ marginRight: "10px" }}
+									sx={{ marginLeft: "0px" }}
 								>
 									<CartIcon sx={{ fill: "none" }} />
 								</Badge>
 
-								<Typography variant="p" sx={accountLabel}>
-									Cart
-								</Typography>
-							</Box>
-						</NavLink>
+						</Box>
+					</NavLink>
+					<NavLink component={RouterLink} to="/user/wishlist" underline="none">
+						<Box component="div" sx={WishListAccount}>
+							<Badge
+								color="primary"
+								sx={{ marginLeft: '3px' }}
+							>
+                               <img src={wishlistIcon}  alt="Icon" class="wishlist-icon" style={{ fill: 'none' }} />
+							</Badge>
+						</Box>
+					</NavLink>
+		
+						<Box component="div" sx={userAccount}>
+							<UserIcon sx={{ fill: 'none', marginRight:'0px' }} />
+						</Box>
+						
 					</HeaderAccount>
 				</NavDropDown>
 			</Box>
@@ -320,25 +320,25 @@ const logoName = {
 };
 
 const userAccount = {
-	width: "99.82px",
-	height: "22.64px",
-	display: "flex",
-	justifyContent: "space-between",
-	alignItems: "center",
-};
-const accountLabel = {
-	fontFamily: "Poppins",
-	fontStyle: "normal",
-	fontWeight: "500",
-	fontSize: "17.4966px",
-	lineHeight: "26px",
-	color: colors.darkGreen,
+	width: '59.82px',
+	height: '24.64px',
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
 };
 
 const cartAccount = {
-	width: "63.8px",
-	height: "24.7px",
-	display: "flex",
-	justifyContent: "space-between",
-	alignItems: "center",
+	width: '20.8px',
+	height: '24.7px',
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+};
+const WishListAccount = {
+	width: '20.8px',
+	height: '22.7px',
+	display: 'flex',
+	fontStyle: 'bold',
+	justifyContent: 'center',
+	alignItems: 'center',
 };

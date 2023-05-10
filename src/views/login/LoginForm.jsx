@@ -13,7 +13,6 @@ import { SubmitSection } from "../../components/login/submit.jsx";
 export default function LoginForm() {
 	const dispatch = useDispatch();
 	const { loginSuccess } = useSelector((state) => state.loginState);
-	console.log(badRequest);
 	const navigation = useNavigate();
 	useEffect(() => {
 		handleLoginResponse(loginSuccess, navigation, toast);
