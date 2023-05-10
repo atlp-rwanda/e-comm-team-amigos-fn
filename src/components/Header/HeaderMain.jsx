@@ -6,7 +6,7 @@ import Link from '@mui/material/Link';
 import logo from './../../assets/img/logo.png';
 
 import colors from '../../constants/colors';
-import SearchInput from '../SearchInput.jsx';
+import SearchInput from '../search/SearchInput.jsx';
 import SvgIcon from '@mui/material/SvgIcon';
 import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';

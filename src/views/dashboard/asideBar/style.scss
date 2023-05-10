@@ -38,7 +38,7 @@
 
 a {
     text-decoration: none;
-    color: #D9D9D9;
+    color: #afacac;
 }
 
 .fa {
@@ -55,5 +55,28 @@ a {
 .down-content {
     margin-top: 150%;
 }
+
+/* For mobile phones: */
+@media only screen and (max-width: 768px) {
+    .aside-bar{
+        width: 30%;
+    }
+    .aside-bar-container{
+        border-radius: 0 0px 0px 0;
+    }
+    .cart-content {
+        margin-left: 0%;
+    }
+    ul {
+        margin: 30% 10%;
+    }
+    .down-content {
+        margin-top: 400%;
+    }
+
+    .link{
+        font-size: .8rem;
+    }
+  }
 
 
