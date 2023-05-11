@@ -10,6 +10,11 @@ import cart from "../../../assets/img/cart.png";
 import "./style.scss";
 import { useSelector } from "react-redux";
 
+function getUserRole() {
+	const user = JSON.parse(localStorage.getItem("user"));
+	return user?.userRoles || [];
+}
+
 function AsideBar() {
 	const { isClicked } = useSelector((state) => state.handleClickState);
 	const [active, setActive] = useState("Dashboard");
@@ -23,7 +28,7 @@ function AsideBar() {
 					<img src={cart} alt="" />
 					<h3>Amigos</h3>
 				</div>
-				<nav>
+				<nav className="aside-bar-content">
 					<ul>
 						<li>
 							<Link
@@ -76,7 +81,10 @@ function AsideBar() {
 								Reports
 							</Link>
 						</li>
-						<li>
+
+						{
+							
+							getUserRole().includes('Admin') && (<li>
 							<Link
 								to="users"
 								style={{
@@ -88,21 +96,28 @@ function AsideBar() {
 								<FaUsers className="fa" />
 								Users
 							</Link>
-						</li>
-						<li>
-							<Link
-								to="roles"
-								style={{
-									color: active === "Roles" ? "#fff" : "",
-								}}
-								className="link"
-								onClick={() => setActive("Roles")}
-							>
-								<FaMinusCircle className="fa" />
-								Roles
-							</Link>
-						</li>
-						<div className="down-content">
+						</li>)
+						}
+
+						{
+							getUserRole().includes('Admin') && (<li>
+								<Link
+									to="roles"
+									style={{
+										color: active === "Roles" ? "#fff" : "",
+									}}
+									className="link"
+									onClick={() => setActive("Roles")}
+								>
+									<FaMinusCircle className="fa" />
+									Roles
+								</Link>
+							</li>)
+						}
+						
+					</ul>
+
+					<div className="down-content">
 							<li>
 								<Link
 									onClick={() => setActive("Settings")}
@@ -130,7 +145,6 @@ function AsideBar() {
 								</Link>
 							</li>
 						</div>
-					</ul>
 				</nav>
 			</div>
 		</div>

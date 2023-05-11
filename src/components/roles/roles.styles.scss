@@ -1,6 +1,22 @@
 .manage-roles-container{
     width: 70%;
+    height: 90vh;
     margin: 0 auto;
+
+    ul{
+        list-style: none ;
+        margin: 0 ;
+        padding: 0 ;
+
+        li{
+            display: flex ;
+            gap: 8px ;
+            align-items: center ;
+            font-size: 14px ;
+            margin-bottom: 5px ;
+            margin-top: 0 !important;
+        }
+    }
 
     h2, h3{
         font-family: 'Poppins';
@@ -30,19 +46,7 @@
         margin-bottom:5px;
         
 
-         ul{
-            list-style: none;
-            margin: 0;
-            padding: 0;
-
-            li{
-                display: flex;
-                gap: 8px;
-                align-items: center;
-                font-size: 14px;
-                margin-bottom: 5px;
-            }
-        }
+         
 
         p{
             font-size: 16px;
