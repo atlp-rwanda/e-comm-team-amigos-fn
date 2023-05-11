@@ -4,7 +4,7 @@ import AsideBar from '../asideBar/index.jsx';
 import { Outlet } from 'react-router-dom';
 import './style.scss';
 
-function DashboardNav() {
+const  DashboardNav = () => {
   return (
     <div className='dashboard-container'>
         <AsideBar/>

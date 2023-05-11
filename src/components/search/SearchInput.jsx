@@ -1,24 +1,8 @@
 import InputBase from '@mui/material/InputBase';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import SvgIcon from '@mui/material/SvgIcon';
-import colors from '../constants/colors';
+import "./style.scss";
 
-const Search = styled('div')(({ theme }) => ({
-	position: 'relative',
-	borderRadius: '15px',
-	backgroundColor: alpha(theme.palette.common.white, 0.15),
-	'&:hover': {
-		backgroundColor: alpha(theme.palette.common.white, 0.25),
-	},
-	marginRight: theme.spacing(2),
-	marginLeft: 0,
-	width: '100%',
-	border: `0.989903px solid ${colors.gray}`,
-	[theme.breakpoints.up('sm')]: {
-		marginLeft: theme.spacing(3),
-		width: 'auto',
-	},
-}));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
 	padding: theme.spacing(0, 2),
@@ -60,7 +44,7 @@ function SearchIcon(props) {
 
 export default function SearchInput() {
 	return (
-		<Search>
+		<div className='search-field'>
 			<StyledInputBase
 				placeholder="Search product"
 				inputProps={{ 'aria-label': 'search' }}
@@ -68,6 +52,6 @@ export default function SearchInput() {
 			<SearchIconWrapper>
 				<SearchIcon />
 			</SearchIconWrapper>
-		</Search>
+		</div>
 	);
 }

@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { FaUserCog, FaShoppingCart } from 'react-icons/fa';
-import { BsShop } from 'react-icons/bs';
+import React, { useEffect, useState } from "react";
+import { FaUserCog, FaShoppingCart } from "react-icons/fa";
+import { BsShop } from "react-icons/bs";
 
 import {
 	getRoles,
 	getUser,
 	addRole,
 	removeRole,
-} from '../../redux/roles/actions';
-import { useDispatch, useSelector } from 'react-redux';
-import './roles.styles.scss';
-import '../../App.css';
-import Button from '../button/Button.jsx';
+} from "../../redux/roles/actions";
+import { useDispatch, useSelector } from "react-redux";
+import "./roles.styles.scss";
+import "../../App.css";
+import Button from "../button/Button.jsx";
 
 const RoleButton = ({
 	roles,
@@ -40,7 +40,7 @@ export default function Roles() {
 	const dispatch = useDispatch();
 	const { errorMsg, fetchingUser, addOrRemovingRole, user, roles } =
 		useSelector((state) => state.roles);
-	const [email, setEmail] = useState('');
+	const [email, setEmail] = useState("");
 
 	function handleOnChangeSearch(e) {
 		setEmail(e.target.value);
@@ -54,7 +54,7 @@ export default function Roles() {
 		const { roleid } = e.target.dataset;
 		const { isset } = e.target.dataset;
 
-		(isset === 'false' && dispatch(addRole(user?.id, roleid))) ||
+		(isset === "false" && dispatch(addRole(user?.id, roleid))) ||
 			dispatch(removeRole(user?.id, roleid));
 	}
 
@@ -94,7 +94,7 @@ export default function Roles() {
 						{fetchingUser ? (
 							<div className="loading-spinner loading-spinner--sm"></div>
 						) : (
-							'Search'
+							"Search"
 						)}
 					</Button>
 					<input
