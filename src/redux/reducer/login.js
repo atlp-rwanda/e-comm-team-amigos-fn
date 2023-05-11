@@ -1,6 +1,6 @@
-import { LOGIN_SUCCESS,LOGIN_START } from "../types";
+import { LOGIN_SUCCESS,LOGIN_START, LOGIN_PAYLOAD } from "../types";
 
-const loginState = { loginSuccess: "" ,  loginFail: "", loginStart:false };
+const loginState = { loginSuccess: "" ,loginPayload:{},  loginFail: "", loginStart:false };
 
 const loginReducer = (state = loginState, {type, payload})=> {
 	switch (type) {
@@ -8,16 +8,21 @@ const loginReducer = (state = loginState, {type, payload})=> {
 			return {
 				...state,
 				loginSuccess: payload,
-				
+
 			};
 		case LOGIN_START:
 			return{
 				...state,
 				loginStart:payload
 			};
+		case LOGIN_PAYLOAD:
+			return{
+				...state,
+				loginPayload:payload
+			};
 		default:
 			return state;
 	}
-}
+};
 
 export default loginReducer;
