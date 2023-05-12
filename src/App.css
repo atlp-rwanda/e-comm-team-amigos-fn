@@ -8,6 +8,7 @@
 
 body{
   font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f4;
   box-sizing: border-box;
 }
 
@@ -42,6 +43,10 @@ font-size: 14px;
 letter-spacing: 2px;
 }
 
+.is-set{
+  background: #cf001c !important;
+}
+
 .primary-btn:hover{
   background-color: white;
   color:#163C2A;
@@ -60,6 +65,7 @@ letter-spacing: 2px;
   box-shadow: none;
 }
 
+
 .css-styled {
   color: red;
 }
@@ -71,6 +77,7 @@ letter-spacing: 2px;
     }
 
    .loading-spinner {
+    display:block;
   border: 6px solid #f3f3f3;
   border-radius: 50%;
   border-top: 6px solid #0a9d58;
@@ -78,6 +85,20 @@ letter-spacing: 2px;
   height: 120px;
   -webkit-animation: spin .8s ease-in-out infinite; /* Safari */
   animation: spin .8s ease-in-out infinite;
+  margin:auto
+}
+
+
+.loading-spinner--medium {
+  width: 60px;
+  height: 60px;
+}
+
+.loading-spinner--sm {
+  border: 1px solid #f3f3f34d;
+  width: 18px;
+  height: 18px;
+  border-top: 2px solid #fff;
 }
 
 .error{

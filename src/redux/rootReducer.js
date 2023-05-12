@@ -1,12 +1,14 @@
-import { combineReducers } from 'redux';
-import signupFormReducer from './signup-form/signup-form.reducer';
-import verifyEmailReducer from './verify-email/verifyEmail.reducer';
-import resetPasswordReducer from './reducer/resetPassword';
-import loginReducer from './reducer/login';
-import productReducer from './reducer/create_product_reducer';
-import homeDataReducer from './homeData.reducer';
-import fetchProductReducer from './reducer/product';
-import handleClickReducer from './reducer/handleClick';
+import { combineReducers } from "redux";
+import signupFormReducer from "./signup-form/signup-form.reducer";
+import verifyEmailReducer from "./verify-email/verifyEmail.reducer";
+import resetPasswordReducer from "./reducer/resetPassword";
+import loginReducer from "./reducer/login";
+import usersReducer from "./users/usersReducer";
+import rolesReducer from "./roles/rolesReducer";
+import productReducer from "./reducer/create_product_reducer";
+import homeDataReducer from "./homeData.reducer";
+import fetchProductReducer from "./reducer/product";
+import handleClickReducer from "./reducer/handleClick";
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
@@ -17,6 +19,8 @@ const rootReducer = combineReducers({
 	homeData: homeDataReducer,
 	fetchProductState: fetchProductReducer,
 	handleClickState: handleClickReducer,
+	roles: rolesReducer,
+	users: usersReducer,
 });
 
 export default rootReducer;
