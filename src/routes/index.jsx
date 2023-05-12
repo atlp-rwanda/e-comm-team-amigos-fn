@@ -24,6 +24,7 @@ import CheckoutPage from "../views/CheckoutPage.jsx";
 import CheckoutSuccessPage from "../views/payment/checkoutSuccessPage.jsx";
 import CancelPaymentPage from "../views/payment/checkoutCancel.jsx";
 
+import UpdatePasswordPage from "../views/updatePassword/UpdatePasswordPage.jsx";
 const index = () => {
 	return (
 		<Routes>
@@ -64,6 +65,11 @@ const index = () => {
 						path="/dashboard/product"
 						element={<Product />}
 					/>
+                    <Route
+						exact
+						path="/dashboard/update-password"
+						element={<UpdatePasswordPage />}
+					/>					
 					<Route path="users" element={<Users />} />
 					<Route exact path="roles" element={<Roles />} />
 				</Route>

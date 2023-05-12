@@ -1,4 +1,3 @@
-import "../../views/updatePassword/updatePassword.style.scss";
 import { useSelector } from "react-redux";
 export const SubmitSection =()=>{
     const {updatingStart}= useSelector((state)=>state.updatePasswordState);

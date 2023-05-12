@@ -5,10 +5,4 @@ export const  handleUpdatePasswordResponse=(updatingSuccess,navigation,toast)=>{
           navigation("/login");
       },5000);
       }
-      else {
-        toast(updatingSuccess?.message || updatingSuccess?.error);
-        setTimeout(()=>{
-          navigation("/update-password");
-      },5000);
-      }
 };

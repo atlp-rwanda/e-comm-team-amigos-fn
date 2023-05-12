@@ -6,6 +6,12 @@ import  store from '../redux/store';
 import UpdatePasswordPage from "../views/updatePassword/UpdatePasswordPage";
 
 describe("updatePassword", ()=>{
+    beforeAll(() => {
+        localStorage.setItem(
+            "token",
+            "eyJhbCI6IkhTMjU2IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VyRW1haWwiOiJleGFtcGxlQGVtYWlsLmNvbSIsIm5hbWUiOiJleGFtcGxlIGtoZXZlbiJ9.0W_oxKuvUO2ptpXhS4i77jOCZfKzhN1kjGnLC9rXygY",
+        );
+    });
     it("should update password", ()=>{
         render(
             <Provider store={store}>
