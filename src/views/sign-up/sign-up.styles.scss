@@ -21,6 +21,15 @@
         gap: 1.5px;
         
     }
+
+    .form-input-group select {
+        height: 30px;
+        border-radius: 8px;
+    }
+    .form-input-group label{
+        color: #333;
+        font-size:14px
+    }
 }
 
 .acc-created{

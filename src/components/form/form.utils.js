@@ -1,5 +1,5 @@
-import { validateEmail, validatePassword } from '../../utils/utils';
-import { signUp } from '../../redux/signup-form/actions';
+import { validateEmail, validatePassword } from "../../utils/utils";
+import { signUp } from "../../redux/signup-form/actions";
 
 /**
  * return true if data passes test, otherwise false
@@ -7,7 +7,7 @@ import { signUp } from '../../redux/signup-form/actions';
  * @return  {boolean}      true or false
  */
 function validateEmptyField(data, tel = false) {
-	if (tel === 'true') {
+	if (tel === "true") {
 		return !isNaN(data) && data.length === 10;
 	}
 
@@ -29,13 +29,13 @@ function validateFormData(latestChangedField, formData) {
 
 	lastFieldValid = validateEmptyField(
 		latestChangedField.value,
-		latestChangedField.name === 'telephone' ? 'true' : 'false',
+		latestChangedField.name === "telephone" ? "true" : "false",
 	);
 
-	if (latestChangedField.name === 'email')
+	if (latestChangedField.name === "email")
 		lastFieldValid = validateEmail(latestChangedField.value);
 
-	if (latestChangedField.name === 'password') {
+	if (latestChangedField.name === "password") {
 		lastFieldValid = validatePassword(latestChangedField.value);
 	}
 
@@ -52,16 +52,16 @@ function handleOnChange(e, user, dispatch) {
 
 	let valid = false;
 
-	if (name === 'email') valid = validateEmail(value);
-	if (name === 'password') valid = validatePassword(value);
+	if (name === "email") valid = validateEmail(value);
+	if (name === "password") valid = validatePassword(value);
 	else
 		valid = validateEmptyField(
 			value,
-			name === 'telephone' ? 'true' : 'false',
+			name === "telephone" ? "true" : "false",
 		);
 
 	dispatch({
-		type: 'ON_CHANGE',
+		type: "ON_CHANGE",
 		payload: {
 			name,
 			value,
@@ -86,61 +86,71 @@ function handleSubmit(e, formData, dispatch) {
 const formFields = [
 	{
 		id: 1,
-		name: 'firstName',
-		labelTxt: 'First Name',
-		placeholder: 'First Name...',
-		msg: 'First Name cannot be empty.',
+		name: "firstName",
+		labelTxt: "First Name",
+		placeholder: "First Name...",
+		msg: "First Name cannot be empty.",
 	},
 
 	{
 		id: 2,
-		name: 'lastName',
-		labelTxt: 'Last Name',
-		placeholder: 'Last Name...',
-		msg: 'Last Name cannot be empty.',
+		name: "lastName",
+		labelTxt: "Last Name",
+		placeholder: "Last Name...",
+		msg: "Last Name cannot be empty.",
 	},
 
 	{
 		id: 3,
-		name: 'address',
-		labelTxt: 'Address',
-		placeholder: 'Address...',
-		msg: 'Address cannot be empty.',
+		name: "address",
+		labelTxt: "Address",
+		placeholder: "Address...",
+		msg: "Address cannot be empty.",
 	},
 
 	{
 		id: 4,
-		name: 'userName',
-		labelTxt: 'Username',
-		placeholder: 'Username...',
-		msg: 'Username cannot be empty.',
+		name: "userName",
+		labelTxt: "Username",
+		placeholder: "Username...",
+		msg: "Username cannot be empty.",
 	},
 
 	{
 		id: 5,
-		name: 'telephone',
-		labelTxt: 'Telephone',
-		type: 'number',
-		placeholder: 'Telephone number...',
-		msg: 'Telephone number must be 10 digits.',
+		name: "telephone",
+		labelTxt: "Telephone",
+		type: "number",
+		placeholder: "Telephone number...",
+		msg: "Telephone number must be 10 digits.",
 	},
 
 	{
 		id: 6,
-		name: 'email',
-		labelTxt: 'Email',
-		type: 'email',
-		placeholder: 'Your Email Address...',
-		msg: 'Provide a valid email address.',
+		name: "email",
+		labelTxt: "Email",
+		type: "email",
+		placeholder: "Your Email Address...",
+		msg: "Provide a valid email address.",
 	},
 
 	{
 		id: 7,
-		name: 'password',
-		labelTxt: 'Password',
-		type: 'password',
-		placeholder: 'Password...',
+		name: "password",
+		labelTxt: "Password",
+		type: "password",
+		placeholder: "Password...",
 		msg: `Provide a valid email address.Your password must have at least, 8 characters long, 1 uppercase character, 1 lowercase character, 1 number, and 1 special character.`,
+	},
+
+	{
+		id: 8,
+		name: "role",
+		labelTxt: "Select Trade role",
+		type: "select",
+		placeholder: "Select a role",
+		options: ["", "Customer", "Merchant"],
+		msg: `Role must be merchant or customer`,
 	},
 ];
 
