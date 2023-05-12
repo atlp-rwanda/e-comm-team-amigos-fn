@@ -1,30 +1,34 @@
 export const initialFormState = {
 	firstName: {
-		value: '',
+		value: "",
 		valid: null,
 	},
 	lastName: {
-		value: '',
+		value: "",
 		valid: null,
 	},
 	userName: {
-		value: '',
+		value: "",
 		valid: null,
 	},
 	address: {
-		value: '',
+		value: "",
 		valid: null,
 	},
 	telephone: {
-		value: '',
+		value: "",
 		valid: null,
 	},
 	email: {
-		value: '',
+		value: "",
 		valid: null,
 	},
 	password: {
-		value: '',
+		value: "",
+		valid: null,
+	},
+	role: {
+		value: "",
 		valid: null,
 	},
 };
