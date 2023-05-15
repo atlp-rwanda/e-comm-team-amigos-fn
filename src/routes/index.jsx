@@ -15,6 +15,8 @@ import Product from "../views/dashboard/product/index.jsx";
 import Unauthorized from "../views/protectedRoutes/unauthorized.jsx";
 import Layout from "../views/protectedRoutes/layout.js";
 import IsAuthorized from "../utils/auth/isAuthorized.js";
+import ProductDetailsPage from "../views/ProductDetailsPage.jsx";
+import SearchPage from "../views/SearchPage.jsx";
 
 const index = () => {
 	return (
@@ -66,6 +68,12 @@ const index = () => {
 				<Route exact path="unauthorized" element={<Unauthorized />} />
 				<Route exact path="*" element={<div>Page Not Found!!</div>} />
 			</Route>
+			<Route exact path="/products" element={<SearchPage />}></Route>
+			<Route
+				exact
+				path="/product/:id"
+				element={<ProductDetailsPage />}
+			></Route>
 		</Routes>
 	);
 };
