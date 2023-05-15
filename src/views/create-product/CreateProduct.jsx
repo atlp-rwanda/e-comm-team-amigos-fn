@@ -1,16 +1,16 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import ProductSchema from './ProductSchema.jsx';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import { create_product } from '../../redux/create-product/create_product.js';
-import { handleProductResponse } from '../../utils/product/handleProductSuccess.js';
-import ImageUploader from './ImageUploader.jsx';
-import './product.style.scss';
-import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import ProductSchema from "./ProductSchema.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { create_product } from "../../redux/create-product/create_product.js";
+import { handleProductResponse } from "../../utils/product/handleProductSuccess.js";
+import ImageUploader from "./ImageUploader.jsx";
+import "./product.style.scss";
+import "react-toastify/dist/ReactToastify.css";
 
-const CreateProduct = ({setCreateProduct}) => {
+const CreateProduct = ({ setCreateProduct }) => {
 	const dispatch = useDispatch();
 	const [imageUrl, setImageUrl] = useState();
 	const { productSuccess, productStart } = useSelector(
@@ -28,13 +28,13 @@ const CreateProduct = ({setCreateProduct}) => {
 		<>
 			<Formik
 				initialValues={{
-					name: '',
-					price: '',
-					quantity: '',
-					bonus: '',
-					expiryDate: '',
-					ec: '',
-					category: '',
+					name: "",
+					price: "",
+					quantity: "",
+					bonus: "",
+					expiryDate: "",
+					ec: "",
+					category: "",
 				}}
 				validationSchema={ProductSchema}
 				onSubmit={(values) => {
@@ -50,7 +50,6 @@ const CreateProduct = ({setCreateProduct}) => {
 							imageUrl,
 						),
 					);
-					console.log(values);
 				}}
 			>
 				{({ values }) => (
@@ -134,16 +133,14 @@ const CreateProduct = ({setCreateProduct}) => {
 								type="submit"
 								data-testid="create"
 							>
-								{productStart
-									? 'Creating ....'
-									: 'Create'}
+								{productStart ? "Creating ...." : "Create"}
 							</button>
 							<button
-								onClick={()=>setCreateProduct(false)}
+								onClick={() => setCreateProduct(false)}
 								className="btn"
 								type="reset"
 								data-testid="cancel"
-								style={{backgroundColor:"#E4002B"}}
+								style={{ backgroundColor: "#E4002B" }}
 							>
 								Cancel
 							</button>

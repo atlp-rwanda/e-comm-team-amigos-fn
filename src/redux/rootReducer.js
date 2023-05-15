@@ -9,6 +9,7 @@ import productReducer from "./reducer/create_product_reducer";
 import homeDataReducer from "./homeData.reducer";
 import fetchProductReducer from "./reducer/product";
 import handleClickReducer from "./reducer/handleClick";
+import productUpdateReducer from "./reducer/update_product";
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
 	handleClickState: handleClickReducer,
 	roles: rolesReducer,
 	users: usersReducer,
+	productUpdateState: productUpdateReducer,
 });
 
 export default rootReducer;

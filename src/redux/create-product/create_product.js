@@ -43,7 +43,6 @@ export const create_product = (
 					}),
 				},
 			);
-			console.log(response);
 			const result = await response.json();
 			if (response.status == 201) {
 				dispatch({
