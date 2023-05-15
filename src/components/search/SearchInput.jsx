@@ -1,32 +1,49 @@
-import InputBase from '@mui/material/InputBase';
-import { styled } from '@mui/material/styles';
-import SvgIcon from '@mui/material/SvgIcon';
-import "./style.scss";
+import InputBase from "@mui/material/InputBase";
+import { styled, alpha } from "@mui/material/styles";
+import SvgIcon from "@mui/material/SvgIcon";
+import colors from "../../constants/colors";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+const Search = styled("div")(({ theme }) => ({
+	position: "relative",
+	borderRadius: "21.8604px",
+	backgroundColor: alpha(theme.palette.common.white, 0.15),
+	"&:hover": {
+		backgroundColor: alpha(theme.palette.common.white, 0.25),
+	},
+	marginRight: theme.spacing(2),
+	marginLeft: 0,
+	width: "100%",
+	border: `0.989903px solid ${colors.gray}`,
+	[theme.breakpoints.up("sm")]: {
+		marginLeft: theme.spacing(3),
+		width: "auto",
+	},
+}));
 
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled("div")(({ theme }) => ({
 	padding: theme.spacing(0, 2),
-	height: '100%',
-	position: 'absolute',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-	right: '0',
-	left: 'auto',
-	top: '0',
-	bottom: 'auto',
-	cursor: 'pointer',
+	height: "100%",
+	position: "absolute",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	right: "0",
+	left: "auto",
+	top: "0",
+	bottom: "auto",
+	cursor: "pointer",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-	color: 'inherit',
-	'& .MuiInputBase-input': {
+	color: "inherit",
+	"& .MuiInputBase-input": {
 		padding: theme.spacing(1, 0, 1, 1),
 		paddingRight: `calc(1em + ${theme.spacing(4)})`,
-		transition: theme.transitions.create('width'),
-		width: '100%',
-		[theme.breakpoints.up('md')]: {
-			width: '20ch',
+		transition: theme.transitions.create("width"),
+		width: "100%",
+		[theme.breakpoints.up("md")]: {
+			width: "20ch",
 		},
 	},
 }));
@@ -41,17 +58,44 @@ function SearchIcon(props) {
 		</SvgIcon>
 	);
 }
-
 export default function SearchInput() {
+	const [searchValue, setSearchValue] = useState(getInitialValue());
+	const currentPage = useLocation().pathname;
+	const handleSearchInputChange = (e) => {
+		const value = e.target.value;
+		setSearchValue(value);
+		if (currentPage === "/products") {
+			navigate(`/products?query=${encodeURIComponent(value.trim())}`);
+		}
+	};
+
+	const handleSearchSubmit = (e) => {
+		e.preventDefault();
+		console.log(searchValue);
+		navigate(`/products?query=${encodeURIComponent(searchValue.trim())}`);
+	};
+
+	const navigate = useNavigate();
+	function getInitialValue() {
+		const urlParams = new URLSearchParams(window.location.search);
+		const queryParam = urlParams.get("query");
+		return queryParam || "";
+	}
 	return (
-		<div className='search-field'>
-			<StyledInputBase
-				placeholder="Search product"
-				inputProps={{ 'aria-label': 'search' }}
-			/>
-			<SearchIconWrapper>
-				<SearchIcon />
-			</SearchIconWrapper>
-		</div>
+		<form action="" onSubmit={handleSearchSubmit}>
+			<Search>
+				<StyledInputBase
+					placeholder="Search product"
+					inputProps={{ "aria-label": "search" }}
+					onChange={(e) => {
+						handleSearchInputChange(e);
+					}}
+					value={searchValue}
+				/>
+				<SearchIconWrapper onClick={handleSearchSubmit}>
+					<SearchIcon />
+				</SearchIconWrapper>
+			</Search>
+		</form>
 	);
 }

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import logo from './../../assets/img/logo.png';
-
 import colors from '../../constants/colors';
 import SearchInput from '../search/SearchInput.jsx';
 import SvgIcon from '@mui/material/SvgIcon';
