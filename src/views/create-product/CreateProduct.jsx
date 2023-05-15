@@ -16,6 +16,9 @@ const CreateProduct = ({ setCreateProduct }) => {
 	const { productSuccess, productStart } = useSelector(
 		(state) => state.productState,
 	);
+	const { detailsProductId } = useSelector(
+		(state) => state.fetchProductState,
+	);
 	useEffect(() => {
 		handleProductResponse(productSuccess, toast);
 	}, [productSuccess]);
@@ -23,6 +26,9 @@ const CreateProduct = ({ setCreateProduct }) => {
 	const handleUpload = (url) => {
 		setImageUrl(url);
 	};
+	function handleUnmountProduct() {
+		dispatch(viewSingleProduct(""));
+	}
 
 	return (
 		<>
@@ -136,7 +142,10 @@ const CreateProduct = ({ setCreateProduct }) => {
 								{productStart ? "Creating ...." : "Create"}
 							</button>
 							<button
-								onClick={() => setCreateProduct(false)}
+								onClick={() => {
+									handleUnmountProduct;
+									setCreateProduct(Boolean(""));
+								}}
 								className="btn"
 								type="reset"
 								data-testid="cancel"

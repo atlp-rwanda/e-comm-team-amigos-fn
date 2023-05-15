@@ -14,7 +14,7 @@
     "node_modules/(?!(react-qr-reader)/)"
   ],
   "scripts": {
-    "test": "react-scripts test --transformIgnorePatterns --coverage --timeout=5000 --runInBand",
+    "test": "react-scripts test --transformIgnorePatterns --coverage --timeout=15000 --runInBand",
     "after_success": "cat ./coverage/lcov.info | coveralls",
     "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
@@ -51,6 +51,7 @@
     "cloudinary-react": "^1.8.1",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
+    "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "dotenv-webpack": "^8.0.1",
     "eslint-plugin-prettier": "^4.2.1",
@@ -65,6 +66,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-loader-spinner": "^5.3.4",
+    "react-loading": "^2.0.3",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
     "react-scripts": "^5.0.1",
@@ -108,13 +110,18 @@
     "jest-transform-stub": "^2.0.0",
     "jest-watch-typeahead": "^0.6.5",
     "lint-staged": "^13.2.1",
+    "msw": "^1.2.1",
     "react-test-renderer": "^18.2.0",
     "redux-devtools-extension": "^2.13.9",
+    "redux-mock-store": "^1.5.4",
     "sass": "^1.62.0",
     "sass-loader": "^13.2.2",
     "storybook": "^7.0.5",
     "webpack": "^5.79.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.13.3"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

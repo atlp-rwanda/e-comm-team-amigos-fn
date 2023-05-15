@@ -82,25 +82,24 @@ function AsideBar() {
 							</Link>
 						</li>
 
-						{
-							
-							getUserRole().includes('Admin') && (<li>
-							<Link
-								to="users"
-								style={{
-									color: active === "Users" ? "#fff" : "",
-								}}
-								className="link"
-								onClick={() => setActive("Users")}
-							>
-								<FaUsers className="fa" />
-								Users
-							</Link>
-						</li>)
-						}
+						{getUserRole().includes("Admin") && (
+							<li>
+								<Link
+									to="users"
+									style={{
+										color: active === "Users" ? "#fff" : "",
+									}}
+									className="link"
+									onClick={() => setActive("Users")}
+								>
+									<FaUsers className="fa" />
+									Users
+								</Link>
+							</li>
+						)}
 
-						{
-							getUserRole().includes('Admin') && (<li>
+						{getUserRole().includes("Admin") && (
+							<li>
 								<Link
 									to="roles"
 									style={{
@@ -112,39 +111,36 @@ function AsideBar() {
 									<FaMinusCircle className="fa" />
 									Roles
 								</Link>
-							</li>)
-						}
-						
+							</li>
+						)}
 					</ul>
 
 					<div className="down-content">
-							<li>
-								<Link
-									onClick={() => setActive("Settings")}
-									style={{
-										color:
-											active === "Settings" ? "#fff" : "",
-									}}
-									className="link"
-								>
-									<AiOutlineSetting className="fa" />
-									Settings
-								</Link>
-							</li>
-							<li>
-								<Link
-									onClick={() => setActive("Logout")}
-									style={{
-										color:
-											active === "Logout" ? "#fff" : "",
-									}}
-									className="link"
-								>
-									<AiOutlineLogout className="fa" />
-									Logout
-								</Link>
-							</li>
-						</div>
+						<li>
+							<Link
+								onClick={() => setActive("Settings")}
+								style={{
+									color: active === "Settings" ? "#fff" : "",
+								}}
+								className="link"
+							>
+								<AiOutlineSetting className="fa" />
+								Settings
+							</Link>
+						</li>
+						<li>
+							<Link
+								onClick={() => setActive("Logout")}
+								style={{
+									color: active === "Logout" ? "#fff" : "",
+								}}
+								className="link"
+							>
+								<AiOutlineLogout className="fa" />
+								Logout
+							</Link>
+						</li>
+					</div>
 				</nav>
 			</div>
 		</div>

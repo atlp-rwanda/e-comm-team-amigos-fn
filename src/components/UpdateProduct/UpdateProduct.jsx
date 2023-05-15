@@ -4,30 +4,44 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { update_product } from "../../redux/actions/update-product.js";
-import { handleUpdateProductResponse } from "../../utils/product/handleUpdateProductSuccess.js";
+// import { handleUpdateProductResponse } from "../../utils/product/handleUpdateProductSuccess.js";
 import "./style.scss";
 import ImageUploader from "./ImageUploader.jsx";
-import { fetchProduct } from "../../redux/actions";
+import { fetchProduct, updateProductAction } from "../../redux/actions";
 
-const UpdateProduct = ({
-	setUpdateProduct,
-	setProductId,
-	productId,
-	currentPage,
-}) => {
+const UpdateProduct = ({ currentPage }) => {
 	const { productUpdateSuccess, productUpdateStart } = useSelector(
 		(state) => state.productUpdateState,
 	);
+	const { updateProductId } = useSelector((state) => state.fetchProductState);
+	const productId = updateProductId;
+	console.log("product ID: ", productId);
 	const dispatch = useDispatch();
+
+	const handleUpdateProductResponse = () => {
+		const updateSuccess = productUpdateSuccess;
+		if (updateSuccess === true) {
+			toast.success("Product Updated Successfully");
+			setTimeout(() => {
+				// setUpdateProduct(false);
+				dispatch(updateProductAction(""));
+			}, 5000);
+		} else if (updateSuccess === 500) {
+			toast.error("Internal server error");
+			setTimeout(() => {}, 5000);
+		} else if (updateSuccess === 401) {
+			toast.warn("Unauthorized");
+			setTimeout(() => {}, 5000);
+		} else if (updateSuccess === 400) {
+			toast.warn("Bad request");
+			setTimeout(() => {}, 5000);
+		}
+	};
 	useEffect(() => {
 		if (productUpdateSuccess === true) {
 			dispatch(fetchProduct(currentPage));
 		}
-		handleUpdateProductResponse(
-			productUpdateSuccess,
-			toast,
-			setUpdateProduct,
-		);
+		handleUpdateProductResponse();
 	}, [productUpdateSuccess]);
 
 	const [imageUrl, setImageUrl] = useState("");
@@ -215,8 +229,8 @@ const UpdateProduct = ({
 								id="cancel"
 								data-testid="cancel"
 								onClick={() => {
-									setUpdateProduct(false);
-									setProductId(null);
+									// false);
+									dispatch(updateProductAction(""));
 									setName(initialValues.name);
 									setPrice(initialValues.price);
 									setQuantity(initialValues.quantity);

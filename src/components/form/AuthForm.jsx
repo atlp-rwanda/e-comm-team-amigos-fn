@@ -49,7 +49,7 @@ export default function AuthForm() {
 						"https://e-comm-team-amigos-bn-project.onrender.com/user/otp",
 						{ email: userEmail, otp: otpcode },
 					);
-					localStorage.setItem("token",  res.data.token);
+					localStorage.setItem("token", res.data.token);
 					localStorage.setItem("user", JSON.stringify(res.data.user));
 					navigate("/dashboard");
 				} catch (err) {
