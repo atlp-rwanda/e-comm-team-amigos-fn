@@ -53,6 +53,7 @@ const SearchedProduct = () => {
 
 	const handleClick = (id) => {
 		navigate(`/product/${id}`);
+		localStorage.setItem("id", id);
 	};
 
 	const handleLoadMore = () => {
