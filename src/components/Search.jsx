@@ -19,9 +19,10 @@ const SearchedProduct = () => {
 			try {
 				setLoading(true);
 				let url =
-					"https://e-comm-team-amigos-bn-project.onrender.com/product";
+					process.env.BASE_URL ||
+					"https://e-comm-team-amigos-bn-project.onrender.com";
 				if (searchValue) {
-					url += `/search?name=${searchValue}`;
+					url += `/product/search?name=${searchValue}`;
 					const response = await fetch(url);
 					const data = await response.json();
 					const fetchedProducts = data.responseData.products;

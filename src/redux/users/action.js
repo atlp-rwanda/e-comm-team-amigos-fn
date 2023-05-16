@@ -20,8 +20,8 @@ export const getUsers = (page = 1) => {
 
 			const res = await axios.get(
 				`${
-					process.env.LIVE_API_URL ||
-					'https://e-comm-team-amigos-bn-project.onrender.com'
+					process.env.BASE_URL ||
+					"https://e-comm-team-amigos-bn-project.onrender.com"
 				}/users?page=${page}`,
 			);
 

@@ -1,0 +1,23 @@
+.dashboard-container {
+  display: flex;
+  background-color: #fff;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  background: #FAF9FF;
+  width: 100%;
+  height: 100vh;
+}
+
+/* For mobile phones: */
+@media only screen and (max-width: 768px) {
+  .main-layout {
+    display: flex;
+    flex-direction: column;
+    background: #FAF9FF;
+    width: 100%;
+    height: 100vh;
+  }
+}/*# sourceMappingURL=style.css.map */

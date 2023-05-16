@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Condensed&display=swap");
+.header-container {
+  background-color: #fff;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.profile-element {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.notifications {
+  display: flex;
+  cursor: pointer;
+}
+
+.bell-icon {
+  margin-top: 0.5rem;
+  margin-right: -0.6rem;
+}
+
+.notification-count {
+  color: #fff;
+  margin: 0.2rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+  background-color: red;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.user-identity {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.user-name {
+  font-size: 1rem;
+  font-family: "Condensed", sans-serif;
+}
+
+.user-email {
+  font-size: 0.7rem;
+  color: #848181;
+  font-family: "Condensed", sans-serif;
+}
+
+.menu-container {
+  display: none;
+}
+
+/* For mobile phones: */
+@media only screen and (max-width: 768px) {
+  .header-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  .filter-section {
+    order: 2;
+    width: 100%;
+  }
+  .profile-section {
+    order: 1;
+    width: 100%;
+  }
+  .profile-element {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem;
+    margin-bottom: 1rem;
+  }
+  .user-profile {
+    display: flex;
+    align-items: center;
+  }
+  .menu-container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}/*# sourceMappingURL=style.css.map */

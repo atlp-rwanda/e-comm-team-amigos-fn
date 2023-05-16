@@ -6,7 +6,7 @@ export const getRoles = () => {
 		try {
 			const res = await axios.get(
 				`${
-					process.env.LIVE_API_URL ||
+					process.env.BASE_URL ||
 					'https://e-comm-team-amigos-bn-project.onrender.com'
 				}/roles`,
 			);
@@ -28,7 +28,7 @@ export const getRoles = () => {
 };
 
 const url =
-	process.env.LIVE_API_URL ||
+	process.env.BASE_URL ||
 	'https://e-comm-team-amigos-bn-project.onrender.com';
 
 const generatePayload = (res) => {
@@ -73,7 +73,7 @@ export const addRole = (userId, roleId) => {
 		try {
 			const res = await axios.post(
 				`${
-					process.env.LIVE_API_URL ||
+					process.env.BASE_URL ||
 					'https://e-comm-team-amigos-bn-project.onrender.com'
 				}/role/set`,
 				{ userId, roleId },

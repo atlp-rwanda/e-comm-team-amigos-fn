@@ -1,44 +1,52 @@
 import {
-  LOGIN_FAIL, LOGIN_SUCCESS,LOGIN_START,LOGIN_PAYLOAD,
-  SENDING_EMAIL_ERROR,
-  SENDING_EMAIL_SUCCESS,
-  SENDING_EMAIL_START,
-  UPDATING_PASSWORD_START,
-  UPDATING_PASSWORD_FAIL,
-  UPDATING_PASSWORD_SUCCESS,
-  UPDATING_PASSWORD_ERROR,
-  USER_NOT_FOUND,
+	LOGIN_FAIL,
+	LOGIN_SUCCESS,
+	LOGIN_START,
+	LOGIN_PAYLOAD,
+	SENDING_EMAIL_ERROR,
+	SENDING_EMAIL_SUCCESS,
+	SENDING_EMAIL_START,
+	UPDATING_PASSWORD_START,
+	UPDATING_PASSWORD_FAIL,
+	UPDATING_PASSWORD_SUCCESS,
+	UPDATING_PASSWORD_ERROR,
+	USER_NOT_FOUND,
 } from "../types";
 import action from "./action";
 
-export const login = (email,password) =>{
-    return async (dispatch)=>{
-      dispatch(action(LOGIN_START, true));
-        try{
-          const response = await fetch("https://e-comm-team-amigos-bn-project.onrender.com/user/login",{
-           method: "POST",
-           headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-           },
-           body: JSON.stringify({
-               email: email,
-               password:password
-           })
-        });
-        const result = await response.json();
-            localStorage.setItem("token",result.token);
-            localStorage.setItem("user",JSON.stringify(result.user));
-            localStorage.setItem("message",result.message);
-          dispatch(action(LOGIN_SUCCESS,result));
-          dispatch(action(LOGIN_PAYLOAD,result));
-          dispatch(action(LOGIN_START, false));
-
-          }catch(error){
-            dispatch(action(LOGIN_FAIL,error.message));
-            dispatch(action(LOGIN_START, false));
-          }
-    };
+export const login = (email, password) => {
+	return async (dispatch) => {
+		dispatch(action(LOGIN_START, true));
+		try {
+			const response = await fetch(
+				`${
+					process.env.BASE_URL ||
+					"https://e-comm-team-amigos-bn-project.onrender.com"
+				}/user/login`,
+				{
+					method: "POST",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password,
+					}),
+				},
+			);
+			const result = await response.json();
+			localStorage.setItem("token", result.token);
+			localStorage.setItem("user", JSON.stringify(result.user));
+			localStorage.setItem("message", result.message);
+			dispatch(action(LOGIN_SUCCESS, result));
+			dispatch(action(LOGIN_PAYLOAD, result));
+			dispatch(action(LOGIN_START, false));
+		} catch (error) {
+			dispatch(action(LOGIN_FAIL, error.message));
+			dispatch(action(LOGIN_START, false));
+		}
+	};
 };
 
 const fetchData = async (
@@ -57,8 +65,8 @@ const fetchData = async (
 		const response = await fetch(url, {
 			method,
 			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
+				Accept: "application/json",
+				"Content-Type": "application/json",
 			},
 			body: JSON.stringify(body),
 		});
@@ -80,7 +88,7 @@ const fetchData = async (
 export const passwordReset = (email) => {
 	return async (dispatch) => {
 		const url = `https://e-comm-team-amigos-bn-project.onrender.com/user/forgotPassword/`;
-		const method = 'POST';
+		const method = "POST";
 		const body = { email };
 		const successAction = SENDING_EMAIL_SUCCESS;
 		const failAction = null;
@@ -105,7 +113,7 @@ export const passwordReset = (email) => {
 export const updatePassword = (password1, password2, token) => {
 	return async (dispatch) => {
 		const url = `https://e-comm-team-amigos-bn-project.onrender.com/user/resetPassword/${token}`;
-		const method = 'PUT';
+		const method = "PUT";
 		const body = { password: password1, confirmPassword: password2 };
 		const successAction = UPDATING_PASSWORD_SUCCESS;
 		const failAction = UPDATING_PASSWORD_FAIL;
