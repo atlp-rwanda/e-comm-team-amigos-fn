@@ -17,6 +17,7 @@ import Layout from "../views/protectedRoutes/layout.js";
 import IsAuthorized from "../utils/auth/isAuthorized.js";
 import ProductDetailsPage from "../views/ProductDetailsPage.jsx";
 import SearchPage from "../views/SearchPage.jsx";
+import Cart from "../components/Cart/index.jsx";
 
 const index = () => {
 	return (
@@ -74,6 +75,7 @@ const index = () => {
 				path="/product/:id"
 				element={<ProductDetailsPage />}
 			></Route>
+			<Route exact path="/Cart" element={<Cart />}></Route>
 		</Routes>
 	);
 };

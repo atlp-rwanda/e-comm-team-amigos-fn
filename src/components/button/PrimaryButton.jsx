@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PrimaryBtn({ title, color, width, onClick }) {
+function PrimaryBtn({ title, color, width, onClick }) {
 	return (
 		<button
 			onClick={onClick}
@@ -19,3 +19,5 @@ export default function PrimaryBtn({ title, color, width, onClick }) {
 		</button>
 	);
 }
+
+export default PrimaryBtn;

@@ -10,7 +10,7 @@ import homeDataReducer from "./homeData.reducer";
 import fetchProductReducer from "./reducer/product";
 import handleClickReducer from "./reducer/handleClick";
 import productUpdateReducer from "./reducer/update_product";
-
+import UpdateCartReducer from "./reducer/updateCartReducer";
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
 	verifyEmail: verifyEmailReducer,
@@ -23,6 +23,7 @@ const rootReducer = combineReducers({
 	roles: rolesReducer,
 	users: usersReducer,
 	productUpdateState: productUpdateReducer,
+	updateCart: UpdateCartReducer,
 });
 
 export default rootReducer;
