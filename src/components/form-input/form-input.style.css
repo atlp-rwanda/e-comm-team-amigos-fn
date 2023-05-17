@@ -1,0 +1,16 @@
+.form-input {
+  background: #FFFFFF;
+  border: 0.989903px solid #999999;
+  border-radius: 8px;
+  padding: 10px;
+  outline: none;
+  transition: 0.5s;
+}
+.form-input--valid {
+  border: none;
+  box-shadow: #02af28 0px 0px 0px 2px;
+}
+.form-input--invalid {
+  border: none;
+  box-shadow: red 0px 0px 0px 2px;
+}/*# sourceMappingURL=form-input.style.css.map */

@@ -1,0 +1,102 @@
+.overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  overflow-y: auto;
+  opacity: 1;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(61, 55, 55, 0.486);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.overlay::-webkit-scrollbar {
+  display: none;
+}
+
+.model-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  width: 100%;
+}
+.model-container .navBar {
+  width: 90%;
+  display: flex;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.model-container .navBar .btn-close {
+  padding: 0.2rem;
+  background: darkgreen;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  width: 50px;
+  border: none;
+  font-size: 1.5em;
+}
+.model-container .model-body {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 3rem;
+  flex-direction: row;
+  margin: 2rem auto;
+}
+.model-container .model-body .colo-1, .model-container .model-body .colo-2 {
+  border: 1px solid rgba(128, 128, 128, 0.527);
+  border-radius: 10px;
+}
+.model-container .model-body .colo-1 {
+  width: 60%;
+}
+.model-container .model-body .colo-2 {
+  width: 30%;
+}
+.model-container .model-body .colo-2 .btn-checkout {
+  width: 100%;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.527);
+}
+.model-container .model-body .colo-2 .btn-checkout button {
+  margin: 1rem;
+  background-color: #163C2A;
+}
+.model-container .order-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: center;
+  font-size: 1em;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.527);
+}
+.model-container .order-body {
+  width: 90%;
+  margin: 0 auto;
+}
+.model-container .order-body h4 {
+  text-align: center;
+  padding: 0.5rem;
+}
+.model-container .order-body ul {
+  margin: 0;
+}
+.model-container .order-body li {
+  margin: 0;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.151);
+}
+
+.hidden {
+  display: none;
+}/*# sourceMappingURL=cartModel.css.map */
