@@ -3,17 +3,23 @@ import { PAYMENT_SUCCESS, PAYMENT_START, PAYMENT_ERROR } from '../types';
 import action from './action';
 
 const order = {
-"orderId": "5dfe12f3-f954-48a1-8b91-c9426eaf8720",
+"orderId": "b2fa1453-7595-4a1b-82c7-485b130f52f6",
 "orderProducts": [
     {
-        "orderId": "5dfe12f3-f954-48a1-8b91-c9426eaf8720",
-        "productId": "ec05a93c-2684-4bdd-b0d3-9939e7f54d72",
+        "orderId": "b2fa1453-7595-4a1b-82c7-485b130f52f6",
+        "productId": "89f84661-d8e5-432d-9167-e7c4cdef456c",
         "name": "T-shirt",
-        "quantity": 1,
+        "images": [
+            "https://m.media-amazon.com/images/I/6109kXAZ1XL._UX385_.jpg",
+            "https://m.media-amazon.com/images/I/41QYSoOIv8L._AC_SR175,263_QL70_.jpg",
+          ],
+        "quantity": 2,
         "unitPrice": 5000
-    }
+    },
 ]
 }
+
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxYzlkNTYwZC1hNDVjLTQ1ZjgtYTU1Yi0zODU2YWFmNzRlMWQiLCJ1c2VyRW1haWwiOiJzaHVtYnVzaG9AZ21haWwuY29tIiwiaWF0IjoxNjg0NDIyNzM5LCJleHAiOjE2ODQ0MjYzMzl9.8nsxWcye4NWxheD5IM51fsoZNnpUyFQmpkzZEVKbFm4"
 
 export const payment = () => {
     return  (dispatch) => {
@@ -22,6 +28,7 @@ export const payment = () => {
         },{
             headers: {
             'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            // 'Authorization': `Bearer ${token}`,
             },
         })
             .then((response) => {
