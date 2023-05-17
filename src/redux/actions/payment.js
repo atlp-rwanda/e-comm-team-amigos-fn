@@ -19,6 +19,8 @@ const order = {
 ]
 }
 
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxYzlkNTYwZC1hNDVjLTQ1ZjgtYTU1Yi0zODU2YWFmNzRlMWQiLCJ1c2VyRW1haWwiOiJzaHVtYnVzaG9AZ21haWwuY29tIiwiaWF0IjoxNjg0NDIyNzM5LCJleHAiOjE2ODQ0MjYzMzl9.8nsxWcye4NWxheD5IM51fsoZNnpUyFQmpkzZEVKbFm4"
+
 export const payment = () => {
     return  (dispatch) => {
         dispatch(action(PAYMENT_START, true));
