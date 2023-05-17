@@ -5,6 +5,12 @@ import ProductCard from "../../../components/product-card/index.jsx";
 import { ToastContainer } from "react-toastify";
 import { viewSingleProduct } from "../../../redux/actions/product.js";
 import ProductCard from "../../../components/product-card/index.jsx";
+import Loader from "../../../components/loader/index.jsx";
+import * as Unicons from "@iconscout/react-unicons";
+import "./style.scss";
+import { ToastContainer } from "react-toastify";
+import { viewSingleProduct } from "../../../redux/actions/product.js";
+import ProductCard from "../../../components/product-card/index.jsx";
 import ProductLayout from "./product-layout";
 import CreateProduct from "../../create-product/CreateProduct.jsx";
 import UpdateProduct from "../../../components/UpdateProduct/UpdateProduct.jsx";
@@ -13,8 +19,9 @@ import * as Unicons from "@iconscout/react-unicons";
 import "./style.scss";
 
 const Product = () => {
-	const { products, detailsProductId, updateProductId } =
+	const { products, fetchProductStart, detailsProductId, updateProductId } =
 		useSelector((state) => state.fetchProductState);
+	const [updateProduct, setUpdateProduct] = useState(false);
 	const dispatch = useDispatch();
 	const [createProduct, setCreateProduct] = useState(false);
 	const productDetails = products?.product?.filter(
