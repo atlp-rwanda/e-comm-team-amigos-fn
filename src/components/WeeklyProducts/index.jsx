@@ -5,11 +5,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar, Navigation } from 'swiper';
 import 'swiper/swiper.min.css';
 import '../../assets/css/swiper.scrollbar.css';
-
 import SectionTitle from '../SectionHeader';
 import WeeklyCard from './WeeklyCard';
 import useWindowSize from '../../hooks/useWindowResize';
 import eletronicDevicesImg from '../../assets/img/ElectronicDevices.png';
+import { payment } from '../../redux/actions/payment';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Container = styled(Box)(({ theme }) => ({
 	width: '100%',
@@ -34,9 +35,15 @@ export default function WeeklyProducts() {
 		if (width <= 1336 && width >= 900) setMaxSlides(2);
 		if (width > 1336) setMaxSlides(3);
 	}, [width]);
+
+	const {onPaymentSuccess, paymentStart, paymentError} = useSelector((state)=>state.payment);
+	console.log(onPaymentSuccess, paymentStart, paymentError);
+	const dispatch = useDispatch();
+
 	return (
 		<Container>
 			<SectionTitle>Weekly popular products</SectionTitle>
+			<span onClick={()=> dispatch(payment())}>Buy Now</span>
 			<CardsContainer>
 				<Swiper
 					slidesPerView={maxSlides}

@@ -8,18 +8,31 @@ import Footer from '../components/Footer/index.jsx';
 import Discounts from './../components/Discount/index.jsx';
 import WeeklyProducts from '../components/WeeklyProducts/index.jsx';
 import InteriorDesignSection from '../components/InterialDesignSection.jsx';
+import { useSelector } from 'react-redux';
+import MainLoader from '../components/loader/mainLoader.jsx';
+import Loader from '../components/loader/index.jsx';
 
 export default function HomePage() {
+	const { paymentStart } = useSelector((state)=>state.payment);
 	return (
 		<>
-			<Header />
-			<Hero />
-			<TopCategories />
-			<TodayDeals />
-			<Discounts />
-			<WeeklyProducts />
-			<InteriorDesignSection />
-			<Footer />
+			{paymentStart?  (
+			<MainLoader>
+				<Loader/>
+			</MainLoader>
+			):(
+			<>
+				<Header />
+				<Hero />
+				<TopCategories />
+				<TodayDeals />
+				<Discounts />
+				<WeeklyProducts />
+				<InteriorDesignSection />
+				<Footer />
+			</>
+			)
+			}
 		</>
 	);
 }
