@@ -1,0 +1,13 @@
+.loader-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.main-loader-container{
+    width: min(100%, 1055px);
+    height: 100vh;
+    background-color: #fff;
+    margin-inline: auto;
+}
