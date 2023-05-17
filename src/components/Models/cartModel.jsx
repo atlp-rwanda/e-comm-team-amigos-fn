@@ -4,12 +4,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { closeModel } from "../../redux/actions/cartOpenModel";
 import viewCart from "../../redux/actions/viewCart";
+import {clearCart, removeItemCart} from  "../../redux/actions/cartAction";
+import { toast, ToastContainer } from "react-toastify";
+import {handleClearCartResponse, handleRemoveItemCartResponse} from "../../utils/product/handleAddToCartSucess";
+
+
 const Model = () => {
 	const navigate = useNavigate();
 	const Open = useSelector((state) => state.openModel);
+    const { clearcartsuccess } = useSelector((state) => state.clearCart) || {}; 
+	const {removeitemcartsuccess}= useSelector((state)=>state.viewCart);
+
 	useEffect(() => {
 		dispatch(viewCart());
-	}, []);
+		handleClearCartResponse (clearcartsuccess,toast);
+		handleRemoveItemCartResponse(removeitemcartsuccess,toast);
+	}, [clearcartsuccess,removeitemcartsuccess]);
 	const { viewsuccess } = useSelector((state) => state.viewCart);
 	const dispatch = useDispatch();
 	const cartItems = viewsuccess ? viewsuccess?.cartItems : [];
@@ -30,9 +40,10 @@ const Model = () => {
 							x
 						</button>
 					</div>
-					<div className="cleanupcart">
+					{cartItems.length !== 0 && 					<div className="cleanupcart" onClick={()=>{dispatch(clearCart());}}>
 						<button data-testid="clear">CLean Up Cart</button>
-					</div>
+					</div>}
+
 					<div className="model-body">
 						<div className="colo-1">
 							<div className="order-title">
@@ -94,18 +105,8 @@ const Model = () => {
 														<div className="item-quantity">
 															Qty: {item.quantity}
 														</div>
-														<button
-															data-testid="update"
-															className="item-button-update"
-														>
-															UPDATE
-														</button>
-														<button
-															data-testid="delete"
-															className="item-button-delete"
-														>
-															REMOVE
-														</button>
+														<button className="item-button-update" data-testid="update">UPDATE</button>
+														<button data-testid="delete" className="item-button-delete" onClick={()=>dispatch(removeItemCart(item.id))}>REMOVE</button>
 													</div>
 												</div>
 												<div className="item-price">
@@ -142,6 +143,7 @@ const Model = () => {
 					</div>
 				</div>
 			</div>
+			<ToastContainer/>
 		</>
 	);
 };
