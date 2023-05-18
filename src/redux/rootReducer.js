@@ -14,6 +14,7 @@ import counterReducer from "./reducer/counter";
 import addToCartReducer from "./reducer/addToCartReducer";
 import isOpenReducer from "./reducer/isOpenModel";
 import viewcartReducer from "./reducer/viewcartReducer";
+import relatedProductReducer from "./RelatedProducts/reducer";
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
@@ -30,7 +31,8 @@ const rootReducer = combineReducers({
 	counter: counterReducer,
 	cart: addToCartReducer,
 	openModel: isOpenReducer,
-	viewCart:viewcartReducer,
+	viewCart: viewcartReducer,
+	relatedProductState: relatedProductReducer,
 });
 
 export default rootReducer;
