@@ -13,6 +13,7 @@ import RelatedProduct from "./RelatedItems/RelatedProducts.jsx";
 import Footer from "./Footer/index.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRelatedProducts } from "../redux/RelatedProducts/actions";
+import Reviews from './review/Reviews.jsx'
 const ProductDetails = () => {
 	const relatedProducts = useSelector((state) => state.relatedProductState);
 	const dispatch = useDispatch();
@@ -42,7 +43,10 @@ const ProductDetails = () => {
 	useEffect(() => {
 		const getProduct = async () => {
 			const response = await fetch(
-				`https://e-comm-team-amigos-bn-project.onrender.com/product/${id}`,
+				`${
+					process.env.BASE_URL ||
+					"https://e-comm-team-amigos-bn-project.onrender.com"
+				}/product/${id}`,
 			);
 			const data = await response.json();
 			setLoading(false);
@@ -181,6 +185,7 @@ const ProductDetails = () => {
 							</div>
 						</div>
 					</div>
+					<Reviews id={id}/>
 					<RelatedProduct />
 					<div className="relatedItems">
 						{relatedProducts.relatedProducts.length > 0 ? (

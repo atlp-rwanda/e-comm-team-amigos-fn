@@ -8,7 +8,6 @@ import Button from "../button/Button.jsx";
 function createInputs(formFields, user, dispatch) {
 	return formFields.map((field) => {
 		if (field.type === "select") {
-			console.log(user[field.name]);
 			return (
 				<div className="form-input-group" key={field.id}>
 					<label htmlFor={field.name}>{field.labelTxt}</label>

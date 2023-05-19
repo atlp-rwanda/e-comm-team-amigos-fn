@@ -18,7 +18,10 @@ export const login = (email, password) => {
 	return async (dispatch) => {
 		dispatch(action(LOGIN_START, true));
 		try {
-			const response = await fetch("https://e-comm-team-amigos-bn-project.onrender.com/user/login", {
+			const response = await fetch(`${
+					process.env.BASE_URL ||
+					"https://e-comm-team-amigos-bn-project.onrender.com"
+				}/user/login`, {
 				method: "POST",
 				headers: {
 					Accept: "application/json",

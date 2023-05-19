@@ -24,8 +24,8 @@ export const signUp = (user) => {
 
 			const res = await axios.post(
 				`${
-					process.env.LIVE_API_URL ||
-					'https://e-comm-team-amigos-bn-project.onrender.com'
+					process.env.BASE_URL ||
+					"https://e-comm-team-amigos-bn-project.onrender.com"
 				}/user/create`,
 				user,
 			);

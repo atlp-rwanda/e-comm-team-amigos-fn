@@ -5,7 +5,7 @@ const GoogleAuth = () => {
 	return (
 		<>
 			<div className="social">
-				<div class="vl"></div>
+				<div className="vl"></div>
 				<div className="goole-auth">
 					<h1 className="heading">Login with Socials</h1>
 					<a

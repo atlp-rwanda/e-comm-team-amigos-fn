@@ -10,6 +10,7 @@ import homeDataReducer from "./homeData.reducer";
 import fetchProductReducer from "./reducer/product";
 import handleClickReducer from "./reducer/handleClick";
 import productUpdateReducer from "./reducer/update_product";
+import reviewsReducer from "./reviews/reviewsReducer";
 import counterReducer from "./reducer/counter";
 import addToCartReducer from "./reducer/addToCartReducer";
 import isOpenReducer from "./reducer/isOpenModel";
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
 	roles: rolesReducer,
 	users: usersReducer,
 	productUpdateState: productUpdateReducer,
+	reviews: reviewsReducer,
 	counter: counterReducer,
 	cart: addToCartReducer,
 	openModel: isOpenReducer,

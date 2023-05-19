@@ -83,7 +83,7 @@ const Img = styled('img')(({ theme }) => ({
 const pagination = {
 	clickable: true,
 	renderBullet: function (index, className) {
-		return '<span class="' + className + ' bullet"></span>';
+		return '<span className="' + className + ' bullet"></span>';
 	},
 };
 
