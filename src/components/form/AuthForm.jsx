@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import Button from "../button/authbutton.jsx";
+import Button from "../Button/authbutton.jsx";
 export default function AuthForm() {
 	const navigate = useNavigate();
 	const location = useLocation();

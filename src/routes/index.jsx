@@ -18,7 +18,8 @@ import IsAuthorized from "../utils/auth/isAuthorized.js";
 import ProductDetailsPage from "../views/ProductDetailsPage.jsx";
 import SearchPage from "../views/SearchPage.jsx";
 import RelatedProducts from "../views/RelatedProducts/RelatedProducts.jsx";
-
+import ViewCart from "../views/addToCart/viewCart.jsx";
+import AddToCart from "../views/addToCart/addtoCart.jsx";
 const index = () => {
 	return (
 		<Routes>
@@ -75,6 +76,15 @@ const index = () => {
 				path="/product/:id"
 				element={<ProductDetailsPage />}
 			></Route>
+			<Route exact path="/authentication" element={<Authentication />} />
+			<Route exact path="/cart" element={
+					<AddToCart />
+				} />
+			<Route exact path="/viewcart" element={
+				<IsAuthorized>
+					<ViewCart/>
+					</IsAuthorized>
+				} />
 		</Routes>
 	);
 };

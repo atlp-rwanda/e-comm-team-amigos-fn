@@ -4,7 +4,7 @@ import { Formik, Form } from 'formik';
 import { updatePassword } from '../../redux/actions';
 import { useDispatch } from'react-redux';
 import passwordSchema from '../../utils/resetPassword/passwordSchema';
-import PrimaryButton from '../../components/button/UpdatePassword.jsx';
+import PrimaryButton from '../../components/Button/UpdatePassword.jsx';
 import { renderInputField } from '../../utils/resetPassword/renderInputField';
 
 export default function UpdatePasswordForm(){

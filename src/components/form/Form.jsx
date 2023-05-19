@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormInput from "../form-input/FormInput.jsx";
 import ValidationMsg from "../validateion-msg/ValidationMsg.jsx";
 import { formFields, handleSubmit, handleOnChange } from "./form.utils.js";
-import Button from "../button/Button.jsx";
+import Button from "../Button/Button.jsx";
 
 function createInputs(formFields, user, dispatch) {
 	return formFields.map((field) => {

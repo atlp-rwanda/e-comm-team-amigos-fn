@@ -5,7 +5,7 @@ import ProductCard from "../../../components/product-card/index.jsx";
 // eslint-disable-next-line no-unused-vars
 import imagePlaceHolder from "../../../assets/img/placeholder-image.png";
 // eslint-disable-next-line no-unused-vars
-import Loader from "../../../components/loader/index.jsx";
+import Loader from "../../../components/Loader/index.jsx";
 import * as Unicons from "@iconscout/react-unicons";
 import "./style.scss";
 import ProductLayout from "./product-layout";

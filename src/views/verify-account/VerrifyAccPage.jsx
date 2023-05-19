@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { verifyEmail } from '../../redux/verify-email/actions.js';
-import Button from '../../components/button/Button.jsx';
+import Button from '../../components/Button/Button.jsx';
 import './verify-acc.styles.scss';
 import '../../App.css';
 

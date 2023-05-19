@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
 import Rating from "@mui/material/Rating";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Star, StarDisabled } from "./rating.jsx";
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { handleCartResponse } from "../../utils/product/handleAddToCartSucess.js";
 import {
@@ -12,37 +12,32 @@ import {
 	addToCart,
 } from "../../redux/actions/cartAction.js";
 
-export default function AddtoCart({product}) {
-	const location = useLocation();
-	const id = location.state?.id;
+export default function AddtoCart({ product }) {
+	const user = JSON.parse(localStorage.getItem("user"));
 	const counter = useSelector((state) => state.counter);
 	const { cartsuccess, cartstart } = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
-	const { name, price, quantity } = product;
-	const items = quantity;
 	const [isDisable, setisDisable] = useState(false);
-	console.log(product);
 	const handleDisable = () => {
-		if (items <= counter+1) {
+		if (product?.quantity <= counter+1) {
 			setisDisable(true);
 		}
 	};
 	const handleEnable = () => {
-		if (items === counter) {
+		if (product?.quantity === counter) {
 			setisDisable(false);
 		}
 	};
 	useEffect(() => {
 		handleCartResponse(cartsuccess, toast);
 	}, [cartsuccess]);
-
 	return (
 		<>
 			<div className="col-2">
 				<div className="row-1">
 					<div className="title">
 						<h3>
-							{name}/<span className="price">${price}</span>
+							{product?.name}/<span className="price">${product?.price}</span>
 						</h3>
 					</div>
 					<div className="description">
@@ -110,15 +105,17 @@ export default function AddtoCart({product}) {
 							</div>
 						</div>
 						<div className="items-in-stock">
-							Only <span>{items - counter} items</span> Left
+							Only <span>{product?.quantity - counter} items</span> Left
 							Don&apos;t Miss it
 						</div>
 					</div>
 					<div className="button">
-						<button className="buynow"> Buy Now</button>
-						<button
-							onClick={() => dispatch(addToCart(counter, id))}
-							className="addtocart"
+						<button data-testid="buy" disabled={ user ? false: true} className= { user ? "buynow":"hidden"}> Buy Now</button>
+						<button 
+							data-testid="add"
+							disabled={ user ? false: true}
+							onClick={() => dispatch(addToCart(counter, product.id))}
+							className= { user ? "addtocart": "hidden"}
 						>
 							{cartstart ? "Adding..." : "add to cart"}
 						</button>

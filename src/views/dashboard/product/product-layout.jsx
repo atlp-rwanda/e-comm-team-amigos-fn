@@ -15,7 +15,7 @@ import {
 	updateProductAction,
 	viewSingleProduct,
 } from "../../../redux/actions";
-import Loader from "../../../components/loader/index.jsx";
+import Loader from "../../../components/Loader/index.jsx";
 
 const columns = [
 	{ id: "picture", label: "Photo", minWidth: 170 },
