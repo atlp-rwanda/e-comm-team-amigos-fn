@@ -6,7 +6,6 @@ export function checkTokenValidity(token) {
 	if (!token) {
 		return false;
 	}
-
 	try {
 		const decoded = jwt_decode(token);
 		const currentTime = Date.now() / 1000;
@@ -24,13 +23,9 @@ export function getUserRole() {
 const IsAuthorized = ({ children }) => {
 	const token = localStorage.getItem("token");
 	const validToken = checkTokenValidity(token);
-	const role = getUserRole();
-	console.log(role);
-
 	if (!validToken) {
-		return <Navigate to="/login" />;
+		return < Navigate to="/login" />;
 	}
-
 	return children;
 };
 

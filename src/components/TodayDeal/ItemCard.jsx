@@ -1,30 +1,30 @@
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import Rating from '@mui/material/Rating';
-import Box from '@mui/material/Box';
-import colors from '../../constants/colors';
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import Rating from "@mui/material/Rating";
+import Box from "@mui/material/Box";
+import colors from "../../constants/colors";
 
-import compurtBagImg from './../../assets/img/computerBag.png';
-import Button from '../Button/index.jsx';
-import './style.css';
-import SvgIcon from '@mui/material/SvgIcon';
+import compurtBagImg from "./../../assets/img/computerBag.png";
+import Button from "../Button/index.jsx";
+import "./style.css";
+import SvgIcon from "@mui/material/SvgIcon";
 
 const Container = styled(Box)((theme) => ({
-	width: '302px',
-	height: '444.17px',
-	display: 'flex',
-	flexDirection: 'column',
+	width: "302px",
+	height: "444.17px",
+	display: "flex",
+	flexDirection: "column",
 	background: colors.white,
-	borderRadius: '10px',
-	position: 'relative',
-	marginTop: '60px',
+	borderRadius: "10px",
+	position: "relative",
+	marginTop: "60px",
 }));
 
 const Img = styled(Box)((theme) => ({
-	width: '302px',
-	height: '302px',
-	background: '#ECECEC',
-	borderRadius: '10px',
+	width: "302px",
+	height: "302px",
+	background: "#ECECEC",
+	borderRadius: "10px",
 }));
 
 export default function ItemCard() {
@@ -40,11 +40,11 @@ export default function ItemCard() {
 			</Img>
 			<Box
 				sx={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					alignItems: 'center',
-					height: '38px',
-					width: '100%',
+					display: "flex",
+					justifyContent: "space-between",
+					alignItems: "center",
+					height: "38px",
+					width: "100%",
 				}}
 			>
 				<Typography className="item-card-deal">
@@ -57,13 +57,13 @@ export default function ItemCard() {
 			</p>
 			<Box
 				sx={{
-					width: '109.4px',
-					height: '18px',
-					display: 'flex',
-					justifyContent: 'space-between',
-					alignItems: 'center',
-					marginTop: '7px',
-					mb: '22px',
+					width: "109.4px",
+					height: "18px",
+					display: "flex",
+					justifyContent: "space-between",
+					alignItems: "center",
+					marginTop: "7px",
+					mb: "22px",
 				}}
 			>
 				<Rating
@@ -91,17 +91,17 @@ export function CircleLove() {
 	return (
 		<Box
 			sx={{
-				width: '40px',
-				height: '40px',
-				display: 'flex',
-				justifyContent: 'center',
-				alignItems: 'center',
-				borderRadius: '50%',
-				position: 'absolute',
-				top: '16px',
-				right: '16px',
-				bottom: 'auto',
-				left: 'auto',
+				width: "40px",
+				height: "40px",
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+				borderRadius: "50%",
+				position: "absolute",
+				top: "16px",
+				right: "16px",
+				bottom: "auto",
+				left: "auto",
 				background: colors.white,
 			}}
 		>
@@ -111,7 +111,7 @@ export function CircleLove() {
 }
 
 export function PriceContainer({ currency, amount }) {
-	const [integer, decimals] = amount.split('.');
+	const [integer, decimals] = amount.split(".");
 	return (
 		<div>
 			<h5 className="item-card-price-container">

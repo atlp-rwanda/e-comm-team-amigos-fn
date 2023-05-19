@@ -1,0 +1,31 @@
+.verify-acc-container {
+  max-height: 100vh;
+}
+.verify-acc-container .acc-verified__text {
+  font-size: 22px;
+  letter-spacing: 3px;
+  font-weight: 100 !important;
+  text-align: center;
+}
+.verify-acc-container .verifying-acc, .verify-acc-container .acc-verified, .verify-acc-container .verify-account-error-container {
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  gap: 25px;
+  max-width: 300px;
+  width: 95%;
+}
+.verify-acc-container .verifying-acc .loading-spinner {
+  margin: auto;
+}
+.verify-acc-container .verifying-acc h3 {
+  text-align: center;
+  font-weight: 100;
+}
+.verify-acc-container .acc-verified {
+  border: 1.5px solid #0a9d58;
+  padding: 30px;
+  border-radius: 8px;
+}/*# sourceMappingURL=verify-acc.styles.css.map */
