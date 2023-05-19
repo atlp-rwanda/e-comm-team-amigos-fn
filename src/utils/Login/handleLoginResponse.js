@@ -1,8 +1,17 @@
+import { getUserRole } from "../auth/isAuthorized";
+
 export const handleLoginResponse = (loginSuccess, navigation, toast) => {
 	if (loginSuccess?.message === "User Logged Successfully") {
 		toast(loginSuccess?.message);
 		setTimeout(() => {
-			navigation("/dashboard");
+			const role = getUserRole();
+			const customer=role?.filter(role => role === "Customer");
+			if (customer[0]) {
+				navigation("/");
+			}
+			else {
+				navigation("/dashboard");
+			}
 		}, 5000);
 	} else {
 		toast(loginSuccess?.message || loginSuccess?.error);

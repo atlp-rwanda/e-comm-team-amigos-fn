@@ -10,6 +10,11 @@ import homeDataReducer from "./homeData.reducer";
 import fetchProductReducer from "./reducer/product";
 import handleClickReducer from "./reducer/handleClick";
 import productUpdateReducer from "./reducer/update_product";
+import counterReducer from "./reducer/counter";
+import addToCartReducer from "./reducer/addToCartReducer";
+import isOpenReducer from "./reducer/isOpenModel";
+import viewcartReducer from "./reducer/viewcartReducer";
+import relatedProductReducer from "./RelatedProducts/reducer";
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
@@ -23,6 +28,11 @@ const rootReducer = combineReducers({
 	roles: rolesReducer,
 	users: usersReducer,
 	productUpdateState: productUpdateReducer,
+	counter: counterReducer,
+	cart: addToCartReducer,
+	openModel: isOpenReducer,
+	viewCart: viewcartReducer,
+	relatedProductState: relatedProductReducer,
 });
 
 export default rootReducer;

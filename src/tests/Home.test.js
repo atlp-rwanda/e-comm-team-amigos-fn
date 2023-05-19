@@ -2,16 +2,19 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
-
+import store from "../redux/store";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import HeaderMain from "../components/Header/HeaderMain";
+import { Provider } from "react-redux";
 
 test("Renders the Header of App", () => {
 	render(
-		<BrowserRouter>
-			<Header />
-		</BrowserRouter>,
+		<Provider store={store}>
+			<BrowserRouter>
+				<Header />
+			</BrowserRouter>
+		</Provider>,
 	);
 
 	// expect(screen.getByRole('img')).toBeInTheDocument();
@@ -21,9 +24,11 @@ test("Renders the Header of App", () => {
 
 test("Renders the Hero of App", () => {
 	render(
-		<BrowserRouter>
-			<Hero />
-		</BrowserRouter>,
+		<Provider store={store}>
+			<BrowserRouter>
+				<Hero />
+			</BrowserRouter>
+		</Provider>,
 	);
 
 	// expect(screen.getByRole('img')).toBeInTheDocument();
@@ -34,9 +39,11 @@ test("Renders the Hero of App", () => {
 describe(HeaderMain, () => {
 	it("renders the logo name correctly", () => {
 		render(
-			<BrowserRouter>
-				<HeaderMain backgroundColor="white" />
-			</BrowserRouter>,
+			<Provider store={store}>
+				<BrowserRouter>
+					<HeaderMain backgroundColor="white" />
+				</BrowserRouter>
+			</Provider>,
 		);
 
 		const logoName = screen.queryByTestId("logoName");
@@ -45,9 +52,11 @@ describe(HeaderMain, () => {
 
 	it("opens and closes the menu when the menu icon is clicked", () => {
 		render(
-			<BrowserRouter>
-				<HeaderMain backgroundColor="white" />
-			</BrowserRouter>,
+			<Provider store={store}>
+				<BrowserRouter>
+					<HeaderMain backgroundColor="white" />
+				</BrowserRouter>
+			</Provider>,
 		);
 
 		const menuIcon = screen.getByTestId("menu");

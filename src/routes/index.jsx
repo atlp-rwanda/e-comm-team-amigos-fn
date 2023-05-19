@@ -17,6 +17,7 @@ import Layout from "../views/protectedRoutes/layout.js";
 import IsAuthorized from "../utils/auth/isAuthorized.js";
 import ProductDetailsPage from "../views/ProductDetailsPage.jsx";
 import SearchPage from "../views/SearchPage.jsx";
+import RelatedProducts from "../views/RelatedProducts/RelatedProducts.jsx";
 
 const index = () => {
 	return (
