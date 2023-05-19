@@ -14,13 +14,14 @@ import reviewsReducer from "./reviews/reviewsReducer";
 import counterReducer from "./reducer/counter";
 import addToCartReducer from "./reducer/addToCartReducer";
 import isOpenReducer from "./reducer/isOpenModel";
-import viewcartReducer from "./reducer/viewcartReducer";
+import viewcartReducer from "./reducer/viewCartReducer";
 import relatedProductReducer from "./RelatedProducts/reducer";
 import profileReducer from "./profile/reducer";
 import paymentReducer from "./reducer/payment";
 import clearCartReducer from "./reducer/clearCartReducer";
 
 
+import UpdateCartReducer from "./reducer/updateCartReducer";
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
 	verifyEmail: verifyEmailReducer,
@@ -42,6 +43,7 @@ const rootReducer = combineReducers({
 	profile: profileReducer,
 	payment: paymentReducer,
 	clearCart:clearCartReducer,
+	updateCartState: UpdateCartReducer,
 });
 
 export default rootReducer;
