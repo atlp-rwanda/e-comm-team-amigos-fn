@@ -4,18 +4,11 @@ import PrimaryBtn from "../../../components/Button/PrimaryButton.jsx";
 import ProductCard from "../../../components/product-card/index.jsx";
 import { ToastContainer } from "react-toastify";
 import { viewSingleProduct } from "../../../redux/actions/product.js";
-import ProductCard from "../../../components/product-card/index.jsx";
-import Loader from "../../../components/loader/index.jsx";
 import * as Unicons from "@iconscout/react-unicons";
-import "./style.scss";
-import { ToastContainer } from "react-toastify";
-import { viewSingleProduct } from "../../../redux/actions/product.js";
-import ProductCard from "../../../components/product-card/index.jsx";
 import ProductLayout from "./product-layout";
 import CreateProduct from "../../create-product/CreateProduct.jsx";
 import UpdateProduct from "../../../components/UpdateProduct/UpdateProduct.jsx";
 import ViewSingleProduct from "./ViewSingleProduct.jsx";
-import * as Unicons from "@iconscout/react-unicons";
 import "./style.scss";
 
 const Product = () => {

@@ -9,8 +9,6 @@ import SectionTitle from '../SectionHeader';
 import WeeklyCard from './WeeklyCard';
 import useWindowSize from '../../hooks/useWindowResize';
 import eletronicDevicesImg from '../../assets/img/ElectronicDevices.png';
-import { payment } from '../../redux/actions/payment';
-import { useDispatch, useSelector } from 'react-redux';
 
 const Container = styled(Box)(({ theme }) => ({
 	width: '100%',
@@ -36,14 +34,10 @@ export default function WeeklyProducts() {
 		if (width > 1336) setMaxSlides(3);
 	}, [width]);
 
-	const {onPaymentSuccess, paymentStart, paymentError} = useSelector((state)=>state.payment);
-	console.log(onPaymentSuccess, paymentStart, paymentError);
-	const dispatch = useDispatch();
-
 	return (
 		<Container>
 			<SectionTitle>Weekly popular products</SectionTitle>
-			<span onClick={()=> dispatch(payment())}>Buy Now</span>
+			<span>Buy Now</span>
 			<CardsContainer>
 				<Swiper
 					slidesPerView={maxSlides}

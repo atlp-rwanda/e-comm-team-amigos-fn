@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import paymentSuccess from "../../assets/img/1329003-200.png";
 import "./style.scss";
 
