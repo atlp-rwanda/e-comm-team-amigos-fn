@@ -8,7 +8,17 @@ export default function Header() {
 	const sizes = useWindowSize();
 
 	return (
-		<Box>
+		<Box
+			sx={{
+				position: "fixed",
+				top: "0",
+				bottom: "auto",
+				left: "auto",
+				right: "auto",
+				background: "white",
+				zIndex: "1300",
+			}}
+		>
 			{sizes.width >= 1336 && (
 				<HeaderTop justifyContent="space-between" alignItems="center" />
 			)}

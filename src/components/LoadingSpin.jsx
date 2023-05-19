@@ -1,6 +1,6 @@
-import ReactLoading from 'react-loading';
-import PropTypes from 'prop-types';
-import colors from '../constants/colors';
+import ReactLoading from "react-loading";
+import PropTypes from "prop-types";
+import colors from "../constants/colors";
 
 function LoadingSpin({ type, color, height, width }) {
 	return (
@@ -16,15 +16,15 @@ function LoadingSpin({ type, color, height, width }) {
 
 LoadingSpin.propTypes = {
 	type: PropTypes.oneOf([
-		'blank',
-		'balls',
-		'bars',
-		'bubbles',
-		'cubes',
-		'cylon',
-		'spin',
-		'spinningBubbles',
-		'spokes',
+		"blank",
+		"balls",
+		"bars",
+		"bubbles",
+		"cubes",
+		"cylon",
+		"spin",
+		"spinningBubbles",
+		"spokes",
 	]),
 	color: PropTypes.string,
 	height: PropTypes.number,
@@ -32,7 +32,7 @@ LoadingSpin.propTypes = {
 };
 
 LoadingSpin.defaultProps = {
-	type: 'spin',
+	type: "spin",
 	color: colors.darkGreen,
 	height: 30,
 	width: 30,

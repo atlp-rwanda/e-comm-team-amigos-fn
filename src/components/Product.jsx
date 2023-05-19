@@ -35,7 +35,7 @@ const ProductDetails = () => {
 		if (category) dispatch(fetchRelatedProducts(category));
 	}, [dispatch, category]);
 	return (
-		<>
+		<div className="margin-to-header">
 			{loading ? (
 				<Loader />
 			) : (
@@ -67,7 +67,7 @@ const ProductDetails = () => {
 				</>
 			)}
 			<Footer />
-		</>
+		</div>
 	);
 };
 export default ProductDetails;

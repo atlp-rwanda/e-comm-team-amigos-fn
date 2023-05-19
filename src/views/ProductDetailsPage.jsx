@@ -1,6 +1,5 @@
-import React from 'react';
-import Header from '../components/Header/index.jsx';
-import ProductDetails from '../components/Product.jsx';
+import Header from "../components/Header/index.jsx";
+import ProductDetails from "../components/Product.jsx";
 const ProductDetailsPage = () => {
 	return (
 		<>

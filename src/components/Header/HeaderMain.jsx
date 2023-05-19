@@ -47,6 +47,10 @@ const ContainerFluid = styled(Box)(({ theme }) => ({
 		padding: "10px 20px",
 		height: "auto",
 	},
+	[theme.breakpoints.between("lg", "1440")]: {
+		paddingLeft: "10px",
+		paddingRight: "10px",
+	},
 }));
 
 const NavContainer = styled(Box)(({ theme }) => ({
@@ -147,7 +151,7 @@ export default function HeaderMain() {
 	}));
 	const dispatch = useDispatch();
 	const user = JSON.parse(localStorage.getItem("user"));
-	
+
 	return (
 		<ContainerFluid>
 			<Box sx={contentContainer}>
@@ -179,28 +183,32 @@ export default function HeaderMain() {
 						<Box component="div" sx={userAccount}>
 							<UserIcon sx={{ fill: "none" }} />
 							<Typography variant="p" sx={accountLabel}>
-								{ user? user.username:"Account" }
+								{user ? user.username : "Account"}
 							</Typography>
 						</Box>
 						<Model />
-						<NavLink component={RouterLink} to="/viewcart" underline="none">
-						<Box
-							onClick={() => dispatch(openModel())}
-							component="div"
-							sx={cartAccount}
+						<NavLink
+							component={RouterLink}
+							to="/viewcart"
+							underline="none"
 						>
-							<Badge
-								color="primary"
-								badgeContent={0}
-								sx={{ marginRight: "10px" }}
+							<Box
+								onClick={() => dispatch(openModel())}
+								component="div"
+								sx={cartAccount}
 							>
-								<CartIcon sx={{ fill: "none" }} />
-							</Badge>
+								<Badge
+									color="primary"
+									badgeContent={0}
+									sx={{ marginRight: "10px" }}
+								>
+									<CartIcon sx={{ fill: "none" }} />
+								</Badge>
 
-							<Typography variant="p" sx={accountLabel}>
-								Cart
-							</Typography>
-						</Box>
+								<Typography variant="p" sx={accountLabel}>
+									Cart
+								</Typography>
+							</Box>
 						</NavLink>
 					</HeaderAccount>
 				</NavDropDown>
