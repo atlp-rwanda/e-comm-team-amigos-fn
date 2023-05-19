@@ -1,148 +1,154 @@
-import React from 'react';
-import Box from '@mui/material/Box/Box';
-import PropTypes from 'prop-types';
-import { Link as RouterLink } from 'react-router-dom';
-import Link from '@mui/material/Link';
-import logo from './../../assets/img/logo.png';
-import colors from '../../constants/colors';
-import SearchInput from '../search/SearchInput.jsx';
-import SvgIcon from '@mui/material/SvgIcon';
-import Typography from '@mui/material/Typography';
-import Badge from '@mui/material/Badge';
-import { styled } from '@mui/material/styles';
+import React from "react";
+import Box from "@mui/material/Box/Box";
+import PropTypes from "prop-types";
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@mui/material/Link";
+import logo from "./../../assets/img/logo.png";
+import colors from "../../constants/colors";
+import SearchInput from "../search/SearchInput.jsx";
+import SvgIcon from "@mui/material/SvgIcon";
+import Typography from "@mui/material/Typography";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
 
-import useWindowSize from '../../hooks/useWindowResize';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
+import useWindowSize from "../../hooks/useWindowResize";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
+import { useSelector, useDispatch } from "react-redux";
+import Model from "../Models/cartModel.jsx";
+import { openModel } from "../../redux/actions/cartOpenModel";
 const MenuContainer = styled(Box)(({ theme }) => ({
-	zIndex: '40',
-	position: 'fixed',
-	top: '10px',
-	right: '0px',
-	bottom: 'auto',
-	left: 'auto',
-	display: 'flex',
-	[theme.breakpoints.up('lg')]: {
-		display: 'none',
+	zIndex: "40",
+	position: "fixed",
+	top: "10px",
+	right: "0px",
+	bottom: "auto",
+	left: "auto",
+	display: "flex",
+	[theme.breakpoints.up("lg")]: {
+		display: "none",
 	},
-	justifyContent: 'center',
-	alignItems: 'center',
+	justifyContent: "center",
+	alignItems: "center",
 }));
 
 const ContainerFluid = styled(Box)(({ theme }) => ({
-	width: '100%',
-	height: '94px',
-	display: 'flex',
-	alignItems: 'flex-end',
-	justifyContent: 'center',
-	position: 'relative',
-	paddingLeft: '54px',
-	paddingRight: '54px',
-	[theme.breakpoints.down('lg')]: {
-		padding: '10px 20px',
-		height: 'auto',
+	width: "100%",
+	height: "94px",
+	display: "flex",
+	alignItems: "flex-end",
+	justifyContent: "center",
+	position: "relative",
+	paddingLeft: "54px",
+	paddingRight: "54px",
+	[theme.breakpoints.down("lg")]: {
+		padding: "10px 20px",
+		height: "auto",
 	},
 }));
 
 const NavContainer = styled(Box)(({ theme }) => ({
-	width: '409.37px',
-	height: '22.64px',
-	display: 'flex',
-	justifyContent: 'space-between',
-	alignItems: 'center',
-	alignSelf: 'center',
-	justifySelf: 'center',
-	[theme.breakpoints.down('lg')]: {
-		width: '100%',
-		paddingLeft: 'auto',
-		paddingRight: 'auto',
-		flexDirection: 'column',
-		height: 'auto',
-		marginTop: '94px',
+	width: "409.37px",
+	height: "22.64px",
+	display: "flex",
+	justifyContent: "space-between",
+	alignItems: "center",
+	alignSelf: "center",
+	justifySelf: "center",
+	[theme.breakpoints.down("lg")]: {
+		width: "100%",
+		paddingLeft: "auto",
+		paddingRight: "auto",
+		flexDirection: "column",
+		height: "auto",
+		marginTop: "94px",
 	},
 }));
 
 const NavLink = styled(Link)(({ theme }) => ({
-	fontFamily: 'Poppins',
-	fontStyle: 'normal',
-	fontWeight: '500',
-	fontSize: '17.4966px',
-	lineHeight: '26px',
+	fontFamily: "Poppins",
+	fontStyle: "normal",
+	fontWeight: "500",
+	fontSize: "17.4966px",
+	lineHeight: "26px",
 	color: colors.darkGreen,
-	[theme.breakpoints.down('lg')]: {
-		height: '35px',
+	[theme.breakpoints.down("lg")]: {
+		height: "35px",
 	},
-	':hover': {
+	":hover": {
 		borderBottom: `3px solid ${colors.darkGreen}`,
 	},
 }));
 
 const SearchInputContainer = styled(Box)(({ theme }) => ({
-	[theme.breakpoints.down('lg')]: {
-		marginTop: '20px',
-		width: '95%',
-		marginLeft: 'auto',
-		marginRight: 'auto',
+	[theme.breakpoints.down("lg")]: {
+		marginTop: "20px",
+		width: "95%",
+		marginLeft: "auto",
+		marginRight: "auto",
 	},
 }));
 
 const HeaderAccount = styled(Box)(({ theme }) => ({
-	width: '202.65px',
-	height: '24.7px',
-	display: 'flex',
-	justifyContent: 'space-between',
-	alignItems: 'center',
-	[theme.breakpoints.down('lg')]: {
-		width: '95%',
-		marginTop: '20px',
+	width: "202.65px",
+	height: "24.7px",
+	display: "flex",
+	justifyContent: "space-between",
+	alignItems: "center",
+	[theme.breakpoints.down("lg")]: {
+		width: "95%",
+		marginTop: "20px",
 	},
-	[theme.breakpoints.between('sm', 'lg')]: {
-		width: '60%',
-		marginLeft: 'auto',
-		marginRight: 'auto',
+	[theme.breakpoints.between("sm", "lg")]: {
+		width: "60%",
+		marginLeft: "auto",
+		marginRight: "auto",
 	},
 }));
 
-export default function HeaderMain({ backgroundColor }) {
+export default function HeaderMain() {
+	const counter = useSelector((state) => state.counter);
 	const { width } = useWindowSize();
 	const [menuOpen, setMenuOpen] = React.useState(false);
 	const handleMenuClick = () => {
 		setMenuOpen(!menuOpen);
 	};
 	const contentContainer = {
-		width: width >= 1336 ? '1331px' : '100%',
-		height: '52.34px',
-		display: 'grid',
-		gridTemplateColumns: '253px 1078.25px',
+		width: width >= 1336 ? "1331px" : "100%",
+		height: "52.34px",
+		display: "grid",
+		gridTemplateColumns: "253px 1078.25px",
 	};
 	const NavDropDown = styled(Box)(({ theme }) => ({
-		width: '100%',
-		[theme.breakpoints.down('lg')]: {
-			width: '50%',
-			display: menuOpen ? 'block' : 'none',
-			flexDirection: 'column',
-			justifyContent: 'center',
-			alignItems: 'space-between',
-			position: 'fixed',
-			top: '0',
-			right: '0',
-			bottom: 'auto',
-			left: 'auto',
-			height: '100vh',
-			zIndex: '5',
+		width: "100%",
+		[theme.breakpoints.down("lg")]: {
+			width: "50%",
+			display: menuOpen ? "block" : "none",
+			flexDirection: "column",
+			justifyContent: "center",
+			alignItems: "space-between",
+			position: "fixed",
+			top: "0",
+			right: "0",
+			bottom: "auto",
+			left: "auto",
+			height: "100vh",
+			zIndex: "5",
 			backgroundColor: colors.white,
 		},
-		[theme.breakpoints.up('lg')]: {
-			display: 'flex',
-			flexDirection: 'row',
-			justifyContent: 'space-between',
-			alignItems: 'center',
-			position: 'relative',
+		[theme.breakpoints.up("lg")]: {
+			display: "flex",
+			flexDirection: "row",
+			justifyContent: "space-between",
+			alignItems: "center",
+			position: "relative",
 		},
 	}));
-
+	const dispatch = useDispatch();
+	const user = JSON.parse(localStorage.getItem("user"));
+	
 	return (
 		<ContainerFluid>
 			<Box sx={contentContainer}>
@@ -161,7 +167,7 @@ export default function HeaderMain({ backgroundColor }) {
 							Deals
 						</NavLink>
 						<NavLink component={RouterLink} to="/" underline="none">
-							What's New
+							What&apos;s New
 						</NavLink>
 						<NavLink component={RouterLink} to="/" underline="none">
 							Delivery
@@ -172,24 +178,31 @@ export default function HeaderMain({ backgroundColor }) {
 					</SearchInputContainer>
 					<HeaderAccount>
 						<Box component="div" sx={userAccount}>
-							<UserIcon sx={{ fill: 'none' }} />
+							<UserIcon sx={{ fill: "none" }} />
 							<Typography variant="p" sx={accountLabel}>
-								Account
+								{ user? user.username:"Account" }
 							</Typography>
 						</Box>
-						<Box component="div" sx={cartAccount}>
+						<Model />
+						<NavLink component={RouterLink} to="/viewcart" underline="none">
+						<Box
+							onClick={() => dispatch(openModel())}
+							component="div"
+							sx={cartAccount}
+						>
 							<Badge
 								color="primary"
-								badgeContent={3}
-								sx={{ marginRight: '10px' }}
+								badgeContent={counter}
+								sx={{ marginRight: "10px" }}
 							>
-								<CartIcon sx={{ fill: 'none' }} />
+								<CartIcon sx={{ fill: "none" }} />
 							</Badge>
 
 							<Typography variant="p" sx={accountLabel}>
 								Cart
 							</Typography>
 						</Box>
+						</NavLink>
 					</HeaderAccount>
 				</NavDropDown>
 			</Box>
@@ -275,42 +288,42 @@ HeaderMain.propTypes = {
 };
 
 const logoContainer = {
-	width: '181.85px',
-	height: '41.78px',
-	display: 'flex',
-	justifyContent: 'space-between',
-	alignItems: 'center',
+	width: "181.85px",
+	height: "41.78px",
+	display: "flex",
+	justifyContent: "space-between",
+	alignItems: "center",
 };
 
 const logoName = {
-	fontFamily: 'Poppins',
-	fontStyle: 'normal',
-	fontWeight: '700',
-	fontSize: '30.8763px',
-	lineHeight: '46px',
+	fontFamily: "Poppins",
+	fontStyle: "normal",
+	fontWeight: "700",
+	fontSize: "30.8763px",
+	lineHeight: "46px",
 	color: colors.darkGreen,
 };
 
 const userAccount = {
-	width: '99.82px',
-	height: '22.64px',
-	display: 'flex',
-	justifyContent: 'space-between',
-	alignItems: 'center',
+	width: "99.82px",
+	height: "22.64px",
+	display: "flex",
+	justifyContent: "space-between",
+	alignItems: "center",
 };
 const accountLabel = {
-	fontFamily: 'Poppins',
-	fontStyle: 'normal',
-	fontWeight: '500',
-	fontSize: '17.4966px',
-	lineHeight: '26px',
+	fontFamily: "Poppins",
+	fontStyle: "normal",
+	fontWeight: "500",
+	fontSize: "17.4966px",
+	lineHeight: "26px",
 	color: colors.darkGreen,
 };
 
 const cartAccount = {
-	width: '63.8px',
-	height: '24.7px',
-	display: 'flex',
-	justifyContent: 'space-between',
-	alignItems: 'center',
+	width: "63.8px",
+	height: "24.7px",
+	display: "flex",
+	justifyContent: "space-between",
+	alignItems: "center",
 };

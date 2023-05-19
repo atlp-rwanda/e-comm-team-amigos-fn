@@ -53,7 +53,10 @@ const SearchedProduct = () => {
 	}, [searchValue, page]);
 
 	const handleClick = (id) => {
+		// navigate(`/product/${id}`);
+		navigate("/cart", { state: { id } });
 		navigate(`/product/${id}`);
+		localStorage.setItem("id", id);
 	};
 
 	const handleLoadMore = () => {

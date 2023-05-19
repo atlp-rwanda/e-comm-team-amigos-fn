@@ -14,15 +14,16 @@ section {
   box-sizing: border-box;
   width: 30%;
   padding: 20px;
+  border-radius: 10px;
   margin: auto;
-  border: 2px solid #096E3E;
+  border: 1px solid #096E3E;
 }
 .Container input {
   margin: 0.5rem;
   width: 30px;
   height: 40px;
-  border: 2px solid #096E3E;
-  border-radius: 10px;
+  border: 1px solid #096E3E;
+  border-radius: 7px;
   text-align: center;
   font-weight: 600;
   font-size: 1.5em;
@@ -44,7 +45,7 @@ section {
   border-radius: 50%;
   text-align: center;
   position: relative;
-  top: -60px;
+  top: -95px;
 }
 .Container .logo .icon {
   position: relative;
@@ -104,23 +105,29 @@ section {
   width: 100%;
 }
 .button button {
-  cursor: pointer;
   width: 60%;
   background-color: #096F3E;
   outline: none;
-  border-color: white;
+  border: none;
   border-radius: 15px;
   color: white;
   font-weight: 500;
   font-size: 1em;
   padding: 0.7rem;
+  outline: none;
   margin-top: 2rem;
 }
 
+.disable {
+  background-color: #000000;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .error {
-  border-color: red;
   text-align: center;
-  color: red;
+  padding: 0px;
+  color: rgb(255, 0, 21);
   font-family: "Courier New", Courier, monospace;
 }
 

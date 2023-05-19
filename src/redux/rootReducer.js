@@ -11,6 +11,11 @@ import fetchProductReducer from "./reducer/product";
 import handleClickReducer from "./reducer/handleClick";
 import productUpdateReducer from "./reducer/update_product";
 import reviewsReducer from "./reviews/reviewsReducer";
+import counterReducer from "./reducer/counter";
+import addToCartReducer from "./reducer/addToCartReducer";
+import isOpenReducer from "./reducer/isOpenModel";
+import viewcartReducer from "./reducer/viewcartReducer";
+import relatedProductReducer from "./RelatedProducts/reducer";
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
@@ -25,6 +30,11 @@ const rootReducer = combineReducers({
 	users: usersReducer,
 	productUpdateState: productUpdateReducer,
 	reviews: reviewsReducer,
+	counter: counterReducer,
+	cart: addToCartReducer,
+	openModel: isOpenReducer,
+	viewCart: viewcartReducer,
+	relatedProductState: relatedProductReducer,
 });
 
 export default rootReducer;

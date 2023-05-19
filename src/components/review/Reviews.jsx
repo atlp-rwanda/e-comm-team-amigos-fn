@@ -99,6 +99,7 @@ export default function Reviews({ id }) {
 	);
 	const token = localStorage.getItem("token");
 	const user = JSON.parse(localStorage.getItem("user"));
+	console.log(user)
 
 	const [hoverRate, setHoverRate] = useState(0);
 	const [review, setReview] = useState("");
@@ -115,7 +116,7 @@ export default function Reviews({ id }) {
 	return (
 		<div className="reviews_container">
 			<h2 className="review__header">REVIEWS</h2>
-			{!gettingReviews && user && !userReviewed && (
+			{!gettingReviews && user && user.userRoles.includes("Customer") && !userReviewed && (
 				<div className="review">
 					<h3>Give Your Review</h3>
 					<div className="review__rating">

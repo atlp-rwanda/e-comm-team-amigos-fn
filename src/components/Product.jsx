@@ -8,11 +8,20 @@ import Circle3 from "../assets/img/Circle (3).png";
 import Circle4 from "../assets/img/Circle (4).png";
 import Circle from "../assets/img/Circle.png";
 import Loader from "./Loader/Loader.jsx";
-import Reviews from "./review/Reviews";
+import ProductCard from "./RelatedItems/productCard.jsx";
+import RelatedProduct from "./RelatedItems/RelatedProducts.jsx";
+import Footer from "./Footer/index.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRelatedProducts } from "../redux/RelatedProducts/actions";
+import Reviews from './review/Reviews.jsx'
 const ProductDetails = () => {
+	const relatedProducts = useSelector((state) => state.relatedProductState);
+	const dispatch = useDispatch();
 	const { id } = useParams();
 	const [product, setProduct] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [related, setRelated] = useState([]);
+	const [category, setCategory] = useState("");
 	const [value, setValue] = useState(0);
 	const [selectedImage, setSelectedImage] = useState("");
 	const increaseValue = () => {
@@ -24,6 +33,12 @@ const ProductDetails = () => {
 	const handleSelectedImage = (image) => {
 		setSelectedImage(image);
 	};
+	const imageUrls = [
+		"https://via.placeholder.com/400",
+		"https://via.placeholder.com/400",
+		"https://via.placeholder.com/400",
+		"https://via.placeholder.com/400",
+	];
 
 	useEffect(() => {
 		const getProduct = async () => {
@@ -36,11 +51,15 @@ const ProductDetails = () => {
 			const data = await response.json();
 			setLoading(false);
 			setProduct(data.item);
-			setSelectedImage(data.item.images[0]);
+			setCategory(data.item.category);
+			setSelectedImage(data.item.images[0] || null);
 		};
 		getProduct();
 	}, []);
 
+	useEffect(() => {
+		if (category) dispatch(fetchRelatedProducts(category));
+	}, [dispatch, category]);
 	return (
 		<>
 			{loading ? (
@@ -53,63 +72,60 @@ const ProductDetails = () => {
 								<img src={selectedImage} alt="image" />
 							</div>
 							<div className="image-to-choose">
-								{product.images &&
-									product.images.length > 0 && (
-										<>
+								{product.images && product.images.length > 0 ? (
+									<>
+										{product.images
+											.slice(1, 4)
+											.map((image, index) => (
+												<div
+													className="image-card"
+													key={index}
+													onClick={() =>
+														handleSelectedImage(
+															image,
+														)
+													}
+												>
+													<img
+														src={image}
+														alt="Product Image"
+													/>
+												</div>
+											))}
+										<div
+											className="image-card"
+											onClick={() =>
+												handleSelectedImage(
+													product.images[0],
+												)
+											}
+										>
+											<img
+												src={product.images[0]}
+												alt="Product Image"
+											/>
+										</div>
+									</>
+								) : (
+									<>
+										{imageUrls.map((imageUrl, index) => {
 											<div
 												className="image-card"
+												key={index}
 												onClick={() =>
 													handleSelectedImage(
-														product.images[1],
+														imageUrl,
 													)
 												}
 											>
 												<img
-													src={product.images[1]}
-													alt="images"
+													src={imageUrl}
+													alt="Product Image"
 												/>
-											</div>
-											<div
-												className="image-card"
-												onClick={() =>
-													handleSelectedImage(
-														product.images[2],
-													)
-												}
-											>
-												<img
-													src={product.images[2]}
-													alt="images"
-												/>
-											</div>
-											<div
-												className="image-card"
-												onClick={() =>
-													handleSelectedImage(
-														product.images[3],
-													)
-												}
-											>
-												<img
-													src={product.images[3]}
-													alt="images"
-												/>
-											</div>
-											<div
-												className="image-card"
-												onClick={() =>
-													handleSelectedImage(
-														product.images[0],
-													)
-												}
-											>
-												<img
-													src={product.images[0]}
-													alt="images"
-												/>
-											</div>
-										</>
-									)}
+											</div>;
+										})}
+									</>
+								)}
 							</div>
 						</div>
 						<div className="description-container">
@@ -157,7 +173,7 @@ const ProductDetails = () => {
 									<span>+</span>
 								</div>
 								<p className="product-status">
-									only <span>12 Items</span> Left Don't Miss
+									only <span> 12 Items </span> Left Don't Miss
 									it
 								</p>
 							</div>
@@ -170,8 +186,31 @@ const ProductDetails = () => {
 						</div>
 					</div>
 					<Reviews id={id}/>
+					<RelatedProduct />
+					<div className="relatedItems">
+						{relatedProducts.relatedProducts.length > 0 ? (
+							relatedProducts.relatedProducts.map(
+								(product, index) => (
+									<ProductCard
+										key={index}
+										name={product.name}
+										price={product.price}
+										description={product.description}
+										image={
+											product.images.length > 0
+												? product.images[0]
+												: "https://via.placeholder.com/400"
+										}
+									/>
+								),
+							)
+						) : (
+							<Loader />
+						)}
+					</div>
 				</>
 			)}
+			<Footer />
 		</>
 	);
 };
