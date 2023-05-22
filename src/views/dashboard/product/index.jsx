@@ -1,25 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PrimaryBtn from "../../../components/Button/PrimaryButton.jsx";
 import ProductCard from "../../../components/product-card/index.jsx";
-// eslint-disable-next-line no-unused-vars
-import imagePlaceHolder from "../../../assets/img/placeholder-image.png";
-// eslint-disable-next-line no-unused-vars
-import Loader from "../../../components/Loader/index.jsx";
+import { ToastContainer } from "react-toastify";
+import { viewSingleProduct } from "../../../redux/actions/product.js";
 import * as Unicons from "@iconscout/react-unicons";
-import "./style.scss";
 import ProductLayout from "./product-layout";
 import CreateProduct from "../../create-product/CreateProduct.jsx";
 import UpdateProduct from "../../../components/UpdateProduct/UpdateProduct.jsx";
 import ViewSingleProduct from "./ViewSingleProduct.jsx";
-import { ToastContainer } from "react-toastify";
-import { viewSingleProduct } from "../../../redux/actions/product.js";
+import "./style.scss";
 
 const Product = () => {
-	// eslint-disable-next-line no-unused-vars
 	const { products, fetchProductStart, detailsProductId, updateProductId } =
 		useSelector((state) => state.fetchProductState);
-	// eslint-disable-next-line no-unused-vars
 	const [updateProduct, setUpdateProduct] = useState(false);
 	const dispatch = useDispatch();
 	const [createProduct, setCreateProduct] = useState(false);

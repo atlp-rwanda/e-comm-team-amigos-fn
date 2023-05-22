@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar, Navigation } from 'swiper';
 import 'swiper/swiper.min.css';
 import '../../assets/css/swiper.scrollbar.css';
-
 import SectionTitle from '../SectionHeader';
 import WeeklyCard from './WeeklyCard';
 import useWindowSize from '../../hooks/useWindowResize';
@@ -34,9 +33,11 @@ export default function WeeklyProducts() {
 		if (width <= 1336 && width >= 900) setMaxSlides(2);
 		if (width > 1336) setMaxSlides(3);
 	}, [width]);
+
 	return (
 		<Container>
 			<SectionTitle>Weekly popular products</SectionTitle>
+			<span>Buy Now</span>
 			<CardsContainer>
 				<Swiper
 					slidesPerView={maxSlides}

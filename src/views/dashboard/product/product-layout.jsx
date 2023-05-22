@@ -88,6 +88,35 @@ export default function ProductLayout() {
 
 	const handleDelete = async () => {};
 
+	const handleViewProduct = (productId) => {
+		dispatch(viewSingleProduct(productId));
+	};
+
+	const createProducts = (products) => {
+		return products?.map((product) =>
+			createData(
+				product,
+				<button
+					className="primary-button"
+					onClick={() => {
+						dispatch(updateProductAction(product.id));
+						console.log("clicked");
+					}}
+				>
+					Edit
+				</button>,
+				<button
+					className="primary-button"
+					style={{ backgroundColor: "#BB0D02" }}
+					onClick={() => handleOpenDeleteModal(product)}
+					data-testid="delete-btn-seller"
+				>
+					DELETE
+				</button>,
+				handleViewProduct,
+			),
+		);
+	};
 	useEffect(() => {
 		const handleViewProduct = (productId) => {
 			dispatch(viewSingleProduct(productId));
@@ -150,7 +179,6 @@ export default function ProductLayout() {
 								{rows?.map((row, index) => {
 									return (
 										<TableRow
-											// set the productId state on click
 											hover
 											role="checkbox"
 											tabIndex={-1}

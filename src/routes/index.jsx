@@ -20,6 +20,8 @@ import SearchPage from "../views/SearchPage.jsx";
 import ViewCart from "../views/addToCart/viewCart.jsx";
 import AddToCart from "../views/addToCart/addtoCart.jsx";
 import CheckoutPage from "../views/CheckoutPage.jsx";
+import CheckoutSuccessPage from "../views/payment/checkoutSuccessPage.jsx";
+import CancelPaymentPage from "../views/payment/checkoutCancel.jsx";
 
 const index = () => {
 	return (
@@ -29,6 +31,8 @@ const index = () => {
 				<Route exact path="/sign-up" element={<SignUp />} />
 				<Route exact path="/login" element={<LoginPage />} />
 				<Route exact path="/success" element={<SuccessPage />} />
+				<Route exact path="/checkout-success" element={<CheckoutSuccessPage />} />
+				<Route exact path="/checkout-cancel" element={<CancelPaymentPage />} />
 				<Route
 					exact
 					path="/user/verify_email/:token"

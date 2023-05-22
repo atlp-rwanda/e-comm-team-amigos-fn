@@ -17,6 +17,7 @@ import isOpenReducer from "./reducer/isOpenModel";
 import viewcartReducer from "./reducer/viewcartReducer";
 import relatedProductReducer from "./RelatedProducts/reducer";
 import profileReducer from "./profile/reducer";
+import paymentReducer from "./reducer/payment";
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
 	viewCart: viewcartReducer,
 	relatedProductState: relatedProductReducer,
 	profile: profileReducer,
+	payment: paymentReducer
 });
 
 export default rootReducer;

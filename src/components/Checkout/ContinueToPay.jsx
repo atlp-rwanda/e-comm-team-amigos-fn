@@ -3,6 +3,8 @@ import Box from "@mui/material/Box";
 import colors from "../../constants/colors";
 import Stepper from "./Stepper";
 import Button from "../Button";
+import { useSelector, useDispatch } from "react-redux";
+import { payment } from "../../redux/actions";
 
 const Container = styled(Box)(({ theme }) => ({
 	width: "400px",
@@ -44,6 +46,19 @@ const ActionContainer = styled(Box)(({ theme }) => ({
 }));
 
 export default function ContinueToPay() {
+	const dispatch = useDispatch();
+	const { viewsuccess } = useSelector((state) => state.viewCart);
+	const cartItems = viewsuccess ? viewsuccess?.cartItems : [];
+	const checkout = cartItems.slice(0, 2).map(item => {
+	const { id, name, price, quantity, images } = item;
+	return {
+		id,
+		name,
+		price,
+		quantity,
+		images: [images[0]]
+	};
+	});
 	return (
 		<Container data-testid="checkout-continue-to-pay">
 			<Stepper />
@@ -52,6 +67,7 @@ export default function ContinueToPay() {
 					label="Continue to Pay"
 					fontSize="21px"
 					color={colors.darkGreen}
+					onClick={()=>dispatch(payment(checkout))}
 				/>
 			</ActionContainer>
 		</Container>

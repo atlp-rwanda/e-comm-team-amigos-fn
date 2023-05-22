@@ -1,3 +1,5 @@
+import React from "react";
+
 function PrimaryBtn({ title, color, width, onClick }) {
 	return (
 		<button
