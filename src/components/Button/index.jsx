@@ -1,18 +1,19 @@
-import { styled } from '@mui/material/styles';
-import BaseButton from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import PropTypes from 'prop-types';
-import colors from '../../constants/colors';
+import { styled } from "@mui/material/styles";
+import BaseButton from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import PropTypes from "prop-types";
+import colors from "../../constants/colors";
 
+// eslint-disable-next-line no-unused-vars
 const Label = styled(Typography)(({ theme }) => ({
-	fontFamily: 'Poppins',
-	fontStyle: 'normal',
-	fontWeight: '500',
-	fontSize: '27px',
-	lineHeight: '40px',
-	display: 'flex',
-	alignItems: 'center',
-	textAlign: 'center',
+	fontFamily: "Poppins",
+	fontStyle: "normal",
+	fontWeight: "500",
+	fontSize: "27px",
+	lineHeight: "40px",
+	display: "flex",
+	alignItems: "center",
+	textAlign: "center",
 
 	color: colors.white,
 }));
@@ -28,39 +29,45 @@ function Button({
 	fontSize,
 	variant,
 	active,
-	labelVariant,
+	dataTestid,
+	onClick,
 	...props
 }) {
+	// eslint-disable-next-line no-unused-vars
 	const Button2 = styled(BaseButton)(({ theme }) => ({
-		':disabled': {
+		":disabled": {
 			background: colors.gray,
 		},
-		':hover': {
+		":hover": {
 			color: colors.white,
 			background: colors.darkGreen,
 		},
-		':active': {
+		":active": {
 			color: colors.white,
 			background: colors.darkGreen,
 		},
-		flexShrink: '0',
-		background: active ? colors.darkGreen : '',
+		flexShrink: "0",
+		background: background ? background : active ? colors.darkGreen : "",
 		borderRadius,
-		color: active ? colors.white : colors.darkGreen,
+		color: color ? color : active ? colors.white : colors.darkGreen,
 		width,
 		height,
-		textTransform: 'none',
+		textTransform: "none",
 		...props,
 	}));
 	return (
-		<Button2 type={type} variant={variant}>
+		<Button2
+			type={type}
+			data-testid={dataTestid}
+			variant={variant}
+			onClick={onClick}
+		>
 			<Label
 				sx={{
-					color: 'inherit',
+					color: "inherit",
 					fontSize,
-					labelVariant,
 					lineHeight: fontSize,
-					padding: '0',
+					padding: "0",
 				}}
 				component="p"
 			>
@@ -71,27 +78,30 @@ function Button({
 }
 
 Button.propTypes = {
-	borderRadius: PropTypes.oneOf(['50px', '80px', '10.16px', '0px']),
+	borderRadius: PropTypes.oneOf(["50px", "80px", "10.16px", "0px"]),
 	background: PropTypes.string,
 	label: PropTypes.string.isRequired,
-	type: PropTypes.oneOf(['a', 'button']),
+	type: PropTypes.oneOf(["a", "button", "submit"]),
 	color: PropTypes.string,
 	width: PropTypes.string,
 	height: PropTypes.string,
 	fontSize: PropTypes.string,
+	variant: PropTypes.string,
 	border: PropTypes.string,
 	active: PropTypes.bool,
+	dataTestid: PropTypes.string,
+	onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
-	borderRadius: '50px',
-	background: 'none',
-	type: 'button',
+	borderRadius: "50px",
+	background: "none",
+	type: "button",
 	color: colors.darkGreen,
-	variant: 'primary',
-	width: 'auto',
-	height: 'auto',
-	border: '1.01591px solid #C5C5C5',
+	variant: "primary",
+	width: "auto",
+	height: "auto",
+	border: "1.01591px solid #C5C5C5",
 	ative: false,
 };
 

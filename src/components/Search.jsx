@@ -60,7 +60,7 @@ const SearchedProduct = () => {
 	};
 
 	return (
-		<>
+		<div className="margin-to-header">
 			{loading ? (
 				<Loader />
 			) : products?.length != 0 ? (
@@ -110,7 +110,7 @@ const SearchedProduct = () => {
 			) : (
 				<h2 className="not-found">No product(s) found</h2>
 			)}
-		</>
+		</div>
 	);
 };
 

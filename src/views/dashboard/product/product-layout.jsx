@@ -75,7 +75,7 @@ export default function ProductLayout() {
 
 	useEffect(() => {
 		dispatch(fetchProduct(page));
-	}, [page]);
+	}, [dispatch, page]);
 
 	const [rows, setRows] = useState();
 	const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -86,42 +86,40 @@ export default function ProductLayout() {
 		setOpenDeleteModal(true);
 	};
 
-	const handleDelete = async (id) => {};
+	const handleDelete = async () => {};
 
-	const handleViewProduct = (productId) => {
-		dispatch(viewSingleProduct(productId));
-	};
-
-	const createProducts = (products) => {
-		return products?.map((product) =>
-			createData(
-				product,
-				<button
-					className="primary-button"
-					onClick={() => {
-						// setProductId(product.id);
-						// setUpdateProduct(true);
-						dispatch(updateProductAction(product.id));
-						console.log("clicked");
-					}}
-				>
-					Edit
-				</button>,
-				<button
-					className="primary-button"
-					style={{ backgroundColor: "#BB0D02" }}
-					onClick={() => handleOpenDeleteModal(product)}
-					data-testid="delete-btn-seller"
-				>
-					DELETE
-				</button>,
-				handleViewProduct,
-			),
-		);
-	};
 	useEffect(() => {
+		const handleViewProduct = (productId) => {
+			dispatch(viewSingleProduct(productId));
+		};
+		const createProducts = (products) => {
+			return products?.map((product) =>
+				createData(
+					product,
+					<button
+						className="primary-button"
+						onClick={() => {
+							// setProductId(product.id);
+							// setUpdateProduct(true);
+							dispatch(updateProductAction(product.id));
+						}}
+					>
+						Edit
+					</button>,
+					<button
+						className="primary-button"
+						style={{ backgroundColor: "#BB0D02" }}
+						onClick={() => handleOpenDeleteModal(product)}
+						data-testid="delete-btn-seller"
+					>
+						DELETE
+					</button>,
+					handleViewProduct,
+				),
+			);
+		};
 		setRows(createProducts(products?.product));
-	}, [products]);
+	}, [dispatch, products]);
 
 	return (
 		<ProductCard>
@@ -171,6 +169,7 @@ export default function ProductLayout() {
 															"number"
 															? column.format(
 																	value,
+																	// eslint-disable-next-line no-mixed-spaces-and-tabs
 															  )
 															: value}
 													</TableCell>

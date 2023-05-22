@@ -5,9 +5,21 @@
   margin: 0;
   box-sizing: border-box;
 }
-body{
+
+body {
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
+  position: relative;
+}
+
+.margin-to-header {
+  margin-top: 175px;
+}
+
+@media (max-width:1336px) {
+  .margin-to-header {
+    margin-top: 100px;
+  }
 }
 
 @media (min-width:1440px) {
@@ -17,12 +29,17 @@ body{
     margin-right: auto;
   }
 }
+
 @media (min-width:1440px) {
   body {
     width: 1440px;
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+#root {
+  position: relative;
 }
 
 .container {
@@ -34,34 +51,34 @@ body{
   background-color: #d9f6ec;
 }
 
-.primary-btn{
-padding: 12px 15.5769px;
-color: #fff;
-background: #096F3E;
-border-radius: 8px;
-cursor: pointer;
-outline: none;
-border: none;
-transition: .2s;
-font-size: 14px;
-letter-spacing: 2px;
+.primary-btn {
+  padding: 12px 15.5769px;
+  color: #fff;
+  background: #096F3E;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition: .2s;
+  font-size: 14px;
+  letter-spacing: 2px;
 }
 
-.primary-btn:hover{
+.primary-btn:hover {
   background-color: white;
-  color:#163C2A;
+  color: #163C2A;
   box-shadow: #163C2A 0px 0px 0px 3px;
 }
 
-.primary-btn:disabled{
+.primary-btn:disabled {
   opacity: .5;
   cursor: not-allowed;
 
 }
 
-.primary-btn:disabled:hover{
+.primary-btn:disabled:hover {
   background: #096F3E;
-  color:#fff;
+  color: #fff;
   box-shadow: none;
 }
 
@@ -69,38 +86,49 @@ letter-spacing: 2px;
   color: red;
 }
 
-.highlight{
-        color: #0a9d58;
-    font-size: 26px;
-    font-weight: 900;
-    }
+.highlight {
+  color: #0a9d58;
+  font-size: 26px;
+  font-weight: 900;
+}
 
-   .loading-spinner {
+.loading-spinner {
   border: 6px solid #f3f3f3;
   border-radius: 50%;
   border-top: 6px solid #0a9d58;
   width: 120px;
   height: 120px;
-  -webkit-animation: spin .8s ease-in-out infinite; /* Safari */
+  -webkit-animation: spin .8s ease-in-out infinite;
+  /* Safari */
   animation: spin .8s ease-in-out infinite;
 }
 
-.error{
-    display: block;
-    padding: 20px;
-    background-color: #F44336;
-    color: white;
-    text-align: center;
-    border-radius: 7px;
+.error {
+  display: block;
+  padding: 20px;
+  background-color: #F44336;
+  color: white;
+  text-align: center;
+  border-radius: 7px;
 }
 
 /* Safari */
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

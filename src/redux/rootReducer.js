@@ -16,6 +16,7 @@ import addToCartReducer from "./reducer/addToCartReducer";
 import isOpenReducer from "./reducer/isOpenModel";
 import viewcartReducer from "./reducer/viewcartReducer";
 import relatedProductReducer from "./RelatedProducts/reducer";
+import profileReducer from "./profile/reducer";
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
 	openModel: isOpenReducer,
 	viewCart: viewcartReducer,
 	relatedProductState: relatedProductReducer,
+	profile: profileReducer,
 });
 
 export default rootReducer;

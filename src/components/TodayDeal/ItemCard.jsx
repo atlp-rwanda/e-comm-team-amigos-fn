@@ -111,7 +111,7 @@ export function CircleLove() {
 }
 
 export function PriceContainer({ currency, amount }) {
-	const [integer, decimals] = amount.split(".");
+	const [integer, decimals] = amount.toString().split(".");
 	return (
 		<div>
 			<h5 className="item-card-price-container">

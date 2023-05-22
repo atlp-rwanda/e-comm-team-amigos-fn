@@ -13,6 +13,7 @@ const Model = () => {
 	const { viewsuccess } = useSelector((state) => state.viewCart);
 	const dispatch = useDispatch();
 	const cartItems = viewsuccess ? viewsuccess?.cartItems : [];
+	const goBack = () => navigate(-1);
 	return (
 		<>
 			<div className={Open ? "overlay" : "hidden"}>
@@ -23,7 +24,7 @@ const Model = () => {
 							className="btn-close"
 							onClick={() => {
 								dispatch(closeModel());
-								navigate("/");
+								goBack();
 							}}
 						>
 							x
@@ -93,8 +94,18 @@ const Model = () => {
 														<div className="item-quantity">
 															Qty: {item.quantity}
 														</div>
-														<button data-testid="update" className="item-button-update">UPDATE</button>
-														<button data-testid="delete" className="item-button-delete">REMOVE</button>
+														<button
+															data-testid="update"
+															className="item-button-update"
+														>
+															UPDATE
+														</button>
+														<button
+															data-testid="delete"
+															className="item-button-delete"
+														>
+															REMOVE
+														</button>
 													</div>
 												</div>
 												<div className="item-price">
@@ -109,7 +120,14 @@ const Model = () => {
 						</div>
 						<div className="colo-2">
 							<div className="btn-checkout button">
-								<button>Proceed to Checkout </button>
+								<button
+									onClick={() => {
+										dispatch(closeModel());
+										navigate("/checkout");
+									}}
+								>
+									Proceed to Checkout
+								</button>
 							</div>
 							<div className="order-body">
 								<h4> Your Recently Viewed Items</h4>

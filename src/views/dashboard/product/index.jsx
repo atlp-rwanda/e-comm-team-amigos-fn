@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PrimaryBtn from "../../../components/Button/PrimaryButton.jsx";
 import ProductCard from "../../../components/product-card/index.jsx";
