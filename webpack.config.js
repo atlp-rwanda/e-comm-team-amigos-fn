@@ -1,27 +1,27 @@
-const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const path = require("path");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
-	entry: './src/index.js',
+	entry: "./src/index.js",
 	output: {
-		path: path.join(__dirname, 'dist'),
-		filename: 'bundle.js',
-		publicPath: '/',
-		assetModuleFilename: 'assets/img/[hash][ext][query]',
+		path: path.join(__dirname, "dist"),
+		filename: "bundle.js",
+		publicPath: "/",
+		assetModuleFilename: "assets/img/[hash][ext][query]",
 	},
 	plugins: [
 		new HTMLWebpackPlugin({
-			template: './src/index.html',
-			favicon: './src/assets/img/logo.png',
+			template: "./src/index.html",
+			favicon: "./src/assets/img/logo.png",
 		}),
 		new MiniCssExtractPlugin(),
 		new CopyWebpackPlugin({
-			patterns: [{ from: './public/_redirects', to: '' }],
+			patterns: [{ from: "./public/_redirects", to: "" }],
 		}),
-		new Dotenv(),
+		new Dotenv({ systemvars: true }),
 	],
 	module: {
 		rules: [
@@ -30,24 +30,24 @@ module.exports = {
 
 				use: [
 					// Creates `style` nodes from JS strings
-					process.env.NODE_ENV !== 'production'
-						? 'style-loader'
+					process.env.NODE_ENV !== "production"
+						? "style-loader"
 						: MiniCssExtractPlugin.loader,
 					// Translates CSS into CommonJS
-					'css-loader',
+					"css-loader",
 					// Compiles Sass to CSS
-					'sass-loader',
+					"sass-loader",
 				],
 			},
 			{
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
 				use: {
-					loader: 'babel-loader',
+					loader: "babel-loader",
 					options: {
 						presets: [
-							['@babel/preset-env', { targets: 'defaults' }],
-							['@babel/preset-react', { runtime: 'automatic' }],
+							["@babel/preset-env", { targets: "defaults" }],
+							["@babel/preset-react", { runtime: "automatic" }],
 						],
 					},
 				},
@@ -55,12 +55,12 @@ module.exports = {
 			{
 				test: /\.(png|jpe?g|gif|svg)$/i,
 
-				type: 'asset',
+				type: "asset",
 			},
 		],
 	},
 	resolve: {
-		extensions: ['.js', '.jsx'],
+		extensions: [".js", ".jsx"],
 	},
 	devServer: {
 		hot: true,

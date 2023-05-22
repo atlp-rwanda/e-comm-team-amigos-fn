@@ -2,7 +2,7 @@ import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
 import SvgIcon from "@mui/material/SvgIcon";
 import colors from "../../constants/colors";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 const Search = styled("div")(({ theme }) => ({
 	position: "relative",
@@ -71,7 +71,6 @@ export default function SearchInput() {
 
 	const handleSearchSubmit = (e) => {
 		e.preventDefault();
-		console.log(searchValue);
 		navigate(`/products?query=${encodeURIComponent(searchValue.trim())}`);
 	};
 

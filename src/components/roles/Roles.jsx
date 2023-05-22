@@ -92,7 +92,7 @@ export default function Roles() {
 						onClick={handleOnClick}
 					>
 						{fetchingUser ? (
-							<div className="loading-spinner loading-spinner--sm"></div>
+							<div className="loading-spinner loading-spinner--md"></div>
 						) : (
 							"Search"
 						)}
@@ -109,7 +109,7 @@ export default function Roles() {
 					<>
 						<div className="user">
 							<h2 className="user__name">{user.name}</h2>
-							<p className="user__email">{user.enail}</p>
+							<p className="user__email">{user.email}</p>
 						</div>
 
 						<div className="set-roles">

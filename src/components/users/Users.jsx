@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getUsers } from '../../redux/users/action';
-import './users.style.scss';
-import './../../App.css';
-import nextIcon from '../../assets/svg/next.svg';
-import prevIcon from '../../assets/svg/prev.svg';
-import usersIcon from '../../assets/svg/account-group.svg';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers } from "../../redux/users/action";
+import "./users.style.scss";
+import "./../../App.css";
+import nextIcon from "../../assets/svg/next.svg";
+import prevIcon from "../../assets/svg/prev.svg";
+import usersIcon from "../../assets/svg/account-group.svg";
 
 const TableData = ({ children, ...otherProps }) => {
 	return <td {...otherProps}>{children}</td>;
@@ -60,15 +60,15 @@ const Pagination = ({ users, currPage, handleOnClick, totalPages }) => {
 
 function handleOnClick(e, dispatch, currPage) {
 	dispatch({
-		type: 'CHANGE_PAGE',
-		payload: e.target.id === 'prev' ? currPage - 1 : currPage + 1,
+		type: "CHANGE_PAGE",
+		payload: e.target.id === "prev" ? currPage - 1 : currPage + 1,
 	});
 }
 
 function generateRows(users) {
 	return users.map((user, i) => {
 		const userRoles = user.UserRoles.map((role) => role.Role.name).join(
-			', ',
+			", ",
 		);
 
 		const data = {
@@ -93,7 +93,7 @@ const Header = () => {
 const Table = ({ users }) => {
 	return (
 		<table className="users-table">
-			<TableHeader headers={['Name', 'Email', 'Roles']} />
+			<TableHeader headers={["Name", "Email", "Roles"]} />
 			<tbody>{users && generateRows(users)}</tbody>
 		</table>
 	);
@@ -107,7 +107,7 @@ export default function Users() {
 
 	useEffect(() => {
 		if (!users) dispatch(getUsers(currPage));
-	}, [dispatch, currPage]);
+	}, [dispatch, currPage, users]);
 
 	return (
 		<div className="users">

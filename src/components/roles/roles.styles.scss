@@ -25,6 +25,10 @@
         line-height: 48px;
 
         color: #666666;
+        @media(max-width:768px){
+            font-weight: 600;
+            line-height: 41px;
+        }
     }
 
     .roles-icon{
@@ -72,6 +76,9 @@
         align-items: center;
         }
     }
+    @media(max-width:768px){
+        width: 94%;
+    }
 }
 
  .form-input{
@@ -91,6 +98,11 @@
 
 .user-roles-search-box{
     position: relative;
+     @media(max-width:768px){
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
     
     h3{
         font-size: 20px;
@@ -99,6 +111,11 @@
     input{
         width: 100%;
         height: 100%;
+         @media(max-width:768px){
+          height: auto;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
     }
 
     button{
@@ -108,6 +125,11 @@
         width: fit-content;
         margin: 0;
         height: 100%;
+        @media(max-width:768px){
+            position: relative;
+             border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
     }
 
     button:hover{
@@ -120,7 +142,11 @@
 .user{
     h2{
         margin-bottom: -10px;
-        color: #096E3E
+        color: #096E3E;
+        @media(max-width:768px){
+            margin-bottom: 0;
+        }
+        
     }
 }
 
@@ -142,7 +168,7 @@
     align-items:center;
 
     .updateUserRoleContainer{
-        flex: 1;
+        flex: 2;
         button{
         width: 100%;
         margin-bottom: 10px;
@@ -150,6 +176,10 @@
     }
     .roles-of-user{
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
         }
     }
 

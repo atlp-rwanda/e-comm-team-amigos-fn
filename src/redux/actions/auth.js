@@ -19,20 +19,24 @@ export const login = (email, password) => {
 	return async (dispatch) => {
 		dispatch(action(LOGIN_START, true));
 		try {
-			const response = await fetch(`${
+			const response = await fetch(
+				`${
+					// eslint-disable-next-line no-undef
 					process.env.BASE_URL ||
 					"https://e-comm-team-amigos-bn-project.onrender.com"
-				}/user/login`, {
-				method: "POST",
-				headers: {
-					Accept: "application/json",
-					"Content-Type": "application/json",
+				}/user/login`,
+				{
+					method: "POST",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password,
+					}),
 				},
-				body: JSON.stringify({
-					email: email,
-					password: password,
-				}),
-			});
+			);
 			const result = await response.json();
 			localStorage.setItem("token", result.token);
 			localStorage.setItem("user", JSON.stringify(result.user));
@@ -85,7 +89,8 @@ const fetchData = async (
 
 export const passwordReset = (email) => {
 	return async (dispatch) => {
-		const url = "https://e-comm-team-amigos-bn-project.onrender.com/user/forgotPassword/";
+		const url =
+			"https://e-comm-team-amigos-bn-project.onrender.com/user/forgotPassword/";
 		const method = "POST";
 		const body = { email };
 		const successAction = SENDING_EMAIL_SUCCESS;
