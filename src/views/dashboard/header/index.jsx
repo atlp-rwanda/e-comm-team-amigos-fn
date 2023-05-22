@@ -57,8 +57,6 @@ function HeaderNav({socket}) {
           });
     };
 
-  console.log(socket);
-
 	const [user, setUser] = useState({});
 	useEffect(() => {
 		const fetchProfile = async () => {

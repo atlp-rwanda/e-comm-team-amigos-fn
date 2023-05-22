@@ -162,13 +162,15 @@ input[type=number]::-webkit-outer-spin-button {
 .product-status {
   margin-left: 12px;
   font-weight: lighter;
-  font-size: 16px;
-  width: 180px;
+  font-size: 20px;
+  width: 300px;
   color: #848181;
 }
 
 .product-status span {
   color: #ECB238;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .button {
@@ -186,7 +188,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: none;
   font-size: 16px;
   font-weight: 600;
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
 .btn-buy-now:hover {
@@ -205,9 +207,16 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 26px;
   cursor: pointer;
   border: 1px solid #163C2A;
+  margin-right: 5px;
 }
 
 .btn-add-to-cart:hover {
+  background-color: #246c4a;
+  color: #FFFFFF;
+  transition: 0.5s ease-in-out;
+}
+
+.btn-add-to-cart:wishlist {
   background-color: #246c4a;
   color: #FFFFFF;
   transition: 0.5s ease-in-out;
@@ -294,4 +303,10 @@ input[type=number]::-webkit-outer-spin-button {
     width: 150px;
     font-size: 14px;
   }
+}
+.relatedItems {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 30px;
 }/*# sourceMappingURL=Product.css.map */

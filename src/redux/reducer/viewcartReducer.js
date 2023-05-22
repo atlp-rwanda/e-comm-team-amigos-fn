@@ -1,17 +1,30 @@
 import {
 	VIEW_CART_SUCCESS,
 	VIEW_CART_ERROR,
-    VIEW_CART_START,
+	VIEW_CART_START,
+	REMOVE_ONE_ITEM_CART,
+	REMOVE_ONE_ITEM_CART_SUCCESS,
 } from "../types";
 
+function removeCartItem(id, cartItems) {
+	const newCartItems = cartItems.filter((item) => item.id !== id);
+	return newCartItems;
+}
 const initialState = {
 	viewsuccess: "",
 	viewerror: "",
 	viewstart: false,
+	removeitemcartsuccess: "",
+	removeitemcartstart: false,
 };
 
-const viewcartReducer = (state = initialState, {type, payload }) => {
-    switch (type) {
+const viewcartReducer = (state = initialState, { type, payload }) => {
+	switch (type) {
+		case VIEW_CART_START:
+			return {
+				...state,
+				viewstart: payload,
+			};
 		case VIEW_CART_SUCCESS:
 			return {
 				...state,
@@ -22,13 +35,25 @@ const viewcartReducer = (state = initialState, {type, payload }) => {
 				...state,
 				viewerror: payload,
 			};
-		case VIEW_CART_START:
+		case REMOVE_ONE_ITEM_CART_SUCCESS:
 			return {
 				...state,
-				viewstart: payload,
+				viewsuccess: {
+					...state.viewsuccess,
+					cartItems: removeCartItem(
+						payload,
+						state.viewsuccess.cartItems,
+					),
+				},
+				removeitemcartsuccess: payload,
 			};
-			default:
-				return state; 
-		}
+		case REMOVE_ONE_ITEM_CART:
+			return {
+				...state,
+				removeitemcartstart: payload,
+			};
+		default:
+			return state;
+	}
 };
 export default viewcartReducer;

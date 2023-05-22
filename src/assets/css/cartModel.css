@@ -1,34 +1,71 @@
-.overlay {
+.Overlay {
   width: 100%;
   height: 100vh;
   position: fixed;
   overflow-y: auto;
   opacity: 1;
-  z-index: 1000;
+  z-index: 9999;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(61, 55, 55, 0.486);
+  background-color: rgba(0, 0, 0, 0.6);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-.overlay::-webkit-scrollbar {
+.Overlay::-webkit-scrollbar {
   display: none;
+}
+@media (max-width: 1200px) {
+  .Overlay {
+    opacity: 1;
+    z-index: 9999;
+  }
 }
 
 .model-container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   background: #ffffff;
-  width: 100%;
+  overflow: scroll;
+  width: 70%;
+  margin: 0 0 0 auto;
+  animation: slide-left 1s ease-out;
+  -ms-overflow-style: none;
+}
+.model-container::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 1200px) {
+  .model-container {
+    margin: 0 0 0 auto;
+    width: 80%;
+  }
+}
+@media (max-width: 1100px) {
+  .model-container {
+    margin: 0 0 0 auto;
+    width: 85%;
+  }
+}
+@media (max-width: 900px) {
+  .model-container {
+    margin: 0 0 0 auto;
+    width: 90%;
+  }
+}
+@media (max-width: 800px) {
+  .model-container {
+    margin: 0;
+    width: 100%;
+  }
 }
 .model-container .navBar {
   width: 90%;
   display: flex;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
   padding: 0.5rem;
   align-items: center;
   justify-content: space-between;
@@ -42,11 +79,58 @@
   border: none;
   font-size: 1.5em;
 }
-.model-container .cleanupcart {
-  width: 20%;
-  text-align: right;
+.model-container .navBar .model-title {
+  margin: 0;
 }
-.model-container .cleanupcart button {
+.model-container .model-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  flex-direction: column;
+  margin: 0 auto;
+}
+@media (max-width: 900px) {
+  .model-container .model-body {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+.model-container .model-body .colo-1 {
+  border: 1px solid rgba(128, 128, 128, 0.527);
+  border-radius: 10px;
+}
+.model-container .model-body .colo-1 {
+  width: 90%;
+}
+@media (max-width: 900px) {
+  .model-container .model-body .colo-1 {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+.model-container .model-body .colo-2 {
+  width: 60%;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.model-container .model-body .colo-2 .btn-checkout {
+  width: 60%;
+  margin-left: 0;
+}
+.model-container .model-body .colo-2 .btn-checkout button {
+  margin: 1rem;
+  background-color: #163C2A;
+}
+.model-container .model-body .colo-2 .cleanupcart {
+  width: 40%;
+  text-align: center;
+}
+.model-container .model-body .colo-2 .cleanupcart button {
   background-color: rgb(192, 0, 6);
   padding: 0.7rem 1.5rem;
   font-size: 0.85em;
@@ -56,56 +140,9 @@
   border-radius: 10px;
 }
 @media (max-width: 900px) {
-  .model-container .cleanupcart {
-    margin: 0rem auto;
-    width: 90%;
-  }
-}
-.model-container .model-body {
-  width: 100%;
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 3rem;
-  flex-direction: row;
-  margin: 1.5rem auto;
-}
-@media (max-width: 900px) {
-  .model-container .model-body {
-    margin: 1.5rem auto;
-    width: 100%;
-  }
-}
-.model-container .model-body .colo-1, .model-container .model-body .colo-2 {
-  border: 1px solid rgba(128, 128, 128, 0.527);
-  border-radius: 10px;
-}
-.model-container .model-body .colo-1 {
-  width: 60%;
-}
-@media (max-width: 900px) {
-  .model-container .model-body .colo-1 {
-    width: 95%;
-    margin: 0 auto;
-  }
-}
-.model-container .model-body .colo-2 {
-  width: 30%;
-}
-.model-container .model-body .colo-2 .btn-checkout {
-  width: 100%;
-  margin-left: 0;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.527);
-}
-.model-container .model-body .colo-2 .btn-checkout button {
-  margin: 1rem;
-  background-color: #163C2A;
-}
-@media (max-width: 900px) {
   .model-container .model-body .colo-2 {
     width: 95%;
-    margin: 0 auto;
+    margin: 0 auto 2rem auto;
   }
 }
 .model-container .order-title {
@@ -145,6 +182,11 @@
 .model-container .item-Image {
   width: 100%;
 }
+@media (max-width: 600px) {
+  .model-container .item-Image {
+    width: 60%;
+  }
+}
 .model-container .item-Image img {
   max-width: 100%;
   max-height: 100%;
@@ -160,9 +202,31 @@
   display: flex;
   align-items: center;
 }
+@media (max-width: 600px) {
+  .model-container .item-body {
+    display: none;
+  }
+}
+.model-container .item-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1em;
+}
+@media (max-width: 800px) {
+  .model-container .item-price-small {
+    display: inline;
+  }
+}
 .model-container .item-price {
   font-weight: 700;
   font-size: 1em;
+}
+@media (max-width: 800px) {
+  .model-container .item-price {
+    display: none;
+  }
 }
 .model-container .InStock {
   color: #08AC0A;
@@ -170,19 +234,27 @@
 .model-container .OutStock {
   color: red;
 }
-.model-container .item-quantity {
-  background-color: rgb(241, 236, 236);
-  font-weight: 700;
-  font-size: 0.85em;
-  padding: 0.2rem 1.5rem;
-  border: 1px solid rgb(197, 197, 197);
-  border-radius: 10px;
-}
 .model-container .item-button {
   display: flex;
   align-items: center;
   margin-top: 5px;
-  gap: 3rem;
+  gap: 1rem;
+}
+.model-container .updateRemoveBtn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.model-container .item-quantity {
+  background-color: rgb(241, 236, 236);
+  font-weight: 700;
+  font-size: 0.85em;
+  text-align: center;
+  padding: 0.2rem 1.1rem;
+  border: 1px solid rgb(197, 197, 197);
+  border-radius: 10px;
 }
 .model-container .item-button-update {
   padding: 0.3rem 1.5rem;
@@ -203,6 +275,14 @@
   border-radius: 10px;
 }
 
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
 .hidden {
   display: none;
 }/*# sourceMappingURL=cartModel.css.map */

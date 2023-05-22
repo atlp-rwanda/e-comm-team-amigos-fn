@@ -1,14 +1,30 @@
 .dashboard-container {
   display: flex;
   background-color: #fff;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+@media (min-width: 1440px) {
+  .dashboard-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .main-layout {
   display: flex;
   flex-direction: column;
   background: #FAF9FF;
-  width: 100%;
+  width: 80%;
+  margin-left: 20%;
   height: 100vh;
+}
+@media (max-width: 768px) {
+  .main-layout {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
 /* For mobile phones: */

@@ -5,7 +5,8 @@ h2 {
 }
 
 .related-image-container {
-    width: 382px;
+    cursor: pointer;
+    width: 360px;
     aspect-ratio: 16/9;
     margin: 20px 40px;
     display: flex;
@@ -44,6 +45,7 @@ h2 {
 .points {
     font-size: 12px;
 }
+
 .related-desc {
     font-family: 'Poppins';
     font-style: normal;
@@ -63,6 +65,11 @@ h2 {
     background-color: #FFFFFF;
     color: #000000;
     border: 0.3px solid gray;
+}
+
+.related-button:hover {
+    background-color: darkgreen;
+    color: white;
 }
 
 .relatedItems {

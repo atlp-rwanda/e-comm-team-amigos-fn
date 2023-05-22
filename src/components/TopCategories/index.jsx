@@ -59,8 +59,6 @@ export default function TopCategories() {
 	useEffect(() => {
 		dispatch(fetchCategory());
 	}, []);
-
-	console.log(homeData);
 	return (
 		<Section>
 			<SectionHeader>Show Our Top Categories</SectionHeader>

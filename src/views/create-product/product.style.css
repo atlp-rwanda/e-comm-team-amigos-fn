@@ -86,7 +86,6 @@
 @media only screen and (max-width: 768px) {
   .product-container {
     flex-direction: column;
-    margin-top: 20rem;
   }
   .left {
     width: 100%;

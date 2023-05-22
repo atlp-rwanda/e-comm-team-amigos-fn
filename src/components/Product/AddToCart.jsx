@@ -18,8 +18,8 @@ export default function Cart({ id }) {
 			);
 			const data = await response.json();
 			setLoading(false);
-			setProduct(data.item);
-			setSelectedImage(data.item.images[0]);
+			setProduct(data?.item);
+			setSelectedImage(data?.item?.images[0]);
 		};
 		getProduct();
 	}, []);

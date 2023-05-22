@@ -1,0 +1,11 @@
+.main-nav-dropdown-card {
+  right: 120% !important;
+}
+
+.avatar-main-header {
+  width: 35 !important;
+  height: 35 !important;
+  border-radius: 50%;
+  margin: 0 !important;
+  cursor: pointer;
+}/*# sourceMappingURL=header-menu.styles.css.map */

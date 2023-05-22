@@ -20,7 +20,6 @@ function getUserRole() {
 
 function AsideBar() {
 	const { isClicked } = useSelector((state) => state.handleClickState);
-	// console.log("Click state: ", isClicked);
 	const [active, setActive] = useState("Dashboard");
 	const displayClass = isClicked ? "d-sm-flex" : "";
 

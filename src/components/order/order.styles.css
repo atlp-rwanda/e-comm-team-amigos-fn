@@ -1,0 +1,88 @@
+.order-detail-page {
+  padding-top: 15%;
+  margin-bottom: 65px;
+}
+.order-detail-page button {
+  margin-top: 20px !important;
+  width: 100px !important;
+  margin: auto;
+  display: block;
+  padding: 7px 10px !important;
+  font-size: 14px !important;
+}
+.order-detail-page-container {
+  max-width: 380px;
+  width: 90%;
+  margin: auto;
+}
+.order-detail-page .order-detail {
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-bottom: 3px solid #08AC0A;
+  border-top: 3px solid #08AC0A;
+}
+.order-detail-page .order-detail__status-value {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  box-sizing: border-box;
+  border-radius: 29px;
+  color: #FF8B20;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  font-weight: 600;
+}
+.order-detail-page .order-detail__products {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 25px;
+}
+.order-detail-page .order-detail__total-cost {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-detail-page .order-detail__total-cost span {
+  font-weight: 18px;
+  font-weight: 600;
+}
+.order-detail-page .order-detail__header, .order-detail-page .order-detail__footer {
+  padding: 16px 25px;
+}
+.order-detail-page .order-detail__header, .order-detail-page .order-detail__footer {
+  display: flex;
+  justify-content: space-between;
+}
+.order-detail-page .order-detail__footer {
+  border-top: 1px solid #ccc;
+}
+.order-detail-page .order-detail__header {
+  border-bottom: 1px solid #ccc;
+}
+.order-detail-page .order-detail__body {
+  background-color: #f4f4f4;
+  color: #666;
+  padding: 25px 25px;
+}
+.order-detail-page .order-detail__body-header {
+  margin-bottom: 20px;
+}
+.order-detail-page .order-detail__product {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+.order-detail-page .order-detail__product-quantity {
+  justify-self: center;
+}
+.order-detail-page .order-detail__product-price {
+  justify-self: end;
+}
+
+.orders-loadining-spinner {
+  margin: 220px auto 50px auto !important;
+}/*# sourceMappingURL=order.styles.css.map */

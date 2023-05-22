@@ -39,16 +39,17 @@ button {
 
 .col-1 {
   display: flex;
-  height: 81vh;
+  height: 80vh;
+  width: 100%;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: rgba(128, 128, 128, 0.1098039216);
+  background-color: rgba(0, 0, 0, 0.0352941176);
   border-radius: 20px;
 }
 .col-1 img {
-  max-width: 100%;
-  max-height: 100%;
+  width: auto;
+  height: 100%;
   display: block;
   margin: auto;
   border-radius: 10px;
@@ -64,6 +65,9 @@ button {
 .col-2 .row-1 .title {
   font-size: 1.5em;
   margin-bottom: 2rem;
+}
+.col-2 .row-1 .price {
+  display: inline;
 }
 .col-2 .row-1 .description {
   color: #848181;
@@ -112,6 +116,11 @@ button {
 .col-2 .row-2 .color-5 {
   background-color: gray;
 }
+@media (max-width: 1000px) {
+  .col-2 .row-2 {
+    display: none;
+  }
+}
 .col-2 .row-3 {
   padding: 1rem 0;
   border-bottom: 2px solid rgba(128, 128, 128, 0.1098039216);
@@ -126,6 +135,7 @@ button {
 }
 .col-2 .row-3 .count .items-in-stock span {
   color: orange;
+  margin: 0 10px;
 }
 .col-2 .row-3 .AddMinusButton {
   display: flex;
@@ -174,7 +184,13 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  gap: 0.5rem;
+  justify-content: space-evenly;
+}
+@media (max-width: 1000px) {
+  .col-2 .row-3 .button {
+    flex-wrap: wrap;
+  }
 }
 .col-2 .row-3 .button .buynow {
   background-color: darkgreen;
@@ -184,6 +200,15 @@ button {
   width: 40%;
   outline: none;
   border: none;
+}
+.col-2 .row-3 .button .btn-add-to-wishlist {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 20px;
+  padding: 0.5rem;
+  width: 40%;
+  outline: none;
+  border: 2px solid rgb(39, 37, 37);
 }
 .col-2 .row-3 .button .addtocart {
   background-color: rgb(255, 255, 255);
@@ -195,6 +220,12 @@ button {
   border: 2px solid rgb(39, 37, 37);
 }
 .col-2 .row-3 .button .addtocart:hover {
+  color: white;
+  background-color: darkgreen;
+  transition: 0.5s ease-in-out;
+  border: none;
+}
+.col-2 .row-3 .button .btn-add-to-wishlist:hover {
   color: white;
   background-color: darkgreen;
   transition: 0.5s ease-in-out;
@@ -212,7 +243,7 @@ button {
 .col-3 img {
   background-color: rgba(128, 128, 128, 0.1098039216);
   width: 100px;
-  border-radius: 10px;
+  border-radius: 0px;
   cursor: pointer;
   filter: grayscale(1);
 }
@@ -222,11 +253,12 @@ button {
   filter: grayscale(0);
 }
 .col-3 .imageCard {
-  width: 130px;
-  height: 115px;
-  background-color: rgba(128, 128, 128, 0.1098039216);
+  width: 124px;
+  height: 112px;
+  background-color: rgba(128, 128, 128, 0);
   display: flex;
-  border-radius: 10px;
+  border-radius: 0px;
+  border: 1px solid rgba(128, 128, 128, 0.219);
   align-items: center;
   justify-content: center;
 }/*# sourceMappingURL=addToCart.css.map */

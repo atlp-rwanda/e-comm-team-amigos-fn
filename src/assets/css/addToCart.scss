@@ -33,14 +33,16 @@ $breakpoint:768px;
 }
 .col-1{
     display: flex;
+    height:80vh;
+    width:100%;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: #8080801c;
+    background-color: #00000009;
     border-radius: 20px;
     img{
-        max-width: 100%;
-        max-height: 100%;
+        width: auto;
+        height: 100%;
         display: block;
         margin: auto;
         border-radius: 10px;
@@ -54,6 +56,9 @@ $breakpoint:768px;
         .title{
             font-size: 1.5em;
             margin-bottom: 2rem;
+        }
+        .price{
+            display: inline;
         }
         .description{
          color: #848181;
@@ -102,6 +107,10 @@ $breakpoint:768px;
         .color-5{
             background-color:gray;
         }
+        
+    @media (max-width: 1000px) {
+       display: none;
+    }
      }
      .row-3{
         padding: 1rem 0;
@@ -116,6 +125,7 @@ $breakpoint:768px;
             .items-in-stock{
                 span{
                     color:orange;
+                    margin: 0 10px;
                 }
             }
         }
@@ -169,6 +179,9 @@ $breakpoint:768px;
             align-items: center;
             gap: 0.5rem;
             justify-content:space-evenly;
+            @media (max-width: 1000px) {
+                flex-wrap: wrap;
+             }
             .buynow{
                 background-color:darkgreen;
                 color:white;
@@ -182,7 +195,7 @@ $breakpoint:768px;
                 background-color:rgb(255, 255, 255);
                 color:rgb(0, 0, 0);
                 border-radius: 20px;
-                padding: 0.7rem;
+                padding: 0.5rem;
                 width: 40%;
                 outline: none;
                 border: 2px solid rgb(39, 37, 37);
@@ -222,7 +235,7 @@ $breakpoint:768px;
     img {
         background-color: #8080801c;
         width: 100px;
-        border-radius: 10px;
+        border-radius: 0px;
         cursor: pointer;
         filter: grayscale(1);
     }
@@ -232,11 +245,12 @@ $breakpoint:768px;
         filter: grayscale(0);
     }
     .imageCard{
-        width: 130px;
-        height: 115px;
-        background-color: rgba(128, 128, 128, 0.1098039216);
+        width: 124px;
+        height: 112px;
+        background-color: rgba(128, 128, 128, 0);
         display: flex;
-        border-radius: 10px;
+        border-radius: 0px;
+        border: 1px solid rgba(128, 128, 128, 0.219) ;
         align-items:center;
         justify-content: center;
     }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Root from "../components/orders/Root.jsx";
 import ResetPassword from "../views/resetPassword/resetPassword/index.jsx";
@@ -20,7 +20,6 @@ import IsAuthorized from "../utils/auth/isAuthorized.js";
 import ProductDetailsPage from "../views/ProductDetailsPage.jsx";
 import SearchPage from "../views/SearchPage.jsx";
 import ViewCart from "../views/addToCart/viewCart.jsx";
-import AddToCart from "../views/addToCart/addtoCart.jsx";
 import CheckoutPage from "../views/CheckoutPage.jsx";
 import CheckoutSuccessPage from "../views/payment/checkoutSuccessPage.jsx";
 import CancelPaymentPage from "../views/payment/checkoutCancel.jsx";
@@ -29,24 +28,23 @@ import Chat from "../views/chat/Chat.jsx";
 import Orders from "../components/orders/Orders.jsx";
 import Order from "../components/order/Order.jsx";
 import CustomerProtected from "../utils/auth/CustomerProtected.js";
-import WishlistPage from '../views/wishlist/Wishlist.jsx';
-import { io } from 'socket.io-client';
+import WishlistPage from "../views/wishlist/Wishlist.jsx";
+import { io } from "socket.io-client";
 
 const index = () => {
 	const userId = JSON.parse(localStorage.getItem("user"))?.id;
 	const [socket, setSocket] = useState(null);
+	useEffect(() => {
+		setSocket(
+			io("https://e-comm-team-amigos-bn-project.onrender.com", {
+				transports: ["websocket"],
+			}),
+		);
+	}, []);
 
-	console.log("connected to socket " + socket?.id);
-
-	useEffect(()=>{
-		setSocket(io("https://e-comm-team-amigos-bn-project.onrender.com",{
-			transports: ["websocket"]
-		}));
-	},[]);
-
-	useEffect(()=>{
+	useEffect(() => {
 		socket?.emit("newUser", userId);
-	},[userId, socket]);
+	}, [userId, socket]);
 
 	return (
 		<Routes>
@@ -85,7 +83,7 @@ const index = () => {
 					path="/dashboard"
 					element={
 						<IsAuthorized>
-							<DashboardNav socket={socket}/>
+							<DashboardNav socket={socket} />
 						</IsAuthorized>
 					}
 				>
@@ -93,7 +91,7 @@ const index = () => {
 					<Route
 						exact
 						path="/dashboard/product"
-						element={<Product socket={socket}/>}
+						element={<Product socket={socket} />}
 					/>
 					<Route
 						exact
@@ -101,7 +99,11 @@ const index = () => {
 						element={<UpdatePasswordPage />}
 					/>
 					<Route path="users" element={<Users />} />
-					<Route exact path="roles" element={<Roles socket={socket}/>} />
+					<Route
+						exact
+						path="roles"
+						element={<Roles socket={socket} />}
+					/>
 				</Route>
 
 				<Route
@@ -137,7 +139,6 @@ const index = () => {
 				element={<ProductDetailsPage />}
 			></Route>
 			<Route exact path="/authentication" element={<Authentication />} />
-			<Route exact path="/cart" element={<AddToCart />} />
 			<Route
 				exact
 				path="/checkout"

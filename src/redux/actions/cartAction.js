@@ -8,22 +8,34 @@ import {
 	REMOVE_ONE_ITEM_CART,
 	REMOVE_ONE_ITEM_CART_ERROR,
 	REMOVE_ONE_ITEM_CART_SUCCESS,
-} from '../types';
+} from "../types";
 import {
 	UPDATE_TO_CART_ERROR,
 	UPDATE_TO_CART_START,
 	UPDATE_TO_CART_SUCCESS,
-} from '../types';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+} from "../types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const increment = () => {
 	return {
-		type: 'INCREMENT',
+		type: "INCREMENT",
 	};
 };
 export const decrement = () => {
 	return {
-		type: 'DECREMENT',
+		type: "DECREMENT",
+	};
+};
+export const defaultValue = () => {
+	return {
+		type: "NEUTRAL",
+	};
+};
+
+export const cartBadge = (items) => {
+	return {
+		type: "CARTITEMS",
+		payload: items,
 	};
 };
 
@@ -34,13 +46,13 @@ export const addToCart = (quantity, id) => {
 			payload: true,
 		});
 		try {
-			const token = localStorage.getItem('token');
+			const token = localStorage.getItem("token");
 			const response = await fetch(
-				'https://e-comm-team-amigos-bn-project.onrender.com/cart',
+				"https://e-comm-team-amigos-bn-project.onrender.com/cart",
 				{
-					method: 'POST',
+					method: "POST",
 					headers: {
-						'Content-Type': 'application/json',
+						"Content-Type": "application/json",
 						Authorization: `Bearer ${token}`,
 					},
 					body: JSON.stringify({
@@ -56,13 +68,12 @@ export const addToCart = (quantity, id) => {
 					type: ADD_TO_CART_SUCCESS,
 					payload: response.ok,
 				});
-
 				setTimeout(() => {
 					dispatch({
 						type: ADD_TO_CART_SUCCESS,
-						payload: '',
+						payload: "",
 					});
-				}, 3000);
+				}, 1000);
 				dispatch({
 					type: ADD_TO_CART_START,
 					payload: false,
@@ -75,9 +86,9 @@ export const addToCart = (quantity, id) => {
 				setTimeout(() => {
 					dispatch({
 						type: ADD_TO_CART_SUCCESS,
-						payload: '',
+						payload: "",
 					});
-				}, 3000);
+				}, 1000);
 				dispatch({
 					type: ADD_TO_CART_START,
 					payload: false,
@@ -90,9 +101,9 @@ export const addToCart = (quantity, id) => {
 				setTimeout(() => {
 					dispatch({
 						type: ADD_TO_CART_SUCCESS,
-						payload: '',
+						payload: "",
 					});
-				}, 3000);
+				}, 1000);
 				dispatch({
 					type: ADD_TO_CART_START,
 					payload: false,
@@ -112,13 +123,13 @@ export const clearCart = () => {
 			payload: true,
 		});
 		try {
-			const token = localStorage.getItem('token');
+			const token = localStorage.getItem("token");
 			const response = await fetch(
-				'https://e-comm-team-amigos-bn-project.onrender.com/cart/clean-up-cart',
+				"https://e-comm-team-amigos-bn-project.onrender.com/cart/clean-up-cart",
 				{
-					method: 'DELETE',
+					method: "DELETE",
 					headers: {
-						'Content-Type': 'application/json',
+						"Content-Type": "application/json",
 						Authorization: `Bearer ${token}`,
 					},
 				},
@@ -146,7 +157,6 @@ export const clearCart = () => {
 		}
 	};
 };
-
 export const removeItemCart = (productId) => {
 	return async (dispatch) => {
 		dispatch({
@@ -154,13 +164,13 @@ export const removeItemCart = (productId) => {
 			payload: true,
 		});
 		try {
-			const token = localStorage.getItem('token');
+			const token = localStorage.getItem("token");
 			const response = await fetch(
 				`https://e-comm-team-amigos-bn-project.onrender.com/cart/delete-cart/${productId}`,
 				{
-					method: 'DELETE',
+					method: "DELETE",
 					headers: {
-						'Content-Type': 'application/json',
+						"Content-Type": "application/json",
 						Authorization: `Bearer ${token}`,
 					},
 				},
@@ -172,7 +182,7 @@ export const removeItemCart = (productId) => {
 			setTimeout(() => {
 				dispatch({
 					type: REMOVE_ONE_ITEM_CART_SUCCESS,
-					payload: '',
+					payload: "",
 				});
 			}, 3000);
 			dispatch({
@@ -198,14 +208,13 @@ export const updateCart = (quantity, id) => {
 			payload: true,
 		});
 		try {
-			console.log('You want to update something');
-			const token = localStorage.getItem('token');
+			const token = localStorage.getItem("token");
 			const response = await fetch(
 				`https://e-comm-team-amigos-bn-project.onrender.com/cart/updateCart/${id}`,
 				{
-					method: 'PUT',
+					method: "PUT",
 					headers: {
-						'Content-type': 'application/json',
+						"Content-type": "application/json",
 						Authorization: `Bearer ${token}`,
 					},
 					body: JSON.stringify({

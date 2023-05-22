@@ -114,59 +114,67 @@ export default function Reviews({ id }) {
 	return (
 		<div className="reviews_container">
 			<h2 className="review__header">REVIEWS</h2>
-			{!gettingReviews && user && user.userRoles.includes("Customer") && !userReviewed && (
-				<div className="review">
-					<h3>Give Your Review</h3>
-					<div className="review__rating">
-						<span>Your Rating</span>
-						<div className="rating-stars">
-							{rates.map((value) => (
-								<Star
-									hoverRate={hoverRate}
-									rate={rate}
-									value={value}
-									setHoverRate={setHoverRate}
-									setRate={setRate}
-								/>
-							))}
+			{!gettingReviews &&
+				user &&
+				user.userRoles.includes("Customer") &&
+				!userReviewed && (
+					<div className="review">
+						<h3>Give Your Review</h3>
+						<div className="review__rating">
+							<span>Your Rating</span>
+							<div className="rating-stars">
+								{rates.map((value) => (
+									<Star
+										hoverRate={hoverRate}
+										rate={rate}
+										value={value}
+										setHoverRate={setHoverRate}
+										setRate={setRate}
+									/>
+								))}
+							</div>
 						</div>
+						<form
+							className="review__form"
+							onSubmit={(e) =>
+								handleOnSubmit(
+									e,
+									rate,
+									review,
+									id,
+									token,
+									user,
+									dispatch,
+								)
+							}
+						>
+							<div className="input-group">
+								<label
+									htmlFor="review"
+									className="review__label"
+								>
+									Your Review
+								</label>
+								<textarea
+									id="review"
+									cols="30"
+									rows="10"
+									value={review}
+									minLength={10}
+									maxLength={100}
+									onChange={(e) =>
+										handleOnChange(e, setReview)
+									}
+								></textarea>
+							</div>
+							<Button type="submit" disabled={reviewing && true}>
+								{reviewing === true
+									? "Processing..."
+									: "Submit Review"}
+							</Button>
+						</form>
 					</div>
-					<form
-						className="review__form"
-						onSubmit={(e) =>
-							handleOnSubmit(
-								e,
-								rate,
-								review,
-								id,
-								token,
-								user,
-								dispatch,
-							)
-						}
-					>
-						<div className="input-group">
-							<label htmlFor="review" className="review__label">
-								Your Review
-							</label>
-							<textarea
-								id="review"
-								cols="30"
-								rows="10"
-								value={review}
-								minLength={10}
-								maxLength={100}
-								onChange={(e) => handleOnChange(e, setReview)}
-							></textarea>
-						</div>
-						<Button type="submit" disabled={reviewing && true}>
-							{reviewing === true
-								? "Processing..."
-								: "Submit Review"}
-						</Button>
-					</form>
-				</div>
-			)}
+				)}
 
 			{!gettingReviews && reviews && (
 				<GenerateReviews reviews={reviews} />

@@ -26,6 +26,7 @@ import clearCartReducer from "./reducer/clearCartReducer";
 import viewcartReducer from "./reducer/viewcartReducer";
 import UpdateCartReducer from "./reducer/updateCartReducer";
 import notificationReducer from "./reducer/notification";
+import cartItems from "./reducer/cartItems";
 
 import chatReducer from "./chat/chatReducer";
 const rootReducer = combineReducers({
@@ -42,6 +43,7 @@ const rootReducer = combineReducers({
 	productUpdateState: productUpdateReducer,
 	reviews: reviewsReducer,
 	counter: counterReducer,
+	items:cartItems,
 	cart: addToCartReducer,
 	openModel: isOpenReducer,
 	viewCart: viewcartReducer,
@@ -55,7 +57,6 @@ const rootReducer = combineReducers({
 	chatState: chatReducer,
 	clearCart: clearCartReducer,
 	updateCartState: UpdateCartReducer,
-	updatePasswordState: UpdatePasswordReducer,
 	orders: ordersReducers,
 
 	notification: notificationReducer,

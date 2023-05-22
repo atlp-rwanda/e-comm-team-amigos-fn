@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box/Box";
 import PropTypes from "prop-types";
 import { Link as RouterLink } from "react-router-dom";
@@ -15,13 +15,16 @@ import useWindowSize from "../../hooks/useWindowResize";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Model from "../Models/cartModel.jsx";
 import { openModel } from "../../redux/actions/cartOpenModel";
-import { useNavigate } from "react-router-dom";
 import wishlistIcon from "../../assets/img/wishlistIconn.png";
 import "../../components/Header/wishlistIcon.style.scss";
 import { PopupMenu } from "react-simple-widgets";
+import "../../views/dashboard/header/style.scss";
+import "./header-menu.styles.scss";
+import { cartBadge } from "../../redux/actions/cartAction";
 const MenuContainer = styled(Box)(({ theme }) => ({
 	zIndex: "40",
 	position: "fixed",
@@ -117,11 +120,23 @@ const HeaderAccount = styled(Box)(({ theme }) => ({
 }));
 
 export default function HeaderMain() {
-	const { width } = useWindowSize();
 	const [menuOpen, setMenuOpen] = React.useState(false);
+	const { width } = useWindowSize();
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const user = JSON.parse(localStorage.getItem("user"));
+	const { viewsuccess } = useSelector((state) => state.viewCart);
+	useEffect(() => {
+		dispatch(cartBadge(viewsuccess?.cartItems?.length));
+	}, [dispatch, viewsuccess?.cartItems?.length]);
+	const cartItems = useSelector((state) => state.items);
+	const handleOpenModel = () => {
+		return user !== null ? dispatch(openModel()) : navigate("/login");
+	};
 	const handleMenuClick = () => {
 		setMenuOpen(!menuOpen);
 	};
+
 	const contentContainer = {
 		width: width >= 1336 ? "1331px" : "100%",
 		height: "52.34px",
@@ -129,7 +144,7 @@ export default function HeaderMain() {
 		gridTemplateColumns: "253px 1078.25px",
 	};
 	const NavDropDown = styled(Box)(({ theme }) => ({
-		width: "100%",
+		width: "95%",
 		[theme.breakpoints.down("lg")]: {
 			width: "50%",
 			display: menuOpen ? "block" : "none",
@@ -153,17 +168,6 @@ export default function HeaderMain() {
 			position: "relative",
 		},
 	}));
-	const dispatch = useDispatch();
-	const user = JSON.parse(localStorage.getItem("user"));
-	const navigate = useNavigate();
-
-	const handleRedirectToWishlist = () => {
-		<NavLink
-			component={RouterLink}
-			to="/user/wishlist"
-			underline="none"
-		></NavLink>;
-	};
 	return (
 		<ContainerFluid>
 			<Box sx={contentContainer}>
@@ -192,25 +196,23 @@ export default function HeaderMain() {
 							Delivery
 						</NavLink>
 					</NavContainer>
+
 					<SearchInputContainer>
 						<SearchInput />
 					</SearchInputContainer>
-					<Model />
 					<HeaderAccount>
 						<NavLink
 							component={RouterLink}
-							to="/user/ViewCart"
 							underline="none"
+							onClick={handleOpenModel}
 						>
-							<Box
-								onClick={() => dispatch(openModel())}
-								component="div"
-								sx={cartAccount}
-							>
+							<Box component="div" sx={cartAccount}>
 								<Badge
 									color="primary"
-									badgeContent={0}
-									sx={{ marginLeft: "0px" }}
+									badgeContent={
+										user ? (cartItems ? cartItems : 0) : 0
+									}
+									sx={{ marginRight: "10px" }}
 								>
 									<CartIcon sx={{ fill: "none" }} />
 								</Badge>
@@ -236,33 +238,38 @@ export default function HeaderMain() {
 							</Box>
 						</NavLink>
 						{(!user && (
-							<Box component="div" sx={userAccount }>
-							<UserIcon sx={{ fill: "none",marginRight:"0px"  }} />
-							{!user && (
-								<PopupMenu>
-								<button className="dropDownMenu">
-									<Unicons.UilAngleDown
-										size="20"
-										color="#848181"
-									/>
-								</button>
-								<div className="dropDownCard" style={{ marginRight: "70px" }}>
-									<div className="menu-list">
-										<RouterLink
-											to='/login'
-											className="menu-title"
+							<Box component="div" sx={userAccount}>
+								<UserIcon
+									sx={{ fill: "none", marginRight: "0px" }}
+								/>
+								{!user && (
+									<PopupMenu>
+										<button className="dropDownMenu">
+											<Unicons.UilAngleDown
+												size="20"
+												color="#848181"
+											/>
+										</button>
+										<div
+											className="dropDownCard"
+											style={{ marginRight: "70px" }}
 										>
-											Login
-										</RouterLink>
-										<Unicons.UilAngleRight
-											size="20"
-											color="#848181"
-										/>
-									</div>
-								</div>
-							</PopupMenu>
-						)}
-						</Box>
+											<div className="menu-list">
+												<RouterLink
+													to="/login"
+													className="menu-title"
+												>
+													Login
+												</RouterLink>
+												<Unicons.UilAngleRight
+													size="20"
+													color="#848181"
+												/>
+											</div>
+										</div>
+									</PopupMenu>
+								)}
+							</Box>
 						)) || (
 							<PopupMenu>
 								<button className="dropDownMenu">
@@ -304,6 +311,7 @@ export default function HeaderMain() {
 					{menuOpen ? <CloseIcon /> : <MenuIcon />}
 				</IconButton>
 			</MenuContainer>
+			<Model />
 		</ContainerFluid>
 	);
 }
@@ -397,13 +405,13 @@ const userAccount = {
 	alignItems: "center",
 };
 const accountLabel = {
-	fontFamily: 'Poppins',
-	fontStyle: 'normal',
-	fontWeight: '500',
-	fontSize: '17.4966px',
-	lineHeight: '26px',
+	fontFamily: "Poppins",
+	fontStyle: "normal",
+	fontWeight: "500",
+	fontSize: "17.4966px",
+	lineHeight: "26px",
 	color: colors.darkGreen,
-	marginRight:"200px"
+	marginRight: "200px",
 };
 
 const cartAccount = {
