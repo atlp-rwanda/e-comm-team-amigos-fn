@@ -18,6 +18,9 @@ function PrimaryBtn({ title, color, width, onClick }) {
 			{title}
 		</button>
 	);
+
 }
 
 export default PrimaryBtn;
+
+

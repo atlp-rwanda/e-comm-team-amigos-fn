@@ -18,6 +18,7 @@ import IsAuthorized from "../utils/auth/isAuthorized.js";
 import ProductDetailsPage from "../views/ProductDetailsPage.jsx";
 import SearchPage from "../views/SearchPage.jsx";
 import ViewCart from "../views/addToCart/viewCart.jsx";
+
 import AddToCart from "../views/addToCart/addtoCart.jsx";
 import CheckoutPage from "../views/CheckoutPage.jsx";
 import CheckoutSuccessPage from "../views/payment/checkoutSuccessPage.jsx";
