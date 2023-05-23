@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PrimaryBtn from "../../../components/Button/PrimaryButton.jsx";
 import ProductCard from "../../../components/product-card/index.jsx";
-import { ToastContainer } from "react-toastify";
 import { viewSingleProduct } from "../../../redux/actions/product.js";
 import * as Unicons from "@iconscout/react-unicons";
 import ProductLayout from "./product-layout";
@@ -11,10 +10,10 @@ import UpdateProduct from "../../../components/UpdateProduct/UpdateProduct.jsx";
 import ViewSingleProduct from "./ViewSingleProduct.jsx";
 import "./style.scss";
 
-const Product = ({socket}) => {
-	const { products, fetchProductStart, detailsProductId, updateProductId } =
-		useSelector((state) => state.fetchProductState);
-	const [updateProduct, setUpdateProduct] = useState(false);
+const Product = ({ socket }) => {
+	const { products, detailsProductId, updateProductId } = useSelector(
+		(state) => state.fetchProductState,
+	);
 	const dispatch = useDispatch();
 	const [createProduct, setCreateProduct] = useState(false);
 	const productDetails = products?.product?.filter(
@@ -29,7 +28,6 @@ const Product = ({socket}) => {
 
 	return (
 		<div className="dashboard-content">
-			<ToastContainer />
 			<div className="product-header-content">
 				{updateProductId ? (
 					<span
@@ -84,20 +82,14 @@ const Product = ({socket}) => {
 			</div>
 			{createProduct ? (
 				<ProductCard>
-					<CreateProduct 
+					<CreateProduct
 						setCreateProduct={setCreateProduct}
 						socket={socket}
-						user={user}
-				/>
+					/>
 				</ProductCard>
 			) : updateProductId ? (
 				<ProductCard>
-					<UpdateProduct
-						// setUpdateProduct={setUpdateProduct}
-						// productId={productId}
-						// setProductId={setProductId}
-						currentPage={products?.currentPage}
-					/>
+					<UpdateProduct currentPage={products?.currentPage} />
 				</ProductCard>
 			) : detailsProductId ? (
 				<ProductCard data-testid="product-card">

@@ -1,6 +1,5 @@
-import React from 'react';
-import Header from '../components/Header/index.jsx';
-import SearchedProduct from '../components/Search.jsx';
+import Header from "../components/Header/index.jsx";
+import SearchedProduct from "../components/Search.jsx";
 const SearchPage = () => {
 	return (
 		<>

@@ -1,8 +1,9 @@
+import { toast } from "react-toastify";
+
 import {
 	ADD_TO_WISHLIST_ERROR,
 	ADD_TO_WISHLIST_START,
 	ADD_TO_WISHLIST_SUCCESS,
-	VIEW_WISHLIST_ERROR,
 	VIEW_WISHLIST_START,
 	VIEW_WISHLIST_SUCCESS,
 	REMOVE_FROM_WISHLIST_ERROR,
@@ -36,6 +37,7 @@ export const addToWishlist = (id) => {
 					type: ADD_TO_WISHLIST_SUCCESS,
 					payload: response.ok,
 				});
+				dispatch(viewWishlist());
 				dispatch({
 					type: ADD_TO_WISHLIST_START,
 					payload: true,
@@ -44,6 +46,7 @@ export const addToWishlist = (id) => {
 					type: ADD_TO_WISHLIST_START,
 					payload: false,
 				});
+				toast.success("Added to wishlist.");
 			} else if (response.status === 409) {
 				dispatch({
 					type: ADD_TO_WISHLIST_SUCCESS,
@@ -53,6 +56,7 @@ export const addToWishlist = (id) => {
 					type: ADD_TO_WISHLIST_START,
 					payload: false,
 				});
+				toast.info("Product already to the wishlist..");
 			} else if (response.status === 401) {
 				dispatch({
 					type: ADD_TO_WISHLIST_SUCCESS,
@@ -62,10 +66,28 @@ export const addToWishlist = (id) => {
 					type: ADD_TO_WISHLIST_START,
 					payload: false,
 				});
+				toast.error(
+					"Could not add this product to the wishlist. Not authenticated..",
+				);
+			} else if (response.status === 500) {
+				dispatch({
+					type: ADD_TO_WISHLIST_SUCCESS,
+					payload: response.status,
+				});
+				dispatch({
+					type: ADD_TO_WISHLIST_START,
+					payload: false,
+				});
+				toast.error(
+					"Could not add this product to the wishlist. Login first",
+				);
 			}
 		} catch (error) {
 			dispatch({ type: ADD_TO_WISHLIST_ERROR, payload: error.message });
 			dispatch({ type: ADD_TO_WISHLIST_START, payload: false });
+			toast.error(
+				"Could not add this product to the wishlist. Network error!",
+			);
 		}
 	};
 };

@@ -25,6 +25,7 @@ import { PopupMenu } from "react-simple-widgets";
 import "../../views/dashboard/header/style.scss";
 import "./header-menu.styles.scss";
 import { cartBadge } from "../../redux/actions/cartAction";
+import logout from "../../utils/logout";
 const MenuContainer = styled(Box)(({ theme }) => ({
 	zIndex: "40",
 	position: "fixed",
@@ -183,7 +184,11 @@ export default function HeaderMain() {
 				</Box>
 				<NavDropDown data-testid="nav-container">
 					<NavContainer>
-						<NavLink component={RouterLink} to="/" underline="none">
+						<NavLink
+							component={RouterLink}
+							to="/products/all"
+							underline="none"
+						>
 							Category
 						</NavLink>
 						<NavLink component={RouterLink} to="/" underline="none">
@@ -292,6 +297,25 @@ export default function HeaderMain() {
 											color="#848181"
 										/>
 									</div>
+									<div className="menu-list">
+										<button
+											onClick={() => logout()}
+											className="menu-title"
+											style={{
+												border: "none",
+												background: "inherit",
+												display: "flex",
+												width: "100%",
+												justifyContent: "space-between",
+											}}
+										>
+											Logout
+											<Unicons.UilAngleRight
+												size="24"
+												color="#848181"
+											/>
+										</button>
+									</div>
 								</div>
 							</PopupMenu>
 						)}
@@ -386,6 +410,9 @@ const logoContainer = {
 	display: "flex",
 	justifyContent: "space-between",
 	alignItems: "center",
+	":hover": {
+		cursor: "pointer",
+	},
 };
 
 const logoName = {

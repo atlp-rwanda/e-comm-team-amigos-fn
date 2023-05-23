@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { update_product } from "../../redux/actions/update-product.js";
 // import { handleUpdateProductResponse } from "../../utils/product/handleUpdateProductSuccess.js";
@@ -246,18 +246,6 @@ const UpdateProduct = ({ currentPage }) => {
 					</Form>
 				)}
 			</Formik>
-			<ToastContainer
-				position="top-right"
-				autoClose={5000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-				theme="light"
-			/>
 		</>
 	);
 };

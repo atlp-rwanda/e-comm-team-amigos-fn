@@ -1,16 +1,16 @@
-import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import ProductSchema from "./ProductSchema.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { create_product } from "../../redux/create-product/create_product.js";
 import { handleProductResponse } from "../../utils/product/handleProductSuccess.js";
 import ImageUploader from "./ImageUploader.jsx";
 import "./product.style.scss";
 import "react-toastify/dist/ReactToastify.css";
+import { viewSingleProduct } from "../../redux/actions/product.js";
 
-const CreateProduct = ({ setCreateProduct, socket, user }) => {
+const CreateProduct = ({ setCreateProduct, socket }) => {
 	const dispatch = useDispatch();
 	const [imageUrl, setImageUrl] = useState();
 	const { productSuccess, productStart } = useSelector(
@@ -155,7 +155,6 @@ const CreateProduct = ({ setCreateProduct, socket, user }) => {
 					</Form>
 				)}
 			</Formik>
-			<ToastContainer />
 		</>
 	);
 };

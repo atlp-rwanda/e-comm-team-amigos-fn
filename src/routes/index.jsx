@@ -30,6 +30,7 @@ import Order from "../components/order/Order.jsx";
 import CustomerProtected from "../utils/auth/CustomerProtected.js";
 import WishlistPage from "../views/wishlist/Wishlist.jsx";
 import { io } from "socket.io-client";
+import AllProductsPage from "../views/AllProducts.jsx";
 
 const index = () => {
 	const userId = JSON.parse(localStorage.getItem("user"))?.id;
@@ -77,6 +78,11 @@ const index = () => {
 					exact
 					path="/user/resetPassword/:token"
 					element={<ConfirmNewPassword />}
+				/>
+				<Route
+					exact
+					path="/products/all"
+					element={<AllProductsPage />}
 				/>
 				<Route
 					exact
