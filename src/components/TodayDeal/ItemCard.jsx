@@ -3,12 +3,18 @@ import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import colors from "../../constants/colors";
-
-import compurtBagImg from "./../../assets/img/computerBag.png";
+import { useState, useEffect } from "react";
 import Button from "../Button/index.jsx";
 import "./style.css";
 import SvgIcon from "@mui/material/SvgIcon";
-
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import {
+	addToWishlist,
+	removeFromWishlist,
+	viewWishlist,
+} from "../../redux/actions/Wishlist";
+import { useDispatch, useSelector } from "react-redux";
 const Container = styled(Box)((theme) => ({
 	width: "302px",
 	height: "444.17px",
@@ -25,74 +31,99 @@ const Img = styled(Box)((theme) => ({
 	height: "302px",
 	background: "#ECECEC",
 	borderRadius: "10px",
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+
+	// CSS styles for the <img> element inside the component
+	"& img": {
+		maxWidth: "100%",
+		maxHeight: "100%",
+		objectFit: "contain",
+	},
 }));
 
-export default function ItemCard() {
+export default function ItemCard({ products }) {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const { viewSuccess } = useSelector((state) => state.wishlist);
+	useEffect(() => {
+		dispatch(viewWishlist());
+	}, [dispatch]);
+	const viewToCart = (id) => {
+		navigate(`product/${id}`);
+	};
 	return (
-		<Container>
-			<CircleLove />
-			<Img>
-				<img
-					src={compurtBagImg}
-					alt="Macbook with a computer bag"
-					srcSet=""
-				/>
-			</Img>
-			<Box
-				sx={{
-					display: "flex",
-					justifyContent: "space-between",
-					alignItems: "center",
-					height: "38px",
-					width: "100%",
-				}}
-			>
-				<Typography className="item-card-deal">
-					Laptop Sleeve MacBook
-				</Typography>
-				<PriceContainer currency="$" amount="59.00" />
-			</Box>
-			<p className="item-card-desc">
-				Organic Cotton, fairtrade certified
-			</p>
-			<Box
-				sx={{
-					width: "109.4px",
-					height: "18px",
-					display: "flex",
-					justifyContent: "space-between",
-					alignItems: "center",
-					marginTop: "7px",
-					mb: "22px",
-				}}
-			>
-				<Rating
-					name="item-card-rating"
-					value={4}
-					max={5}
-					icon={<Star />}
-					emptyIcon={<StarDisabled />}
-					readOnly
-				/>
-				<span className="item-card-star-text">(121)</span>
-			</Box>
-			<Box>
-				<Button
-					label="Add to cart"
-					padding="11px 18px"
-					fontSize="11.8px"
-				/>
-			</Box>
-		</Container>
+		<>
+			{products.map((product, index) => (
+				<Container key={index}>
+					<CircleLove productId={product.id} wishlist={viewSuccess} />
+					<Img>
+						<img
+							src={product?.images[0]}
+							alt="Macbook with a computer bag"
+							srcSet=""
+						/>
+					</Img>
+					<Box
+						sx={{
+							display: "flex",
+							justifyContent: "space-between",
+							alignItems: "center",
+							height: "38px",
+							width: "100%",
+						}}
+					>
+						<Typography className="item-card-deal">
+							{product.name}
+						</Typography>
+						<PriceContainer currency="$" amount={product.price} />
+					</Box>
+					<p className="item-card-desc">Amazing Product are here </p>
+					<Box
+						sx={{
+							width: "109.4px",
+							height: "18px",
+							display: "flex",
+							justifyContent: "space-between",
+							alignItems: "center",
+							marginTop: "7px",
+							mb: "22px",
+						}}
+					>
+						<Rating
+							name={`item-card-rating-${index}`}
+							value={3}
+							max={5}
+							icon={<Star />}
+							emptyIcon={<StarDisabled />}
+							readOnly
+						/>
+						<span className="item-card-star-text">
+							({product.quantity})
+						</span>
+					</Box>
+					<Box>
+						<Button
+							label="Add to cart"
+							padding="11px 18px"
+							fontSize="11.8px"
+							onClick={() => {
+								viewToCart(product.id);
+							}}
+						/>
+					</Box>
+				</Container>
+			))}
+		</>
 	);
 }
 
-export function CircleLove() {
+export function CircleLove({ productId, wishlist }) {
+	const dispatch = useDispatch();
 	return (
 		<Box
 			sx={{
-				width: "40px",
-				height: "40px",
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
@@ -102,10 +133,16 @@ export function CircleLove() {
 				right: "16px",
 				bottom: "auto",
 				left: "auto",
-				background: colors.white,
+				// background: colors.white,
 			}}
 		>
-			<LoveIcon />
+			<LoveIcon
+				onClick={() => {
+					dispatch(addToWishlist(productId));
+				}}
+				productId={productId}
+				wishlist={wishlist}
+			/>
 		</Box>
 	);
 }
@@ -170,20 +207,45 @@ export function StarDisabled() {
 	);
 }
 
-export function LoveIcon() {
+export function LoveIcon({ productId, wishlist }) {
+	const dispatch = useDispatch();
+	const [isClicked, setIsClicked] = useState(
+		wishlist.some((item) => item.productId === productId),
+	);
+	const handleClick = () => {
+		const token = localStorage.getItem("token");
+		if (token) {
+			setIsClicked(!isClicked);
+			if (isClicked) {
+				dispatch(removeFromWishlist(productId));
+			} else {
+				dispatch(addToWishlist(productId));
+			}
+		} else {
+			// Check if toast error message is already being displayed
+			if (!toast.isActive("accessDeniedToast")) {
+				toast.error("Access denied login first", {
+					toastId: "accessDeniedToast", // Provide a unique toastId
+				});
+			}
+		}
+	};
+
 	return (
-		<SvgIcon>
+		<SvgIcon
+			style={{ fontSize: "36px", cursor: "pointer" }}
+			onClick={handleClick}
+		>
 			<g clipPath="url(#clip0_81_43)">
 				<path
 					d="M11.0569 3.25487L11.0567 3.25506L10.2871 4.04803L10.0001 4.34383L9.71303 4.04803L8.9435 3.25506L8.94304 3.25459C7.11149 1.36101 4.16257 1.07813 2.20107 2.74958C-0.0739026 4.69137 -0.194982 8.1821 1.84227 10.2882L9.40063 18.0927C9.73174 18.4344 10.2645 18.4344 10.5956 18.0927L18.1542 10.2881L18.1542 10.288C20.1951 8.18191 20.074 4.69147 17.7992 2.74969L11.0569 3.25487ZM11.0569 3.25487C12.8925 1.36081 15.8377 1.07828 17.799 2.74949L11.0569 3.25487Z"
-					fill="white"
-					stroke="#231F1E"
+					fill={isClicked ? "darkgreen" : "white"}
 					strokeWidth="0.8"
 				/>
 			</g>
 			<defs>
 				<clipPath id="clip0_81_43">
-					<rect width="20" height="20" fill="white" />
+					<rect width="80" height="80" fill="white" />
 				</clipPath>
 			</defs>
 		</SvgIcon>

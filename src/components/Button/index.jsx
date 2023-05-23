@@ -31,6 +31,7 @@ function Button({
 	active,
 	dataTestid,
 	onClick,
+	selected,
 	...props
 }) {
 	// eslint-disable-next-line no-unused-vars
@@ -53,6 +54,10 @@ function Button({
 		width,
 		height,
 		textTransform: "none",
+		...(selected && {
+			background: colors.darkGreen,
+			color: colors.white,
+		}),
 		...props,
 	}));
 	return (
@@ -61,6 +66,7 @@ function Button({
 			data-testid={dataTestid}
 			variant={variant}
 			onClick={onClick}
+			selected={selected}
 		>
 			<Label
 				sx={{
@@ -91,6 +97,7 @@ Button.propTypes = {
 	active: PropTypes.bool,
 	dataTestid: PropTypes.string,
 	onClick: PropTypes.func,
+	selected: PropTypes.bool,
 };
 
 Button.defaultProps = {
