@@ -138,27 +138,36 @@ export const updatePassword = (password1, password2, token) => {
 	};
 };
 
-export const updatePasswordTime = (email, oldPassword, newPassword)=>{
-    return async (dispatch)=>{
-        dispatch(action(UPDATING_PASSWORD_START, true))
-            try{
-                const res = await axios.put("https://e-comm-team-amigos-bn-project.onrender.com/user/createPassword", {email:email,oldpassword:oldPassword,newpassword:newPassword});
-                dispatch(action(UPDATING_PASSWORD_SUCCESS, res));           
-                updateErrorDisplay.innerHTML = "Password updated successfuly!";
-                updateErrorDisplay.style.color = "#096F3E";
-                dispatch(action(UPDATING_PASSWORD_START, false));            
-                if (res.status == 200) {
-                    window.location.href = "https://e-comm-team-amigos-fn-staging.netlify.app/login";
-                }
-            }catch(error){
-                dispatch(action(UPDATING_PASSWORD_START, false));
-                if (error.response.status == 401) {
-                  updateErrorDisplay.innerHTML = "Incorect email or old password!";
-                  updateErrorDisplay.style.color = "red";
-                }else if (error.response.status == 404) {
-                    updateErrorDisplay.innerHTML = "Email not found!";
-                    updateErrorDisplay.style.color = "red";
-                }
-            }
-        }
-    }
+export const updatePasswordTime = (email, oldPassword, newPassword) => {
+	return async (dispatch) => {
+		dispatch(action(UPDATING_PASSWORD_START, true));
+		try {
+			const res = await axios.put(
+				"https://e-comm-team-amigos-bn-project.onrender.com/user/createPassword",
+				{
+					email: email,
+					oldpassword: oldPassword,
+					newpassword: newPassword,
+				},
+			);
+			dispatch(action(UPDATING_PASSWORD_SUCCESS, res));
+			updateErrorDisplay.innerHTML = "Password updated successfuly!";
+			updateErrorDisplay.style.color = "#096F3E";
+			dispatch(action(UPDATING_PASSWORD_START, false));
+			if (res.status == 200) {
+				window.location.href =
+					"https://e-comm-team-amigos-fn-staging.netlify.app/login";
+			}
+		} catch (error) {
+			dispatch(action(UPDATING_PASSWORD_START, false));
+			if (error.response.status == 401) {
+				updateErrorDisplay.innerHTML =
+					"Incorect email or old password!";
+				updateErrorDisplay.style.color = "red";
+			} else if (error.response.status == 404) {
+				updateErrorDisplay.innerHTML = "Email not found!";
+				updateErrorDisplay.style.color = "red";
+			}
+		}
+	};
+};
