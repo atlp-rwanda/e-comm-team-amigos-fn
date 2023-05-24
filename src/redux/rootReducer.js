@@ -22,6 +22,7 @@ import UpdatePasswordReducer from './reducer/updatePassword';
 import viewWishlistReducer from "./reducer/wishlist/viewWishlist";
 import removeFromWishlistReducer from "./reducer/wishlist/removeFromWishlist";
 import addToWishlistReducer from "./reducer/wishlist/addTowishlist";
+import ordersReducers from "./orders/ordersReducer"
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
@@ -47,7 +48,10 @@ const rootReducer = combineReducers({
 	wishlist: viewWishlistReducer,
 	removeWishlist: removeFromWishlistReducer,
 	addToWishlist: addToWishlistReducer,
-
+	clearCart:clearCartReducer,
+	updateCartState: UpdateCartReducer,
+	updatePasswordState: UpdatePasswordReducer,
+	orders: ordersReducers,
 });
 
 export default rootReducer;
