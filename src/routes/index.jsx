@@ -26,6 +26,8 @@ import CancelPaymentPage from "../views/payment/checkoutCancel.jsx";
 import UpdatePasswordPage from '../views/updatePassword/UpdatePasswordPage.jsx';
 import WishlistPage from '../views/wishlist/Wishlist.jsx';
 import Orders from "../components/orders/Orders.jsx";
+import Order from "../components/order/Order.jsx";
+import CustomerProtected from "../utils/auth/CustomerProtected.js";
 
 const index = () => {
 	return (
@@ -82,24 +84,20 @@ const index = () => {
 					/>					
 					<Route path="users" element={<Users />} />
 					<Route exact path="roles" element={<Roles />} />
-					
 				</Route>
 
-
 				<Route
-						exact
-						path="/customer/orders"
-						element={<Root/>}
-					>
-						<Route
-							path="history"
-							element={<Orders />}
-						/>
-						<Route
-							path=":orderId"
-							element={<h1>Order XX</h1>}
-						/>
-					</Route>
+					exact
+					path="/customer/orders"
+					element={
+						<CustomerProtected>
+							<Root />
+						</CustomerProtected>
+					}
+				>
+					<Route path="history" element={<Orders />} />
+					<Route path=":orderId" element={<Order />} />
+				</Route>
 
 				<Route
 					exact

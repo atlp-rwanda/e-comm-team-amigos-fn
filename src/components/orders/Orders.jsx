@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useOutletContext } from "react-router-dom";
 import "./orders.styles.scss";
-import { getOrders } from "../../redux/orders/actions";
 import { formatDate } from "../../utils/utils";
 import "../../App.css";
-import Header from "../Header";
-
+import { useNavigate } from "react-router-dom";
+import { capitalizeString } from "../../utils/utils";
 
 const TableHeader = ({ headers }) => {
 	const ths = headers.map((header, i) => <th key={i}>{header}</th>);
@@ -16,47 +15,41 @@ const TableHeader = ({ headers }) => {
 	);
 };
 
-function generateRows(orders) {
+function generateRows(orders, navigate) {
 	return orders.map((order, i) => {
 		return (
 			<tr key={order.id}>
 				<td>{i + 1}</td>
-				<td>{order.status}</td>
+				<td>{capitalizeString(order.status)}</td>
 				<td>{formatDate(order.expected_delivery_date)}</td>
-				<td><button className="text-btn">Details</button></td>
+				<td>
+					<button
+						className="text-btn"
+						onClick={() => navigate(`/customer/orders/${order.id}`)}
+					>
+						Details
+					</button>
+				</td>
 			</tr>
 		);
-
 	});
 }
 
-
-const Table = ({ orders }) => {
+const Table = ({ orders, navigate }) => {
 	return (
 		<table className="orders__table">
 			<TableHeader headers={["#", "Status", "Delivery Date", "Action"]} />
-			<tbody>{orders && generateRows(orders)}</tbody>
+			<tbody>{orders && generateRows(orders, navigate)}</tbody>
 		</table>
 	);
 };
 
 export default function Orders() {
-	const dispatch = useDispatch();
-	const { orders } = useSelector((state) => state.orders);
-	const { fetchingOrders } = useSelector((state) => state.orders);
-
-	useEffect(() => {
-		dispatch(getOrders(window.localStorage.getItem("token")));
-	}, [dispatch]);
-
+	const navigate = useNavigate();
+	const [orders, setOrders] = useOutletContext()
 	return (
-		<>
-			<Header />
-			<div className="orders">
-				{(!orders && !fetchingOrders && null) ||
-					(!orders && fetchingOrders && <>Wait</>) ||
-					(orders && <Table orders={orders} />)}
-			</div>
-		</>
+		<div className="orders">
+			<Table orders={orders} navigate={navigate} />
+		</div>
 	);
 }

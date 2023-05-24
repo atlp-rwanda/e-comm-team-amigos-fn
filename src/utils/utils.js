@@ -28,6 +28,10 @@ function validateEmail(email) {
 	}
 }
 
+function capitalizeString(string){
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function formatDate(date) {
 	return new Intl.DateTimeFormat("en-US", {
 		day: "numeric",
@@ -36,4 +40,4 @@ function formatDate(date) {
 	}).format(new Date(date));
 }
 
-export { validatePassword, validateEmail, formatDate };
+export { validatePassword, validateEmail, formatDate, capitalizeString };

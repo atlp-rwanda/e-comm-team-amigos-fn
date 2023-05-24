@@ -38,7 +38,6 @@ export const getOrders = (token) => {
 };
 
 const handleError = (error, dispatch) => {
-	console.log(error);
 	dispatch({
 		type: actionTypes.FETCHING_ORDERS_FAIL,
 		payload: "Error ocurrered",

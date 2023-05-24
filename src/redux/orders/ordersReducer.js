@@ -3,7 +3,6 @@ import { actionTypes } from "./actionTypes";
 const initialState = {
 	fetchingOrders: false,
 	orders: null,
-	order: null,
 	errorMsg: "",
 };
 
