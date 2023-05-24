@@ -36,9 +36,9 @@ const RoleButton = ({
 	);
 };
 
-export default function Roles() {
+export default function Roles({socket}) {
 	const dispatch = useDispatch();
-	const { errorMsg, fetchingUser, addOrRemovingRole, user, roles } =
+	const { errorMsg, fetchingUser, addOrRemovingRole, user, roles, addRoleSuccessInfo, removeRoleSuccessInfo } =
 		useSelector((state) => state.roles);
 	const [email, setEmail] = useState("");
 
@@ -58,9 +58,23 @@ export default function Roles() {
 			dispatch(removeRole(user?.id, roleid));
 	}
 
+	const loggedInUser = JSON.parse(localStorage.getItem("user"));
+	const handleNotification = (userId, roleId) => {
+		socket?.emit("sendNotification", {
+			receiverId: userId,
+			firstName:loggedInUser.firstName,
+			lastName:loggedInUser.lastName,
+			title: `You have assigned a new role`,
+    		description: `${loggedInUser.firstName} ${loggedInUser.lastName} has assigned a new role to you which has id${roleId}.`
+			})
+		}
+
 	useEffect(() => {
+		if(addRoleSuccessInfo?.status === 201){
+			handleNotification(addRoleSuccessInfo?.data?.response?.userId, addRoleSuccessInfo?.data?.response?.roleId);
+		}
 		dispatch(getRoles());
-	}, [dispatch]);
+	}, [dispatch, addRoleSuccessInfo]);
 
 	return (
 		<div className="manage-roles-container">

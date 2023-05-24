@@ -6,6 +6,8 @@ const initialState = {
 	roles: null,
 	user: null,
 	errorMsg: '',
+	addRoleSuccessInfo: null,
+	removeRoleSuccessInfo : null,
 };
 
 export default function (state = initialState, { type, payload }) {
@@ -59,6 +61,12 @@ export default function (state = initialState, { type, payload }) {
 				},
 			};
 
+		case actionTypes.ADD_ROLE_SUCCESS_INFO:
+			return {
+				...state,
+				addRoleSuccessInfo: payload,
+			};
+
 		case actionTypes.ADDING_FAIL:
 			return {
 				...state,
@@ -86,6 +94,12 @@ export default function (state = initialState, { type, payload }) {
 								.name.toLowerCase(),
 					),
 				},
+			};
+		
+		case actionTypes.REMOVING_SUCCEED_INFO:
+			return {
+				...state,
+				removeRoleSuccessInfo: payload,
 			};
 
 		case actionTypes.REMOVING_FAIL:

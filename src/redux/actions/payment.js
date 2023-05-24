@@ -5,7 +5,7 @@ import action from './action';
 const token = localStorage.getItem("token");
 
 export const payment = (cartItems) => {
-    const userId = JSON.parse(localStorage.getItem("user")).id;
+    const userId = JSON.parse(localStorage.getItem("user"))?.id;
     const checkout = {
         "userId": userId,
         "cartItems": cartItems

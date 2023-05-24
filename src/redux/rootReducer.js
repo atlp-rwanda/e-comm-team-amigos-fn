@@ -25,6 +25,7 @@ import ordersReducers from "./orders/ordersReducer";
 import clearCartReducer from "./reducer/clearCartReducer";
 import viewcartReducer from "./reducer/viewCartReducer";
 import UpdateCartReducer from "./reducer/updateCartReducer";
+import notificationReducer from "./reducer/notification";
 
 import chatReducer from "./chat/chatReducer";
 const rootReducer = combineReducers({
@@ -56,6 +57,8 @@ const rootReducer = combineReducers({
 	updateCartState: UpdateCartReducer,
 	updatePasswordState: UpdatePasswordReducer,
 	orders: ordersReducers,
+
+	notification: notificationReducer,
 });
 
 export default rootReducer;

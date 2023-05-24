@@ -11,7 +11,7 @@ import UpdateProduct from "../../../components/UpdateProduct/UpdateProduct.jsx";
 import ViewSingleProduct from "./ViewSingleProduct.jsx";
 import "./style.scss";
 
-const Product = () => {
+const Product = ({socket}) => {
 	const { products, fetchProductStart, detailsProductId, updateProductId } =
 		useSelector((state) => state.fetchProductState);
 	const [updateProduct, setUpdateProduct] = useState(false);
@@ -50,7 +50,9 @@ const Product = () => {
 
 			<div className="product-controller">
 				<PrimaryBtn
-					onClick={() => handleCreateProduct()}
+					onClick={() => {
+						handleCreateProduct();
+					}}
 					title={"Create product"}
 					width={"150px"}
 				/>
@@ -82,7 +84,11 @@ const Product = () => {
 			</div>
 			{createProduct ? (
 				<ProductCard>
-					<CreateProduct setCreateProduct={setCreateProduct} />
+					<CreateProduct 
+						setCreateProduct={setCreateProduct}
+						socket={socket}
+						user={user}
+				/>
 				</ProductCard>
 			) : updateProductId ? (
 				<ProductCard>

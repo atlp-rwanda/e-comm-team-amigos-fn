@@ -1,3 +1,4 @@
+import React, {useEffect, useState} from 'react';
 import { Routes, Route } from "react-router-dom";
 import Root from "../components/orders/Root.jsx";
 import ResetPassword from "../views/resetPassword/resetPassword/index.jsx";
@@ -24,13 +25,31 @@ import CheckoutPage from "../views/CheckoutPage.jsx";
 import CheckoutSuccessPage from "../views/payment/checkoutSuccessPage.jsx";
 import CancelPaymentPage from "../views/payment/checkoutCancel.jsx";
 import UpdatePasswordPage from "../views/updatePassword/UpdatePasswordPage.jsx";
-import WishlistPage from "../views/wishlist/Wishlist.jsx";
 import Chat from "../views/chat/Chat.jsx";
 import Orders from "../components/orders/Orders.jsx";
 import Order from "../components/order/Order.jsx";
 import CustomerProtected from "../utils/auth/CustomerProtected.js";
+import WishlistPage from '../views/wishlist/Wishlist.jsx';
+import { io } from 'socket.io-client';
 
 const index = () => {
+	const userId = JSON.parse(localStorage.getItem("user"))?.id;
+	const [socket, setSocket] = useState(null);
+
+	useEffect(()=>{
+		setSocket(io("https://e-comm-team-amigos-bn-project.onrender.com",{
+			transports: ["websocket"]
+		}));
+
+	},[]);
+
+	useEffect(()=>{
+		socket?.emit("newUser", userId);
+		socket?.on("connection", ()=>{
+			console.log("connection established");
+		})
+	},[userId, socket]);
+
 	return (
 		<Routes>
 			<Route path="/" element={<Layout />}>
@@ -68,7 +87,7 @@ const index = () => {
 					path="/dashboard"
 					element={
 						<IsAuthorized>
-							<DashboardNav />
+							<DashboardNav socket={socket}/>
 						</IsAuthorized>
 					}
 				>
@@ -76,7 +95,7 @@ const index = () => {
 					<Route
 						exact
 						path="/dashboard/product"
-						element={<Product />}
+						element={<Product socket={socket}/>}
 					/>
 					<Route
 						exact
@@ -84,7 +103,7 @@ const index = () => {
 						element={<UpdatePasswordPage />}
 					/>
 					<Route path="users" element={<Users />} />
-					<Route exact path="roles" element={<Roles />} />
+					<Route exact path="roles" element={<Roles socket={socket}/>} />
 				</Route>
 
 				<Route

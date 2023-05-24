@@ -84,6 +84,11 @@ export const addRole = (userId, roleId) => {
 					type: actionTypes.ADDING_SUCCEED,
 					payload: roleId,
 				});
+
+				dispatch({
+					type: actionTypes.ADD_ROLE_SUCCESS_INFO,
+					payload: res,
+				})
 			}
 		} catch (error) {
 			dispatch({
@@ -111,6 +116,10 @@ export const removeRole = (userId, roleId) => {
 				dispatch({
 					type: actionTypes.REMOVING_SUCCEED,
 					payload: roleId,
+				});
+				dispatch({
+					type: actionTypes.REMOVING_SUCCEED_INFO,
+					payload: res,
 				});
 			}
 		} catch (error) {
