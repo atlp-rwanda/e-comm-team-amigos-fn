@@ -51,6 +51,15 @@ body {
   background-color: #d9f6ec;
 }
 
+.text-btn{
+  border: none;
+    outline: none;
+    background: none;
+    color: #1b6bfd;
+    text-decoration: underline;
+    letter-spacing: 1px;
+}
+
 .primary-btn {
   padding: 12px 15.5769px;
   color: #fff;

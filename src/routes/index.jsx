@@ -82,9 +82,13 @@ const index = () => {
 					/>					
 					<Route path="users" element={<Users />} />
 					<Route exact path="roles" element={<Roles />} />
-					<Route
+					
+				</Route>
+
+
+				<Route
 						exact
-						path="orders"
+						path="/customer/orders"
 						element={<Root/>}
 					>
 						<Route
@@ -96,7 +100,6 @@ const index = () => {
 							element={<h1>Order XX</h1>}
 						/>
 					</Route>
-				</Route>
 
 				<Route
 					exact
