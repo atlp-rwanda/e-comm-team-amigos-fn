@@ -72,6 +72,7 @@ font-size: 1.7em;
 line-height: 34px;
 color: #000000;
 margin-top: 0.5rem;
+width: 300px;
     }
     .body-message{
 font-family: 'Inter';
@@ -80,6 +81,7 @@ font-weight: 400;
 font-size: 0.8em;
 color: #000000;
 margin: 0.8rem 0;
+width: 300px;
     } 
 }
 .form-container{
@@ -118,24 +120,28 @@ background-color: #000000;
 opacity: 0.5;
 cursor: not-allowed;
 }
-.error{
+.error_otp{
+    display: flex;
     text-align: center;
-    padding:0px;
     color:rgb(255, 0, 21);
     font-family: 'Courier New', Courier, monospace;
+    white-space: nowrap;
 }
 @media (max-width: 1000px) {
     .Container {
         width: 50%;
     }
+
   }
 @media (max-width: 767px) {
     .Container {
         width: 60%;
     }
+
   }
   @media (max-width: 467px) {
     .Container {
         width: 90%;
     }
+
   }

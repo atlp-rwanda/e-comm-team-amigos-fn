@@ -7,28 +7,44 @@ $primary-color: #163C2A;
 }
 
 .heading {
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
   color: $primary-color;
   text-align: center;
-  width: fit-content;
+  // width: fit-content;
 
-  @media screen and (max-width: 768px) {
-    display: none;
+  @media screen and (max-width: 320px) {
+    // display: none;
+    margin-left: 0px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  
   }
 }
 
 .social {
-  margin-left: 70px;
+  margin-left: 100px;
   display: flex;
   flex-direction: row;
-  margin-top: 100px;
+  align-items: center;
+  padding-bottom: 100px;
 
   @media screen and (max-width: 768px) {
-    margin-left: 40px;
+    margin-left: 100px;
   }
 
   @media screen and (max-width: 500px) {
     margin-left: 40px;
+  }
+
+  @media screen and (max-width: 320px) {
+    // display: none;
+    margin-left: 200px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  
   }
 }
 
@@ -37,7 +53,7 @@ $primary-color: #163C2A;
   height: 400px;
   margin: auto;
   padding-right: 30px;
-  margin-top: 20px;
+  margin-top: 70px;
 
   @media screen and (max-width: 768px) {
     display: none;

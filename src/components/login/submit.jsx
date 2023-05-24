@@ -12,7 +12,7 @@ export const SubmitSection =()=>{
         <div className="sign-up">
           <p>No account?</p>
           <Link to="/sign-up" className="sign-up-link" >Sign up</Link>
-          <ToastContainer />
+          {/* <ToastContainer /> */}
           </div>
         </div>
       </div>

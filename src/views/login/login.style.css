@@ -132,6 +132,38 @@
     font-size: 12px;
   }
 }
+
+@media (max-width: 320px) {
+  .login-heading {
+    margin: 150px 10px 20px 10px;
+  }
+
+  .login-form {
+    margin: 20px 10px 20px 10px;
+    width: 100%;
+    max-width: none;
+  }
+
+  .login-form .form-input-group .form-input {
+    width: 100%;
+  }
+
+  .primary-btn {
+    width: 100%;
+  }
+
+  .form-footer {
+    width: 100%;
+  }
+
+  .sign-up {
+    padding-right: 10px;
+  }
+
+  .no-account {
+    width: 100%;
+  }
+}
 .google-auth {
   display: flex;
   flex-direction: row;
@@ -139,5 +171,16 @@
 @media screen and (max-width: 768px) {
   .google-auth {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-}/*# sourceMappingURL=login.style.css.map */
+}
+@media screen and (max-width: 320px) {
+  .google-auth {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}/
+
+/*# sourceMappingURL=login.style.css.map */
