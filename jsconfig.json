@@ -1,11 +1,8 @@
 {
     "compilerOptions": {
-        "module": "ESNext",
-        "moduleResolution": "Node",
+    "moduleResolution": "node",
         "target": "ES2020",
-        "jsx": "react",
-        "strictNullChecks": true,
-        "strictFunctionTypes": true
+        "jsx": "react"
     },
     "exclude": [
         "node_modules",

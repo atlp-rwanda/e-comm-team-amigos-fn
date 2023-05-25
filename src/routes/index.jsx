@@ -23,6 +23,7 @@ import AddToCart from "../views/addToCart/addtoCart.jsx";
 import CheckoutPage from "../views/CheckoutPage.jsx";
 import CheckoutSuccessPage from "../views/payment/checkoutSuccessPage.jsx";
 import CancelPaymentPage from "../views/payment/checkoutCancel.jsx";
+import UpdatePasswordPage from '../views/updatePassword/UpdatePasswordPage.jsx';
 
 import UpdatePasswordPage from "../views/updatePassword/UpdatePasswordPage.jsx";
 const index = () => {
@@ -83,6 +84,7 @@ const index = () => {
 				<Route exact path="*" element={<div>Page Not Found!!</div>} />
 			</Route>
 			<Route exact path="/products" element={<SearchPage />}></Route>
+			<Route exact path="/update-password" element={<UpdatePasswordPage />} />
 			<Route
 				exact
 				path="/product/:id"

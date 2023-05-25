@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import HeaderTop from "./HeaderTop.jsx";
 import HeaderMain from "./HeaderMain.jsx";
 
-import useWindowSize from "../../hooks/useWindowResize.js";
+import useWindowSize from "../../hooks/useWindowResize";
 
 export default function Header() {
 	const sizes = useWindowSize();

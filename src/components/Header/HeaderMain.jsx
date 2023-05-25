@@ -19,6 +19,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch } from "react-redux";
 import Model from "../Models/cartModel.jsx";
 import { openModel } from "../../redux/actions/cartOpenModel";
+import { useNavigate } from "react-router-dom";
 const MenuContainer = styled(Box)(({ theme }) => ({
 	zIndex: "40",
 	position: "fixed",
@@ -36,13 +37,14 @@ const MenuContainer = styled(Box)(({ theme }) => ({
 
 const ContainerFluid = styled(Box)(({ theme }) => ({
 	width: "100%",
-	height: "94px",
+	height: "70px",
 	display: "flex",
 	alignItems: "flex-end",
 	justifyContent: "center",
 	position: "relative",
 	paddingLeft: "54px",
 	paddingRight: "54px",
+	borderBottom: "1px solid #e5e5e5",
 	[theme.breakpoints.down("lg")]: {
 		padding: "10px 20px",
 		height: "auto",
@@ -152,10 +154,16 @@ export default function HeaderMain() {
 	const dispatch = useDispatch();
 	const user = JSON.parse(localStorage.getItem("user"));
 
+	const navigate = useNavigate();
+
 	return (
 		<ContainerFluid>
 			<Box sx={contentContainer}>
-				<Box component="div" sx={logoContainer}>
+				<Box
+					component="div"
+					sx={logoContainer}
+					onClick={() => navigate("/")}
+				>
 					<img src={logo} alt="Amigos E-shop" />
 					<Box component="span" sx={logoName} data-testid="logoName">
 						Amigos
