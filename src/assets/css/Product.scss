@@ -190,7 +190,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: none;
   font-size: 16px;
   font-weight: 600;
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
 .btn-buy-now:hover {
@@ -209,9 +209,16 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 26px;
   cursor: pointer;
   border: 1px solid #163C2A;
+  margin-right: 5px;
 }
 
 .btn-add-to-cart:hover {
+  background-color: #246c4a;
+  color: #FFFFFF;
+  transition: .5s ease-in-out;
+}
+
+.btn-add-to-cart:wishlist {
   background-color: #246c4a;
   color: #FFFFFF;
   transition: .5s ease-in-out;

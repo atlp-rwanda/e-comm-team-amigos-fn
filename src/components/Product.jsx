@@ -8,14 +8,16 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRelatedProducts } from "../redux/RelatedProducts/actions";
-import Reviews from "./review/Reviews.jsx";
 import AddToCart from "./Product/AddToCart.jsx";
+import Reviews from './review/Reviews.jsx'
+
 const ProductDetails = () => {
 	const relatedProducts = useSelector((state) => state.relatedProductState);
 	const dispatch = useDispatch();
 	const { id } = useParams();
 	const [loading, setLoading] = useState(true);
 	const [category, setCategory] = useState("");
+
 	useEffect(() => {
 		const getProduct = async () => {
 			const response = await fetch(
@@ -71,3 +73,4 @@ const ProductDetails = () => {
 	);
 };
 export default ProductDetails;
+

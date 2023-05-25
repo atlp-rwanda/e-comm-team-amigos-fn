@@ -12,8 +12,8 @@ import {
 	UPDATING_PASSWORD_ERROR,
 	USER_NOT_FOUND,
 } from "../types";
-import action from "./action";
 import axios from "axios";
+import action from "./action";
 
 export const login = (email, password) => {
 	return async (dispatch) => {
