@@ -1,5 +1,6 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./orders.styles.scss";
 import { formatDate } from "../../utils/utils";
 import "../../App.css";
@@ -46,10 +47,12 @@ const Table = ({ orders, navigate }) => {
 
 export default function Orders() {
 	const navigate = useNavigate();
-	const [orders, setOrders] = useOutletContext()
+	const { orders } = useSelector((state) => state.orders);
 	return (
 		<div className="orders">
-			<Table orders={orders} navigate={navigate} />
+			{(orders.length === 0 && (
+				<p className="no-order">No order(s) found!</p>
+			)) || <Table orders={orders} navigate={navigate} />}
 		</div>
 	);
 }

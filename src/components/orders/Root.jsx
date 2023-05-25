@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Header from '../Header';
 import '../../App.css'
+import Footer from "../Footer";
 
 import { getOrders } from "../../redux/orders/actions";
 
@@ -22,7 +23,9 @@ export default function Root() {
 				(!orders && fetchingOrders && (
 					<div className="orders-loadining-spinner loading-spinner loading-spinner--medium"/>
 				)) ||
-				(orders && <Outlet context={[orders]} />)}
+				(orders && <Outlet />)}
+			
+			<Footer />
 		</>
   );
 }

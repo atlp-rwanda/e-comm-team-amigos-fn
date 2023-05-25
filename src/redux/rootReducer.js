@@ -14,7 +14,6 @@ import reviewsReducer from "./reviews/reviewsReducer";
 import counterReducer from "./reducer/counter";
 import addToCartReducer from "./reducer/addToCartReducer";
 import isOpenReducer from "./reducer/isOpenModel";
-import viewcartReducer from "./reducer/viewcartReducer";
 import relatedProductReducer from "./RelatedProducts/reducer";
 import profileReducer from "./profile/reducer";
 import paymentReducer from "./reducer/payment";
@@ -22,7 +21,10 @@ import UpdatePasswordReducer from './reducer/updatePassword';
 import viewWishlistReducer from "./reducer/wishlist/viewWishlist";
 import removeFromWishlistReducer from "./reducer/wishlist/removeFromWishlist";
 import addToWishlistReducer from "./reducer/wishlist/addTowishlist";
-import ordersReducers from "./orders/ordersReducer"
+import ordersReducers from "./orders/ordersReducer";
+import clearCartReducer from "./reducer/clearCartReducer";
+import viewcartReducer from "./reducer/viewCartReducer";
+import UpdateCartReducer from "./reducer/updateCartReducer";
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,

@@ -3,6 +3,7 @@
     margin: 200px auto 0 auto;
     overflow: auto;
     padding: 1px;
+    margin-bottom: 90px;
     
     &__table{
         box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
@@ -36,3 +37,9 @@
 
 }
 
+.no-order {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+    word-spacing: 12px;
+}
