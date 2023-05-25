@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaTachometerAlt } from "react-icons/fa";
 import { FaBoxOpen } from "react-icons/fa";
 import { FaChartBar } from "react-icons/fa";
@@ -8,7 +8,10 @@ import { AiOutlineSetting, AiOutlineLogout } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import cart from "../../../assets/img/cart.png";
 import "./style.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import logout from "../../../utils/logout";
+import action from "../../../redux/actions/action";
+import { IS_CLICKED } from "../../../redux/types";
 
 function getUserRole() {
 	const user = JSON.parse(localStorage.getItem("user"));
@@ -17,12 +20,15 @@ function getUserRole() {
 
 function AsideBar() {
 	const { isClicked } = useSelector((state) => state.handleClickState);
+	// console.log("Click state: ", isClicked);
 	const [active, setActive] = useState("Dashboard");
+	const displayClass = isClicked ? "d-sm-flex" : "";
+
+	const dispatch = useDispatch();
+	const closeMenu = () => dispatch(action(IS_CLICKED, false));
+
 	return (
-		<div
-			className="aside-bar"
-			style={{ display: isClicked ? "none" : "block" }}
-		>
+		<div className={`aside-bar d-sm-none ${displayClass}`}>
 			<div className="aside-bar-container">
 				<div className="cart-content">
 					<img src={cart} alt="" />
@@ -37,7 +43,10 @@ function AsideBar() {
 								}}
 								to={"dashboard"}
 								className="link"
-								onClick={() => setActive("Dashboard")}
+								onClick={() => {
+									setActive("Dashboard");
+									closeMenu();
+								}}
 							>
 								<FaTachometerAlt className="fa" />
 								Dashboard
@@ -45,7 +54,10 @@ function AsideBar() {
 						</li>
 						<li>
 							<Link
-								onClick={() => setActive("Product")}
+								onClick={() => {
+									setActive("Product");
+									closeMenu();
+								}}
 								style={{
 									color: active === "Product" ? "#fff" : "",
 								}}
@@ -58,7 +70,10 @@ function AsideBar() {
 						</li>
 						<li>
 							<Link
-								onClick={() => setActive("Statistics")}
+								onClick={() => {
+									setActive("Statistics");
+									closeMenu();
+								}}
 								style={{
 									color:
 										active === "Statistics" ? "#fff" : "",
@@ -71,7 +86,10 @@ function AsideBar() {
 						</li>
 						<li>
 							<Link
-								onClick={() => setActive("Reports")}
+								onClick={() => {
+									setActive("Reports");
+									closeMenu();
+								}}
 								style={{
 									color: active === "Reports" ? "#fff" : "",
 								}}
@@ -90,7 +108,10 @@ function AsideBar() {
 										color: active === "Users" ? "#fff" : "",
 									}}
 									className="link"
-									onClick={() => setActive("Users")}
+									onClick={() => {
+										setActive("Users");
+										closeMenu();
+									}}
 								>
 									<FaUsers className="fa" />
 									Users
@@ -106,7 +127,10 @@ function AsideBar() {
 										color: active === "Roles" ? "#fff" : "",
 									}}
 									className="link"
-									onClick={() => setActive("Roles")}
+									onClick={() => {
+										setActive("Roles");
+										closeMenu();
+									}}
 								>
 									<FaMinusCircle className="fa" />
 									Roles
@@ -118,7 +142,10 @@ function AsideBar() {
 					<div className="down-content">
 						<li>
 							<Link
-								onClick={() => setActive("Settings")}
+								onClick={() => {
+									setActive("Settings");
+									closeMenu();
+								}}
 								style={{
 									color: active === "Settings" ? "#fff" : "",
 								}}
@@ -130,7 +157,12 @@ function AsideBar() {
 						</li>
 						<li>
 							<Link
-								onClick={() => setActive("Logout")}
+								onClick={() => {
+									setActive("Logout");
+									logout();
+
+									closeMenu();
+								}}
 								style={{
 									color: active === "Logout" ? "#fff" : "",
 								}}

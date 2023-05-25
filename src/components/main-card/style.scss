@@ -1,7 +1,7 @@
 .main-card{
     width: min(100%, 1105px);
     height: auto;
-    overflow: scroll;
+    overflow: auto;
     background-color: #fff;
     border-radius: 10px;
     border: 1px solid #D0D0D0;
@@ -9,4 +9,7 @@
     flex-direction: column;
     margin-inline: auto;
     padding: 3rem;
+    @media(max-width:768px){
+        width: 90%;
+    }
 }

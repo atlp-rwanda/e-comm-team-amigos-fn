@@ -8,7 +8,7 @@ const HeaderTop = ({ justifyContent, alignItems }) => {
 		<Box
 			sx={{
 				px: "48px",
-				height: "60px",
+				height: "35px",
 				width: "100%",
 				background: colors.darkGreen,
 				display: "flex",

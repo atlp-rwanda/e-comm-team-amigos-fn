@@ -21,7 +21,7 @@ const SlideContainer = styled(Paper)(({ theme }) => ({
 	width: "1288.29px",
 	height: "609.26px",
 	background: colors.beige,
-	marginTop: "38px",
+	marginTop: "10px",
 	marginLeft: "auto",
 	marginRight: "auto",
 	position: "relative",
@@ -41,9 +41,9 @@ const SlideContainer = styled(Paper)(({ theme }) => ({
 
 const Section = styled(Box)(({ theme }) => ({
 	width: "100%",
-	marginTop: "110px",
+	marginTop: "75px",
 	[theme.breakpoints.up("1336")]: {
-		marginTop: "180px",
+		marginTop: "115px",
 	},
 }));
 
