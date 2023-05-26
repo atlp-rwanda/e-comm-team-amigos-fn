@@ -1,0 +1,45 @@
+.orders{
+    width: 70%;
+    margin: 200px auto 0 auto;
+    overflow: auto;
+    padding: 1px;
+    margin-bottom: 90px;
+    
+    &__table{
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        min-width: 600px;
+        border-radius: 10px;
+        overflow: hidden;
+
+        thead{
+            background: #096F3E;
+            color: #fff;
+
+            th{
+                font-weight: 300;
+                font-size: 17px;
+                letter-spacing: 1.5px;
+            }
+        }
+
+        th, td {
+            padding: 16px 0px 16px 89px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    }
+
+}
+
+.no-order {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+    word-spacing: 12px;
+}

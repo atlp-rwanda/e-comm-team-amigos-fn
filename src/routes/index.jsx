@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Root from "../components/orders/Root.jsx";
 import ResetPassword from "../views/resetPassword/resetPassword/index.jsx";
 import ConfirmNewPassword from "../views/resetPassword/confirmNewPassword/index.jsx";
 import SignUp from "../views/sign-up/SignUp.jsx";
@@ -24,6 +25,9 @@ import CheckoutSuccessPage from "../views/payment/checkoutSuccessPage.jsx";
 import CancelPaymentPage from "../views/payment/checkoutCancel.jsx";
 import UpdatePasswordPage from '../views/updatePassword/UpdatePasswordPage.jsx';
 import WishlistPage from '../views/wishlist/Wishlist.jsx';
+import Orders from "../components/orders/Orders.jsx";
+import Order from "../components/order/Order.jsx";
+import CustomerProtected from "../utils/auth/CustomerProtected.js";
 
 const index = () => {
 	return (
@@ -33,8 +37,16 @@ const index = () => {
 				<Route exact path="/sign-up" element={<SignUp />} />
 				<Route exact path="/login" element={<LoginPage />} />
 				<Route exact path="/success" element={<SuccessPage />} />
-				<Route exact path="/checkout-success" element={<CheckoutSuccessPage />} />
-				<Route exact path="/checkout-cancel" element={<CancelPaymentPage />} />
+				<Route
+					exact
+					path="/checkout-success"
+					element={<CheckoutSuccessPage />}
+				/>
+				<Route
+					exact
+					path="/checkout-cancel"
+					element={<CancelPaymentPage />}
+				/>
 				<Route
 					exact
 					path="/user/verify_email/:token"
@@ -72,6 +84,19 @@ const index = () => {
 					/>					
 					<Route path="users" element={<Users />} />
 					<Route exact path="roles" element={<Roles />} />
+				</Route>
+
+				<Route
+					exact
+					path="/customer/orders"
+					element={
+						<CustomerProtected>
+							<Root />
+						</CustomerProtected>
+					}
+				>
+					<Route path="history" element={<Orders />} />
+					<Route path=":orderId" element={<Order />} />
 				</Route>
 
 				<Route

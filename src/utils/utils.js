@@ -28,4 +28,16 @@ function validateEmail(email) {
 	}
 }
 
-export { validatePassword, validateEmail };
+function capitalizeString(string){
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function formatDate(date) {
+	return new Intl.DateTimeFormat("en-US", {
+		day: "numeric",
+		month: "short",
+		year: "numeric",
+	}).format(new Date(date));
+}
+
+export { validatePassword, validateEmail, formatDate, capitalizeString };

@@ -1,0 +1,100 @@
+.order-detail-page{
+    padding-top: 15%;
+    margin-bottom: 65px;
+    button{
+        margin-top: 20px !important;
+        width: 100px!important;
+        margin: auto;
+        display: block;
+        padding: 7px 10px !important;
+        font-size: 14px !important;
+    }
+
+    &-container {
+        max-width: 380px;
+        width: 90%;
+        margin: auto;
+    }
+
+    .order-detail {
+        background-color: #fff;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        border-bottom: 3px solid #08AC0A;
+        border-top: 3px solid #08AC0A;
+
+        
+        &__status-value {
+            box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+            box-sizing: border-box;
+            border-radius: 29px;
+            color: #FF8B20;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            padding: 0 10px;
+            font-weight: 600;
+        }
+
+        &__products {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 25px;
+        }
+
+        &__total-cost{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            span{
+                font-weight: 18px;
+                font-weight: 600;
+            }
+        }
+
+        &__header, &__footer{
+            padding: 16px 25px;
+        }
+
+        &__header, &__footer{
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        &__footer{border-top: 1px solid #ccc; } 
+        &__header {
+            border-bottom: 1px solid #ccc;  
+        }
+
+        &__body{
+            background-color: #f4f4f4;
+            color: #666;
+            padding: 25px 25px;
+            &-header {
+                margin-bottom: 20px;
+            }
+        }
+
+        &__product{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            align-items: center;
+
+            &-quantity{
+                justify-self: center;
+            }
+            &-price{
+                justify-self: end;
+            }
+        }
+}
+}
+
+.orders-loadining-spinner{
+    margin: 220px auto 50px auto !important;
+}

@@ -2,6 +2,8 @@ import React from "react";
 import Box from "@mui/material/Box/Box";
 import PropTypes from "prop-types";
 import { Link as RouterLink } from "react-router-dom";
+import * as Unicons from "@iconscout/react-unicons";
+import Avatar from "@mui/material/Avatar";
 import Link from "@mui/material/Link";
 import logo from "./../../assets/img/logo.png";
 import colors from "../../constants/colors";
@@ -19,6 +21,9 @@ import { openModel } from "../../redux/actions/cartOpenModel";
 import { useNavigate } from "react-router-dom";
 import wishlistIcon from "../../assets/img/wishlistIconn.png";
 import "../../components/Header/wishlistIcon.style.scss";
+import { PopupMenu } from "react-simple-widgets";
+import "../../views/dashboard/header/style.scss";
+import "./header-menu.styles.scss";
 
 const MenuContainer = styled(Box)(({ theme }) => ({
 	zIndex: "40",
@@ -156,7 +161,11 @@ export default function HeaderMain() {
 	const navigate = useNavigate();
 
 	const handleRedirectToWishlist = () => {
-		<NavLink component={RouterLink} to="/user/wishlist" underline="none"></NavLink>
+		<NavLink
+			component={RouterLink}
+			to="/user/wishlist"
+			underline="none"
+		></NavLink>;
 	};
 	return (
 		<ContainerFluid>
@@ -189,10 +198,14 @@ export default function HeaderMain() {
 					<SearchInputContainer>
 						<SearchInput />
 					</SearchInputContainer>
-					<Model/>
+					<Model />
 					<HeaderAccount>
-					<NavLink component={RouterLink} to="/user/ViewCart" underline="none">
-					    <Box
+						<NavLink
+							component={RouterLink}
+							to="/user/ViewCart"
+							underline="none"
+						>
+							<Box
 								onClick={() => dispatch(openModel())}
 								component="div"
 								sx={cartAccount}
@@ -204,24 +217,61 @@ export default function HeaderMain() {
 								>
 									<CartIcon sx={{ fill: "none" }} />
 								</Badge>
-
-						</Box>
-					</NavLink>
-					<NavLink component={RouterLink} to="/user/wishlist" underline="none">
-						<Box component="div" sx={WishListAccount}>
-							<Badge
-								color="primary"
-								sx={{ marginLeft: '3px' }}
-							>
-                               <img src={wishlistIcon}  alt="Icon" class="wishlist-icon" style={{ fill: 'none' }} />
-							</Badge>
-						</Box>
-					</NavLink>
-		
-						<Box component="div" sx={userAccount}>
-							<UserIcon sx={{ fill: 'none', marginRight:'0px' }} />
-						</Box>
-						
+							</Box>
+						</NavLink>
+						<NavLink
+							component={RouterLink}
+							to="/user/wishlist"
+							underline="none"
+						>
+							<Box component="div" sx={WishListAccount}>
+								<Badge
+									color="primary"
+									sx={{ marginLeft: "3px" }}
+								>
+									<img
+										src={wishlistIcon}
+										alt="Icon"
+										className="wishlist-icon"
+										style={{ fill: "none" }}
+									/>
+								</Badge>
+							</Box>
+						</NavLink>
+						{(!user && (
+							<Box component="div" sx={userAccount}>
+								<UserIcon
+									sx={{
+										fill: "none",
+										marginRight: "0px",
+									}}
+								/>
+							</Box>
+						)) || (
+							<PopupMenu>
+								<button className="dropDownMenu">
+									<div className="user-profile">
+										<Avatar className="avatar avatar-main-header">
+											{user?.firstName?.substr(0, 1)}
+										</Avatar>
+									</div>
+								</button>
+								<div className="dropDownCard main-nav-dropdown-card">
+									<div className="menu-list">
+										<RouterLink
+											to="/customer/orders/history"
+											className="menu-title"
+										>
+											Orders
+										</RouterLink>
+										<Unicons.UilAngleRight
+											size="24"
+											color="#848181"
+										/>
+									</div>
+								</div>
+							</PopupMenu>
+						)}
 					</HeaderAccount>
 				</NavDropDown>
 			</Box>
@@ -324,25 +374,25 @@ const logoName = {
 };
 
 const userAccount = {
-	width: '59.82px',
-	height: '24.64px',
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
+	width: "59.82px",
+	height: "24.64px",
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
 };
 
 const cartAccount = {
-	width: '20.8px',
-	height: '24.7px',
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
+	width: "20.8px",
+	height: "24.7px",
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
 };
 const WishListAccount = {
-	width: '20.8px',
-	height: '22.7px',
-	display: 'flex',
-	fontStyle: 'bold',
-	justifyContent: 'center',
-	alignItems: 'center',
+	width: "20.8px",
+	height: "22.7px",
+	display: "flex",
+	fontStyle: "bold",
+	justifyContent: "center",
+	alignItems: "center",
 };
