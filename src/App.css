@@ -141,3 +141,29 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.open-chat {
+  background-color: #096F3E;
+  color: #f5f5f5;
+  width: 100px;
+  height: 60px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  position: fixed;
+  bottom: 20px;
+  margin-left: 90%;
+  position: fixed;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.open-chat:disabled {
+  background-color: #4aa47a;
+}
+
+@media screen and (max-width: 768px) { 
+  .open-chat {
+    margin-left: 70%;
+  }
+}

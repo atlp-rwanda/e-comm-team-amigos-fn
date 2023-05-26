@@ -23,8 +23,9 @@ import AddToCart from "../views/addToCart/addtoCart.jsx";
 import CheckoutPage from "../views/CheckoutPage.jsx";
 import CheckoutSuccessPage from "../views/payment/checkoutSuccessPage.jsx";
 import CancelPaymentPage from "../views/payment/checkoutCancel.jsx";
-import UpdatePasswordPage from '../views/updatePassword/UpdatePasswordPage.jsx';
-import WishlistPage from '../views/wishlist/Wishlist.jsx';
+import UpdatePasswordPage from "../views/updatePassword/UpdatePasswordPage.jsx";
+import WishlistPage from "../views/wishlist/Wishlist.jsx";
+import Chat from "../views/chat/Chat.jsx";
 import Orders from "../components/orders/Orders.jsx";
 import Order from "../components/order/Order.jsx";
 import CustomerProtected from "../utils/auth/CustomerProtected.js";
@@ -77,11 +78,11 @@ const index = () => {
 						path="/dashboard/product"
 						element={<Product />}
 					/>
-                    <Route
+					<Route
 						exact
 						path="/dashboard/update-password"
 						element={<UpdatePasswordPage />}
-					/>					
+					/>
 					<Route path="users" element={<Users />} />
 					<Route exact path="roles" element={<Roles />} />
 				</Route>
@@ -108,7 +109,11 @@ const index = () => {
 				<Route exact path="*" element={<div>Page Not Found!!</div>} />
 			</Route>
 			<Route exact path="/products" element={<SearchPage />}></Route>
-			<Route exact path="/update-password" element={<UpdatePasswordPage />} />
+			<Route
+				exact
+				path="/update-password"
+				element={<UpdatePasswordPage />}
+			/>
 			<Route
 				exact
 				path="/product/:id"
@@ -125,12 +130,36 @@ const index = () => {
 					</IsAuthorized>
 				}
 			/>
-			<Route exact path="/user/wishlist" element={<IsAuthorized><WishlistPage /></IsAuthorized>}/>
-			<Route exact path="/user/viewcart" element={<IsAuthorized><ViewCart /></IsAuthorized>}/>
+			<Route
+				exact
+				path="/user/wishlist"
+				element={
+					<IsAuthorized>
+						<WishlistPage />
+					</IsAuthorized>
+				}
+			/>
+			<Route
+				exact
+				path="/user/viewcart"
+				element={
+					<IsAuthorized>
+						<ViewCart />
+					</IsAuthorized>
+				}
+			/>
 
+			<Route
+				exact
+				path="/chat"
+				element={
+					<IsAuthorized>
+						<Chat />
+					</IsAuthorized>
+				}
+			/>
 		</Routes>
 	);
 };
 
 export default index;
-

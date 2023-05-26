@@ -17,7 +17,7 @@ import isOpenReducer from "./reducer/isOpenModel";
 import relatedProductReducer from "./RelatedProducts/reducer";
 import profileReducer from "./profile/reducer";
 import paymentReducer from "./reducer/payment";
-import UpdatePasswordReducer from './reducer/updatePassword';
+import UpdatePasswordReducer from "./reducer/updatePassword";
 import viewWishlistReducer from "./reducer/wishlist/viewWishlist";
 import removeFromWishlistReducer from "./reducer/wishlist/removeFromWishlist";
 import addToWishlistReducer from "./reducer/wishlist/addTowishlist";
@@ -26,6 +26,7 @@ import clearCartReducer from "./reducer/clearCartReducer";
 import viewcartReducer from "./reducer/viewCartReducer";
 import UpdateCartReducer from "./reducer/updateCartReducer";
 
+import chatReducer from "./chat/chatReducer";
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
 	verifyEmail: verifyEmailReducer,
@@ -50,7 +51,8 @@ const rootReducer = combineReducers({
 	wishlist: viewWishlistReducer,
 	removeWishlist: removeFromWishlistReducer,
 	addToWishlist: addToWishlistReducer,
-	clearCart:clearCartReducer,
+	chatState: chatReducer,
+	clearCart: clearCartReducer,
 	updateCartState: UpdateCartReducer,
 	updatePasswordState: UpdatePasswordReducer,
 	orders: ordersReducers,
