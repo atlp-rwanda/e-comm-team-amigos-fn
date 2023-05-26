@@ -14,6 +14,7 @@ import reviewsReducer from "./reviews/reviewsReducer";
 import counterReducer from "./reducer/counter";
 import addToCartReducer from "./reducer/addToCartReducer";
 import isOpenReducer from "./reducer/isOpenModel";
+import viewcartReducer from "./reducer/viewCartReducer";
 import relatedProductReducer from "./RelatedProducts/reducer";
 import profileReducer from "./profile/reducer";
 import paymentReducer from "./reducer/payment";

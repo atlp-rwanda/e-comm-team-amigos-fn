@@ -36,18 +36,16 @@ const index = () => {
 	const userId = JSON.parse(localStorage.getItem("user"))?.id;
 	const [socket, setSocket] = useState(null);
 
+	console.log("connected to socket " + socket?.id);
+
 	useEffect(()=>{
 		setSocket(io("https://e-comm-team-amigos-bn-project.onrender.com",{
 			transports: ["websocket"]
 		}));
-
 	},[]);
 
 	useEffect(()=>{
 		socket?.emit("newUser", userId);
-		socket?.on("connection", ()=>{
-			console.log("connection established");
-		})
 	},[userId, socket]);
 
 	return (

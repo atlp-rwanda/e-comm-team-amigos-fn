@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Separetor } from "../../../components/sparetor/index.jsx";
 import { FaUser } from "react-icons/fa";
+import { formatDate } from "../../../utils/date/index.js";
 
 function HeaderNav({socket}) {
     const [notifications, setNotifications] = useState([]);
@@ -22,6 +23,8 @@ function HeaderNav({socket}) {
         },
       },
     });
+
+    // https://e-comm-team-amigos-bn-project.onrender.com/notification/mark
   
     const fetchNotification =() => {
       const token = localStorage.getItem("token");
@@ -40,6 +43,7 @@ function HeaderNav({socket}) {
     };
   
   console.log(notifications);
+  console.log(socket);
 
 	const [user, setUser] = useState({});
 	useEffect(() => {
@@ -87,7 +91,7 @@ function HeaderNav({socket}) {
                             <FaUser color="#C5C5C5" size={"14px"}/>
                             <span style={{color:"#C5C5C5", fontSize:"14px", marginLeft:"5px"}}>{notification?.firstName} {notification?.lastName}</span>
                           </div>
-                          <span style={{color:"#C5C5C5", fontSize:"14px"}}>15 may</span>
+                          <span style={{color:"#C5C5C5", fontSize:"14px"}}>{formatDate(notification.createdAt)}</span>
                         </div>
                         <span style={{color:"#096E3E", fontSize:"14px"}} className="notification-title">{notification.title}</span>
                         <span className="notification-description">{notification.description}</span>

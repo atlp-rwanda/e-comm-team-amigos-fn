@@ -65,6 +65,7 @@
     "jsonwebtoken": "^9.0.0",
     "jwt-decode": "^3.1.2",
     "mini-css-extract-plugin": "^2.7.5",
+    "moment": "^2.29.4",
     "netlify-cli": "^15.1.1",
     "prettier": "^2.8.7",
     "prop-types": "^15.8.1",
