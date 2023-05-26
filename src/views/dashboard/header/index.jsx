@@ -15,6 +15,7 @@ import { formatDate } from "../../../utils/date/index.js";
 
 function HeaderNav({socket}) {
     const [notifications, setNotifications] = useState([]);
+    const unReadNotification = Array.from(notifications.values()).filter((notification)=> !notification.isRead);
     const api = axios.create({
       baseURL: "https://e-comm-team-amigos-bn-project.onrender.com",
       headers: {
@@ -23,8 +24,6 @@ function HeaderNav({socket}) {
         },
       },
     });
-
-    // https://e-comm-team-amigos-bn-project.onrender.com/notification/mark
   
     const fetchNotification =() => {
       const token = localStorage.getItem("token");
@@ -41,8 +40,23 @@ function HeaderNav({socket}) {
           .catch((error) => {
           });
     };
-  
-  console.log(notifications);
+
+    const markNotification =() => {
+      const token = localStorage.getItem("token");
+        api.get(`/notification/mark`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+    };
+
   console.log(socket);
 
 	const [user, setUser] = useState({});
@@ -68,36 +82,36 @@ function HeaderNav({socket}) {
                 <div className="notifications">
                   <BiBell className="bell-icon" size={28} color="#CCCCCC" />
                   <div className="notification-count">
-                    <span>{notifications.length}</span>
+                    <span>{unReadNotification.length}</span>
                   </div>
                 </div>
               </button>
               
               <div className="notificationDropDownCard">
-                {notifications.length !== 0 && <>
+                {unReadNotification.length !== 0 && <>
                   <div className="notifications-header">
                     <span className="notification-title">Notifications</span>
-                    <button className="mark-all">
+                    <button onClick={()=>markNotification()} className="mark-all">
                       Mark all as read
                     </button>
                   </div>
                   <div className="notifications-body-container">
-                  {notifications?.map((notification, index)=>{
+                  {unReadNotification?.map((notification, index)=>{
                     return (
                       <div key={index}>
                         <div className="notifications-body">
-                        <div  className="notifications-body-header">
-                          <div>
-                            <FaUser color="#C5C5C5" size={"14px"}/>
-                            <span style={{color:"#C5C5C5", fontSize:"14px", marginLeft:"5px"}}>{notification?.firstName} {notification?.lastName}</span>
+                          <div  className="notifications-body-header">
+                            <div>
+                              <FaUser color="#C5C5C5" size={"14px"}/>
+                              <span style={{color:"#C5C5C5", fontSize:"14px", marginLeft:"5px"}}>{notification?.firstName} {notification?.lastName}</span>
+                            </div>
+                            <span style={{color:"#C5C5C5", fontSize:"14px"}}>{formatDate(notification?.createdAt)}</span>
                           </div>
-                          <span style={{color:"#C5C5C5", fontSize:"14px"}}>{formatDate(notification.createdAt)}</span>
+                          <span style={{color:"#096E3E", fontSize:"14px"}} className="notification-title">{notification?.title}</span>
+                          <span className="notification-description">{notification?.description || notification?.body}</span>
+                          </div>
+                          <Separetor/>
                         </div>
-                        <span style={{color:"#096E3E", fontSize:"14px"}} className="notification-title">{notification.title}</span>
-                        <span className="notification-description">{notification.description}</span>
-                        </div>
-                        <Separetor/>
-                      </div>
                     )
                   })}
                 </div>
@@ -105,52 +119,50 @@ function HeaderNav({socket}) {
               }
               </div>
             </PopupMenu>
-
-					<PopupMenu>
-						<button className="dropDownMenu">
-							<div className="user-profile">
-								<Avatar className="avatar">
-									{user?.firstName?.substr(0, 1)}
-								</Avatar>
-								<div className="user-identity">
-									<span className="user-name">{`${user?.firstName} ${user?.lastName}`}</span>
-									<span className="user-email">
-										{user?.email}
-									</span>
-								</div>
-							</div>
-						</button>
-						<div className="dropDownCard">
-							<div className="menu-list d-lg-none">
-								<div className="user-identity d-sm-flex">
-									<span className="user-name">{`${user?.firstName} ${user?.lastName}`}</span>
-									<span className="user-email">
-										{user?.email}
-									</span>
-								</div>
-							</div>
-							<div className="menu-list">
-								<Link
-									to={"/dashboard/update-password"}
-									className="menu-title"
-								>
-									Change Password
-								</Link>
-								<Unicons.UilAngleRight
-									size="24"
-									color="#848181"
-								/>
-							</div>
-							<div className="menu-list">
-								<Link className="menu-title">Profile</Link>
-								<Unicons.UilAngleRight
-									size="24"
-									color="#848181"
-								/>
-							</div>
-						</div>
-					</PopupMenu>
-
+            <PopupMenu>
+              <button className="dropDownMenu">
+                <div className="user-profile">
+                  <Avatar className="avatar">
+                    {user?.firstName?.substr(0, 1)}
+                  </Avatar>
+                  <div className="user-identity">
+                    <span className="user-name">{`${user?.firstName} ${user?.lastName}`}</span>
+                    <span className="user-email">
+                      {user?.email}
+                    </span>
+                  </div>
+                </div>
+              </button>
+              <div className="dropDownCard">
+                <div className="menu-list d-lg-none">
+                  <div className="user-identity d-sm-flex">
+                    <span className="user-name">{`${user?.firstName} ${user?.lastName}`}</span>
+                    <span className="user-email">
+                      {user?.email}
+                    </span>
+                  </div>
+                </div>
+                <div className="menu-list">
+                  <Link
+                    to={"/dashboard/update-password"}
+                    className="menu-title"
+                  >
+                    Change Password
+                  </Link>
+                  <Unicons.UilAngleRight
+                    size="24"
+                    color="#848181"
+                  />
+                </div>
+                <div className="menu-list">
+                  <Link className="menu-title">Profile</Link>
+                  <Unicons.UilAngleRight
+                    size="24"
+                    color="#848181"
+                  />
+                </div>
+              </div>
+            </PopupMenu>
 					{/* <div className="user-identity">
 							<span className="user-name">{`${user?.firstName} ${user?.lastName}`}</span>
 							<span className="user-email">{user?.email}</span>

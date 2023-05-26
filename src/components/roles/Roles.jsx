@@ -41,7 +41,6 @@ export default function Roles({socket}) {
 	const { errorMsg, fetchingUser, addOrRemovingRole, user, roles, addRoleSuccessInfo, removeRoleSuccessInfo } =
 		useSelector((state) => state.roles);
 	const [email, setEmail] = useState("");
-
 	function handleOnChangeSearch(e) {
 		setEmail(e.target.value);
 	}
@@ -59,22 +58,25 @@ export default function Roles({socket}) {
 	}
 
 	const loggedInUser = JSON.parse(localStorage.getItem("user"));
-	const handleNotification = (userId, roleId) => {
+	const handleNotification = (userId, roleId, title, body) => {
 		socket?.emit("sendNotification", {
 			receiverId: userId,
 			firstName:loggedInUser.firstName,
 			lastName:loggedInUser.lastName,
-			title: `You have assigned a new role`,
-    		description: `${loggedInUser.firstName} ${loggedInUser.lastName} has assigned a new role to you which has id${roleId}.`
+			title: title,
+    		description: `${loggedInUser.firstName} ${loggedInUser.lastName} ${body} ${roleId}.`
 			})
 		}
 
 	useEffect(() => {
 		if(addRoleSuccessInfo?.status === 201){
-			handleNotification(addRoleSuccessInfo?.data?.response?.userId, addRoleSuccessInfo?.data?.response?.roleId);
+			handleNotification(addRoleSuccessInfo?.data?.response?.userId, addRoleSuccessInfo?.data?.response?.roleId, `You have assigned a new role`, `has assigned a new role to you which has id`);
+		}
+		if(removeRoleSuccessInfo?.status === 200){
+			handleNotification(user?.id, user?.id, `You have re-assigned a new role`, `has re-assigned a new role to you which has id`);
 		}
 		dispatch(getRoles());
-	}, [dispatch, addRoleSuccessInfo]);
+	}, [dispatch, addRoleSuccessInfo, removeRoleSuccessInfo]);
 
 	return (
 		<div className="manage-roles-container">
