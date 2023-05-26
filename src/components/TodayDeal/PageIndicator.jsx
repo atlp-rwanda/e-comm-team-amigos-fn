@@ -1,86 +1,82 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
-import colors from '../../constants/colors';
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
+import colors from "../../constants/colors";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled(Box)(({ theme }) => ({
-	width: '332.2px',
-	[theme.breakpoints.down('md')]: {
-		width: '270px',
+	width: "100%",
+	maxWidth: "332.2px",
+	[theme.breakpoints.down("md")]: {
+		maxWidth: "270px",
 	},
-	[theme.breakpoints.down('sm')]: {
-		width: '90%',
+	[theme.breakpoints.down("sm")]: {
+		maxWidth: "90%",
 	},
-	height: '40px',
-	display: 'flex',
-	justifyContent: 'space-between',
-	marginTop: '40px',
-	marginLeft: 'auto',
-	marginRight: 'auto',
+	height: "40px",
+	display: "flex",
+	justifyContent: "flex-end",
+	marginTop: "40px",
+	marginLeft: "auto",
+	marginRight: "auto",
+	position: "relative",
 }));
 
-const PageNumber = styled(Box)(({ theme }) => ({
-	width: '59.86px',
-	[theme.breakpoints.down('md')]: {
-		width: '3ch',
-	},
-	height: '40px',
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	fontFamily: 'Poppins',
-	fontStyle: 'normal',
-	fontWeight: '500',
-	fontSize: '18.2864px',
-	lineHeight: '27px',
-	borderRadius: '10px',
-	border: `1.01591px solid ${colors.darkGreen}`,
-	color: colors.black,
-	':active': {
-		background: colors.darkGreen,
-		color: colors.white,
-	},
-	':hover': {
-		background: colors.darkGreen,
-		color: colors.white,
-		cursor: 'pointer',
-	},
-}));
+const ArrowIcon = styled(Box)({
+	display: "flex",
+	alignItems: "center",
+	marginLeft: "4px",
+	fontSize: "20px", // Adjust the size as per your preference
+});
 
 const PageNext = styled(Box)(({ theme }) => ({
-	width: '107.74px',
-	[theme.breakpoints.down('md')]: {
-		width: '6ch',
+	width: "100%",
+	maxWidth: "107.74px",
+	[theme.breakpoints.down("md")]: {
+		maxWidth: "9ch",
+		fontSize: "14px",
 	},
-	height: '39px',
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	fontFamily: 'Poppins',
-	fontStyle: 'normal',
-	fontWeight: '500',
-	fontSize: '18.2864px',
-	borderRadius: '10px',
-	lineHeight: '27px',
-	background: colors.darkGreen,
-	color: colors.white,
-	':active': {
+	height: "39px",
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+	fontFamily: "Poppins",
+	fontStyle: "normal",
+	fontWeight: "500",
+	fontSize: "18.2864px",
+	borderRadius: "10px",
+	lineHeight: "27px",
+	border: "1px solid darkGreen",
+	color: colors.darkGreen,
+	":active": {
 		background: colors.darkGreen,
 		color: colors.white,
 	},
-	':hover': {
-		background: colors.white,
-		color: colors.darkGreen,
-		cursor: 'pointer',
+	":hover": {
+		background: colors.darkGreen,
+		color: colors.white,
+		cursor: "pointer",
+	},
+	position: "absolute",
+	top: 0,
+	right: 0,
+	[theme.breakpoints.down("sm")]: {
+		position: "relative",
+		top: "auto",
+		right: "auto",
+		marginTop: "10px",
 	},
 }));
-
 export default function PageIndicator() {
+	const navigate = useNavigate();
+	const handleSeeAllClick = () => {
+		navigate("/products/all");
+	};
+
 	return (
 		<Container>
-			<PageNumber>1</PageNumber>
-			<PageNumber>2</PageNumber>
-			<PageNumber>3</PageNumber>
-			<PageNext>Next</PageNext>
+			<PageNext onClick={handleSeeAllClick}>
+				See all <ArrowIcon>&#10140;</ArrowIcon>
+			</PageNext>
 		</Container>
 	);
 }
