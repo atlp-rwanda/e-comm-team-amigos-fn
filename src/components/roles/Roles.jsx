@@ -36,12 +36,11 @@ const RoleButton = ({
 	);
 };
 
-export default function Roles() {
+export default function Roles({socket}) {
 	const dispatch = useDispatch();
-	const { errorMsg, fetchingUser, addOrRemovingRole, user, roles } =
+	const { errorMsg, fetchingUser, addOrRemovingRole, user, roles, addRoleSuccessInfo, removeRoleSuccessInfo } =
 		useSelector((state) => state.roles);
 	const [email, setEmail] = useState("");
-
 	function handleOnChangeSearch(e) {
 		setEmail(e.target.value);
 	}
@@ -58,9 +57,26 @@ export default function Roles() {
 			dispatch(removeRole(user?.id, roleid));
 	}
 
+	const loggedInUser = JSON.parse(localStorage.getItem("user"));
+	const handleNotification = (userId, roleId, title, body) => {
+		socket?.emit("sendNotification", {
+			receiverId: userId,
+			firstName:loggedInUser.firstName,
+			lastName:loggedInUser.lastName,
+			title: title,
+    		description: `${loggedInUser.firstName} ${loggedInUser.lastName} ${body} ${roleId}.`
+			})
+		}
+
 	useEffect(() => {
+		if(addRoleSuccessInfo?.status === 201){
+			handleNotification(addRoleSuccessInfo?.data?.response?.userId, addRoleSuccessInfo?.data?.response?.roleId, `You have assigned a new role`, `has assigned a new role to you which has id`);
+		}
+		if(removeRoleSuccessInfo?.status === 200){
+			handleNotification(user?.id, user?.id, `You have re-assigned a new role`, `has re-assigned a new role to you which has id`);
+		}
 		dispatch(getRoles());
-	}, [dispatch]);
+	}, [dispatch, addRoleSuccessInfo, removeRoleSuccessInfo]);
 
 	return (
 		<div className="manage-roles-container">

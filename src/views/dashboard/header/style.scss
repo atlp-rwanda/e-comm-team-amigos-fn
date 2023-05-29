@@ -32,7 +32,7 @@
 
 .bell-icon{
     margin-top:.5rem;
-    margin-right:-.6rem;
+    margin-right:-.3rem;
 }
 
 .notification-count{
@@ -76,6 +76,72 @@
 
 .menu-container{
     display: none;
+}
+
+.dropDownMenu{
+    background-color: #fff;
+    border: 0px;
+}
+
+.dropDownCard {
+    background: #ffffff;
+    border-radius: 8px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 300px;
+    height: auto;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    display: flex;
+    flex-direction: column;
+}
+
+.notifications-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #096E3E;
+    padding: 1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.notification-title{
+    color: #ffffff;
+}
+
+.mark-all{
+    border: 0px;
+    padding: .2rem;
+    background-color: #ffffff;
+    color: #096E3E;
+    font-size: .7rem;
+    border-radius: .2rem;
+}
+
+.notifications-body{
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.notifications-body-container{
+    height: 400px;
+    overflow: scroll;
+}
+
+.notifications-body-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notification-description{
+    color: #848181;
+    font-size: 12px;
 }
 
 /* For mobile phones: */
@@ -124,13 +190,14 @@
     background-color: #fff;
     border: 0;
     width: auto;
+    
   }
 
 .dropDownCard {
     background: #ffffff;
     border-radius: 8px;
     position: absolute;
-    top: 80px;
+    top: 70px;
     right: -80px;
     width: 200px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
@@ -140,6 +207,21 @@
     flex-direction: column;
     justify-content: center;
     padding: 1rem;
+}
+
+.notificationDropDownCard{
+    background: #ffffff;
+    border-radius: 8px;
+    position: absolute;
+    top: 70px;
+    right: -80px;
+    width: 250px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
  .menu-list{

@@ -10,15 +10,13 @@ import ImageUploader from "./ImageUploader.jsx";
 import "./product.style.scss";
 import "react-toastify/dist/ReactToastify.css";
 
-const CreateProduct = ({ setCreateProduct }) => {
+const CreateProduct = ({ setCreateProduct, socket, user }) => {
 	const dispatch = useDispatch();
 	const [imageUrl, setImageUrl] = useState();
 	const { productSuccess, productStart } = useSelector(
 		(state) => state.productState,
 	);
-	const { detailsProductId } = useSelector(
-		(state) => state.fetchProductState,
-	);
+
 	useEffect(() => {
 		handleProductResponse(productSuccess, toast);
 	}, [productSuccess]);
