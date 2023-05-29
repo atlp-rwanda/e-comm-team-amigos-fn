@@ -94,7 +94,7 @@ const Chat = () => {
 	};
 
 	return (
-		<div>
+		<div className="chat">
 			<div className="chat-heading">
 				<h2>Amigos Chat Space</h2>
 			</div>

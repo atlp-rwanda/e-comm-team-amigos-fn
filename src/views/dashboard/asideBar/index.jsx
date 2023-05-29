@@ -40,7 +40,7 @@ function AsideBar() {
 								style={{
 									color: active === "Dashboard" ? "#fff" : "",
 								}}
-								to={"dashboard"}
+								to={"/dashboard"}
 								className="link"
 								onClick={() => {
 									setActive("Dashboard");
