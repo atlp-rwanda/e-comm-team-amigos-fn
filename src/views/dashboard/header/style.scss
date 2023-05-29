@@ -32,7 +32,7 @@
 
 .bell-icon{
     margin-top:.5rem;
-    margin-right:-.6rem;
+    margin-right:-.3rem;
 }
 
 .notification-count{
@@ -129,7 +129,7 @@
 }
 
 .notifications-body-container{
-    height: 500px;
+    height: 400px;
     overflow: scroll;
 }
 
@@ -190,13 +190,14 @@
     background-color: #fff;
     border: 0;
     width: auto;
+    
   }
 
 .dropDownCard {
     background: #ffffff;
     border-radius: 8px;
     position: absolute;
-    top: 80px;
+    top: 70px;
     right: -80px;
     width: 200px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
@@ -212,9 +213,9 @@
     background: #ffffff;
     border-radius: 8px;
     position: absolute;
-    top: 80px;
+    top: 70px;
     right: -80px;
-    width: 300px;
+    width: 250px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
     transform: translateY(-20px);
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;

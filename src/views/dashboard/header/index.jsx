@@ -50,7 +50,7 @@ function HeaderNav({socket}) {
           },
         })
           .then((response) => {
-            console.log(response);
+            setNotifications([]);
           })
           .catch((error) => {
             console.log(error.message);
@@ -81,9 +81,11 @@ function HeaderNav({socket}) {
               <button className="dropDownMenu">
                 <div className="notifications">
                   <BiBell className="bell-icon" size={28} color="#CCCCCC" />
-                  <div className="notification-count">
+                  {unReadNotification.length !== 0 && 
+                    <div className="notification-count">
                     <span>{unReadNotification.length}</span>
                   </div>
+                  }
                 </div>
               </button>
               
