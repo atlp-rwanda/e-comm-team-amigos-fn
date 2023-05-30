@@ -22,9 +22,6 @@ import { useNavigate } from "react-router-dom";
 import wishlistIcon from "../../assets/img/wishlistIconn.png";
 import "../../components/Header/wishlistIcon.style.scss";
 import { PopupMenu } from "react-simple-widgets";
-import "../../views/dashboard/header/style.scss";
-import "./header-menu.styles.scss";
-
 const MenuContainer = styled(Box)(({ theme }) => ({
 	zIndex: "40",
 	position: "fixed",
@@ -239,14 +236,33 @@ export default function HeaderMain() {
 							</Box>
 						</NavLink>
 						{(!user && (
-							<Box component="div" sx={userAccount}>
-								<UserIcon
-									sx={{
-										fill: "none",
-										marginRight: "0px",
-									}}
-								/>
-							</Box>
+							<Box component="div" sx={userAccount }>
+							<UserIcon sx={{ fill: "none",marginRight:"0px"  }} />
+							{!user && (
+								<PopupMenu>
+								<button className="dropDownMenu">
+									<Unicons.UilAngleDown
+										size="20"
+										color="#848181"
+									/>
+								</button>
+								<div className="dropDownCard" style={{ marginRight: "70px" }}>
+									<div className="menu-list">
+										<RouterLink
+											to='/login'
+											className="menu-title"
+										>
+											Login
+										</RouterLink>
+										<Unicons.UilAngleRight
+											size="20"
+											color="#848181"
+										/>
+									</div>
+								</div>
+							</PopupMenu>
+						)}
+						</Box>
 						)) || (
 							<PopupMenu>
 								<button className="dropDownMenu">
@@ -379,6 +395,15 @@ const userAccount = {
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
+};
+const accountLabel = {
+	fontFamily: 'Poppins',
+	fontStyle: 'normal',
+	fontWeight: '500',
+	fontSize: '17.4966px',
+	lineHeight: '26px',
+	color: colors.darkGreen,
+	marginRight:"200px"
 };
 
 const cartAccount = {

@@ -17,7 +17,6 @@ export default function LoginForm() {
 	useEffect(() => {
 		handleLoginResponse(loginSuccess, navigation, toast);
 	}, [loginSuccess?.message, loginSuccess?.error]);
-
 	return (
 		<>
 			<div>

@@ -78,7 +78,7 @@ export default function AuthForm() {
 						);
 					})}
 				</div>
-				<div className="error">
+				<div className="error_otp">
 					<p> {error}</p>
 				</div>
 				<Button

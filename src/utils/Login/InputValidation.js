@@ -5,6 +5,6 @@ export default Yup.object({
       .required("Email is required"),
    password:Yup.string()
       .required("password is required")
-      .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-       "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"),
+      .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})/,
+       "Must have 8 Characters:1Upper,1Lower,1Number,1Special"),
  });
