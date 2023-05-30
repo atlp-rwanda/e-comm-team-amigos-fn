@@ -17,6 +17,7 @@ import Product from "../views/dashboard/product/index.jsx";
 import Unauthorized from "../views/protectedRoutes/unauthorized.jsx";
 import Layout from "../views/protectedRoutes/layout.js";
 import IsAuthorized from "../utils/auth/isAuthorized.js";
+import IsAdmin from "../utils/auth/isAuthorized.js";
 import ProductDetailsPage from "../views/ProductDetailsPage.jsx";
 import SearchPage from "../views/SearchPage.jsx";
 import ViewCart from "../views/addToCart/viewCart.jsx";
@@ -31,6 +32,7 @@ import CustomerProtected from "../utils/auth/CustomerProtected.js";
 import WishlistPage from "../views/wishlist/Wishlist.jsx";
 import { io } from "socket.io-client";
 import AllProductsPage from "../views/AllProducts.jsx";
+import DisableAccount from "../../src/components/disableAccount/disableAccount.jsx";
 
 const index = () => {
 	const userId = JSON.parse(localStorage.getItem("user"))?.id;
@@ -110,6 +112,8 @@ const index = () => {
 						path="roles"
 						element={<Roles socket={socket} />}
 					/>
+					<Route path="/dashboard/disable-account" element={<IsAdmin> <DisableAccount /> </IsAdmin> } />
+					<Route exact path="roles" element={<Roles socket={socket}/>} />
 				</Route>
 
 				<Route

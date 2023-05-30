@@ -1,0 +1,167 @@
+.formContainer{
+    background-color: rgb(245, 245, 245);
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.formContainer h3{
+    color: rgb(112, 41, 72);
+    font-size: 30px;
+    margin: 10px;
+}
+.disableform{
+    background-color: white;
+    height: 70%;
+    width: 80%;
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+    border-radius: 50px;
+}
+.disableDivContainer{
+    width: 50%;
+}
+.disableMail{
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.disableMail label{
+    font-size: 25px;
+    margin-left: 10px;
+    color: rgba(0, 0, 0, 0.462);
+}
+.disableMail input{
+    height: 60px;
+    padding-left: 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 18px;
+    outline: none;
+    border: 2px solid rgba(0, 128, 0, 0.502);
+}
+.disableReason{
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.disableReason label{
+    font-size: 25px;
+    margin-left: 10px;
+    color: rgba(0, 0, 0, 0.462);
+}
+.disableReason input{
+    height: 120px;
+    margin-top: 10px;
+    padding-left: 20px;
+    border-radius: 20px;
+    font-size: 18px;
+    outline: none;
+    border: 2px solid rgba(0, 128, 0, 0.502);
+}
+.disableBtn{
+    height: 18%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submitBtn1{
+  background-color: rgb(141, 38, 120);
+  height: 40%;
+  width: 100%;
+  border: none;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.submitBtn2{
+    background-color: green;
+    height: 40%;
+    width: 100%;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.submitBtn1:hover{
+    border: 2px solid rgb(141, 38, 120);
+    color: #000000;
+    background-color: white;
+  }
+  .submitBtn2:hover{
+    border: 2px solid green;
+    color: #000000;
+    background-color: white;
+  }
+.error{
+    width: auto;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+@media(max-width:607px){
+    .disableform{
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+    }
+    .disableDivContainer{
+        width: 70%;
+    }
+    .disableMail{
+        height: 14vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .disableMail input{
+        height: 50px;
+    }
+    .disableReason input{
+        height: 90px;
+    }
+    .disableReason{
+        height: 18vh;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .formContainer h3{
+        font-size: 25px;
+    }
+    .disableMail label{
+        font-size: 20px;
+    }
+    .disableReason label{
+        font-size: 20px;
+    }
+    .disableBtn{
+        height: 15%;
+        width: 50%;
+        display: flex;
+        flex-direction:row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .submitBtn1{
+        font-size: 13px;
+        width: 40%;
+    }
+    .submitBtn2{
+        font-size: 13px;
+        width: 40%;
+
+    }
+  }

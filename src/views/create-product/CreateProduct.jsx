@@ -9,8 +9,10 @@ import ImageUploader from "./ImageUploader.jsx";
 import "./product.style.scss";
 import "react-toastify/dist/ReactToastify.css";
 import { viewSingleProduct } from "../../redux/actions/product.js";
+import { useNavigate } from "react-router-dom";
 
 const CreateProduct = ({ setCreateProduct, socket }) => {
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const [imageUrl, setImageUrl] = useState();
 	const { productSuccess, productStart } = useSelector(

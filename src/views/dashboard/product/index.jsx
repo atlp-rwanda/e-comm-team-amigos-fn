@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PrimaryBtn from "../../../components/Button/PrimaryButton.jsx";
 import ProductCard from "../../../components/product-card/index.jsx";
@@ -25,6 +25,16 @@ const Product = ({ socket }) => {
 	const handleCreateProduct = () => {
 		setCreateProduct(true);
 	};
+	const { productSuccess } = useSelector(
+		(state) => state.productState,
+	);
+
+	useEffect(() => {
+		if(productSuccess === true){
+			setCreateProduct(false);
+		}
+	
+	},[createProduct, productSuccess])
 
 	return (
 		<div className="dashboard-content">

@@ -29,4 +29,15 @@ const IsAuthorized = ({ children }) => {
 	return children;
 };
 
+export function IsAdmin() {
+	const user = JSON.parse(localStorage.getItem("user"));
+	const role = getUserRole();
+	for (var i = 0; i < role.length; i++) {
+	   if (role[i] !== "Admin") {
+		  return <Navigate to="/" />;
+	   }
+	}
+	return <Navigate to="/login" />;
+}
+
 export default IsAuthorized;

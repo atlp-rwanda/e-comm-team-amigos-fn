@@ -25,10 +25,12 @@ import addToWishlistReducer from "./reducer/wishlist/addTowishlist";
 import clearCartReducer from "./reducer/clearCartReducer";
 import UpdatePasswordReducer from "./reducer/updatePassword";
 import allproductsReducer from "./allProducts/reducer";
-import chatReducer from "./chat/chatReducer";
 import UpdateCartReducer from "./reducer/updateCartReducer";
 import notificationReducer from "./reducer/notification";
 import cartItems from "./reducer/cartItems";
+import chatReducer from "./chat/chatReducer";
+import disableUserReducer from "./reducer/disableUser/disableUser";
+import enableUserReducer from "./reducer/disableUser/enableUser";
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
@@ -61,6 +63,8 @@ const rootReducer = combineReducers({
 	orders: ordersReducers,
 	notification: notificationReducer,
 	products: allproductsReducer,
+	disableUserState: disableUserReducer,
+	enableUserState: enableUserReducer,
 });
 
 export default rootReducer;

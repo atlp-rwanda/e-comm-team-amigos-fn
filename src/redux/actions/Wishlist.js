@@ -37,11 +37,13 @@ export const addToWishlist = (id) => {
 					type: ADD_TO_WISHLIST_SUCCESS,
 					payload: response.ok,
 				});
+				setTimeout(() => {
+					dispatch({
+						type: ADD_TO_WISHLIST_SUCCESS,
+						payload: "",
+					});
+				}, 1000);
 				dispatch(viewWishlist());
-				dispatch({
-					type: ADD_TO_WISHLIST_START,
-					payload: true,
-				});
 				dispatch({
 					type: ADD_TO_WISHLIST_START,
 					payload: false,
@@ -150,10 +152,12 @@ export const removeFromWishlist = (id) => {
 					type: REMOVE_FROM_WISHLIST_SUCCESS,
 					payload: id,
 				});
-				dispatch({
-					type: REMOVE_FROM_WISHLIST_START,
-					payload: true,
-				});
+				setTimeout(() => {
+					dispatch({
+						type: REMOVE_FROM_WISHLIST_SUCCESS,
+						payload: "",
+					});
+				}, 1000);
 				dispatch({
 					type: REMOVE_FROM_WISHLIST_START,
 					payload: false,
@@ -164,12 +168,19 @@ export const removeFromWishlist = (id) => {
 					type: REMOVE_FROM_WISHLIST_ERROR,
 					payload: errorData.message,
 				});
+				
 			}
 		} catch (error) {
 			dispatch({
 				type: REMOVE_FROM_WISHLIST_ERROR,
 				payload: error.message,
 			});
+			setTimeout(() => {
+				dispatch({
+					type: REMOVE_FROM_WISHLIST_ERROR,
+					payload: "",
+				});
+			}, 1000);
 		}
 	};
 };
