@@ -100,7 +100,6 @@ export default function ProductLayout() {
 					className="primary-button"
 					onClick={() => {
 						dispatch(updateProductAction(product.id));
-						console.log("clicked");
 					}}
 				>
 					Edit

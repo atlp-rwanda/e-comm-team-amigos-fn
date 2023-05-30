@@ -8,6 +8,8 @@ const counterReducer = (state = 0, action) => {
 			} else {
 				return state;
 			}
+		case "NEUTRAL":
+			return 0;
 		default:
 			return state;
 	}

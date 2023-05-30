@@ -1,14 +1,20 @@
 import React from "react";
 import Rating from "@mui/material/Rating";
 import { Star } from "../TodayDeal/ItemCard";
+import { useNavigate } from "react-router-dom";
 import { StarDisabled } from "../TodayDeal/ItemCard";
 import "./related.scss";
 
 const ProductCard = (props) => {
-	const { image, name, description, price } = props;
+	const { id, image, name, description, price } = props;
+	const navigate = useNavigate();
+	const handleClick = () => {
+		navigate(`/product/${id}`);
+		window.location.reload();
+	};
 	return (
 		<>
-			<div>
+			<div onClick={handleClick}>
 				<div className="related-image-container">
 					<img src={image} alt="product Image" />
 				</div>
@@ -30,7 +36,9 @@ const ProductCard = (props) => {
 						readOnly
 					/>{" "}
 					<br />
-					<button className="related-button">Add to Cart</button>
+					<button onClick={handleClick} className="related-button">
+						Add to Cart
+					</button>
 				</div>
 			</div>
 		</>

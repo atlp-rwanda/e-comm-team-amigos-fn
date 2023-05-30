@@ -23,6 +23,12 @@
   line-height: 48px;
   color: #666666;
 }
+@media (max-width: 768px) {
+  .manage-roles-container h2, .manage-roles-container h3 {
+    font-weight: 600;
+    line-height: 41px;
+  }
+}
 .manage-roles-container .roles-icon {
   color: #096E3E;
   font-size: 20px;
@@ -58,6 +64,11 @@
   gap: 10px;
   align-items: center;
 }
+@media (max-width: 768px) {
+  .manage-roles-container {
+    width: 94%;
+  }
+}
 
 .form-input {
   margin-top: 20p;
@@ -77,6 +88,12 @@
 .user-roles-search-box {
   position: relative;
 }
+@media (max-width: 768px) {
+  .user-roles-search-box {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
 .user-roles-search-box h3 {
   font-size: 20px;
   color: #333;
@@ -85,6 +102,13 @@
   width: 100%;
   height: 100%;
 }
+@media (max-width: 768px) {
+  .user-roles-search-box input {
+    height: auto;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
 .user-roles-search-box button {
   position: absolute;
   right: 0;
@@ -92,6 +116,13 @@
   width: fit-content;
   margin: 0;
   height: 100%;
+}
+@media (max-width: 768px) {
+  .user-roles-search-box button {
+    position: relative;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }
 .user-roles-search-box button:hover {
   background-color: #163C2A;
@@ -102,6 +133,11 @@
 .user h2 {
   margin-bottom: -10px;
   color: #096E3E;
+}
+@media (max-width: 768px) {
+  .user h2 {
+    margin-bottom: 0;
+  }
 }
 
 .my-roles {
@@ -121,7 +157,7 @@
   align-items: center;
 }
 .set-roles .updateUserRoleContainer {
-  flex: 1;
+  flex: 2;
 }
 .set-roles .updateUserRoleContainer button {
   width: 100%;
@@ -129,6 +165,10 @@
 }
 .set-roles .roles-of-user {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .my-roles li {

@@ -15,7 +15,6 @@ const UpdateProduct = ({ currentPage }) => {
 	);
 	const { updateProductId } = useSelector((state) => state.fetchProductState);
 	const productId = updateProductId;
-	console.log("product ID: ", productId);
 	const dispatch = useDispatch();
 
 	const handleUpdateProductResponse = () => {

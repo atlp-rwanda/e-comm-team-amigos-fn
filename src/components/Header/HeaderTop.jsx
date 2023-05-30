@@ -1,8 +1,6 @@
 import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
-
 import colors from "../../constants/colors";
-
 const HeaderTop = ({ justifyContent, alignItems }) => {
 	return (
 		<Box

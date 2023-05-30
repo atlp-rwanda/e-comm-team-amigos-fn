@@ -9,10 +9,14 @@
   padding: 1.5rem;
 }
 
+.filter-section {
+  flex: 1;
+}
+
 .profile-element {
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
 .user-profile {
@@ -27,7 +31,7 @@
 
 .bell-icon {
   margin-top: 0.5rem;
-  margin-right: -0.6rem;
+  margin-right: -0.3rem;
 }
 
 .notification-count {
@@ -73,35 +77,101 @@
   display: none;
 }
 
+.dropDownMenu {
+  background-color: #fff;
+  border: 0px;
+}
+
+.dropDownCard {
+  background: #ffffff;
+  border-radius: 8px;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 300px;
+  height: auto;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  display: flex;
+  flex-direction: column;
+}
+
+.notifications-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #096E3E;
+  padding: 1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.notification-title {
+  color: #ffffff;
+}
+
+.mark-all {
+  border: 0px;
+  padding: 0.2rem;
+  background-color: #ffffff;
+  color: #096E3E;
+  font-size: 0.7rem;
+  border-radius: 0.2rem;
+}
+
+.notifications-body {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.notifications-body-container {
+  height: 400px;
+  overflow: scroll;
+}
+
+.notifications-body-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-description {
+  color: #848181;
+  font-size: 12px;
+}
+
 /* For mobile phones: */
 @media only screen and (max-width: 768px) {
   .header-container {
     width: 100%;
-    height: auto;
+    height: 60px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-  }
-  .filter-section {
-    order: 2;
-    width: 100%;
+    padding: 0;
+    padding-left: 5px;
   }
   .profile-section {
-    order: 1;
     width: 100%;
+    height: 100%;
+    flex: 1;
+    padding-left: 1rem;
   }
   .profile-element {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0rem;
-    margin-bottom: 1rem;
   }
   .user-profile {
     display: flex;
     align-items: center;
+  }
+  .user-identity {
+    display: none;
   }
   .menu-container {
     width: 50px;
@@ -110,5 +180,63 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+}
+.dropDownMenu {
+  background-color: #fff;
+  border: 0;
+  width: auto;
+}
+
+.dropDownCard {
+  background: #ffffff;
+  border-radius: 8px;
+  position: absolute;
+  top: 70px;
+  right: -80px;
+  width: 200px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.notificationDropDownCard {
+  background: #ffffff;
+  border-radius: 8px;
+  position: absolute;
+  top: 70px;
+  right: -80px;
+  width: 250px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menu-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.2rem;
+}
+
+.menu-title {
+  color: #494848;
+  font-size: 14px;
+}
+
+.d-lg-none {
+  display: block;
+}
+@media (min-width: 768px) {
+  .d-lg-none {
+    display: none;
   }
 }/*# sourceMappingURL=style.css.map */

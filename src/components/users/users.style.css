@@ -30,12 +30,23 @@
   font-size: 14px;
   color: #666666;
 }
+@media (max-width: 768px) {
+  .users {
+    width: 96%;
+  }
+}
 
 .users-table-container {
   border-radius: 24px;
   padding: 25px 30px;
   background-color: #fff;
   width: 100%;
+  overflow-x: auto;
+}
+@media (max-width: 768px) {
+  .users-table-container {
+    padding: 25px 10px;
+  }
 }
 
 .users-table {

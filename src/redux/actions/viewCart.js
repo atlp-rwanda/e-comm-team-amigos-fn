@@ -19,7 +19,7 @@ const viewCart = () => {
 				},
 			);
 			const result = await response.json();
-			if (response.status == 200) {
+			if (response.status === 200) {
 				dispatch({
 					type: VIEW_CART_SUCCESS,
 					payload: result,
@@ -28,7 +28,7 @@ const viewCart = () => {
 					type: VIEW_CART_START,
 					payload: false,
 				});
-			} else if (response.status == 401) {
+			} else if (response.status === 401) {
 				dispatch({
 					type: VIEW_CART_SUCCESS,
 					payload: result.error,
@@ -37,7 +37,7 @@ const viewCart = () => {
 					type: VIEW_CART_START,
 					payload: false,
 				});
-			} else if (response.status == 404) {
+			} else if (response.status === 404) {
 				dispatch({
 					type: VIEW_CART_SUCCESS,
 					payload: response.status,

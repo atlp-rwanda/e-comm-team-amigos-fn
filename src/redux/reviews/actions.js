@@ -43,8 +43,6 @@ export const addReview = (rate, review, id, token, user) => {
 				feedback: review,
 			};
 
-			console.log(token)
-
 			const reqHeaders = {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${token}`,
@@ -83,7 +81,6 @@ export const addReview = (rate, review, id, token, user) => {
 				});
 			}
 		} catch (error) {
-			console.log(error);
 		}
 	};
 };

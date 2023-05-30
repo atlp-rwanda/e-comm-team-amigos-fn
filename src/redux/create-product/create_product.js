@@ -63,7 +63,6 @@ export const create_product = (
 					payload: false,
 				});
 			} else if (response.status == 401) {
-				console.log(result);
 				dispatch({
 					type: PRODUCT_CREATE_SUCCESS,
 					payload: result.error,
