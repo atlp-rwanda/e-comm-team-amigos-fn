@@ -61,7 +61,7 @@ export default function ItemCard({ products }) {
 					<Img>
 						<img
 							src={product?.images[0]}
-							alt="Macbook with a computer bag"
+							alt={product?.name}
 							srcSet=""
 						/>
 					</Img>
@@ -79,7 +79,6 @@ export default function ItemCard({ products }) {
 						</Typography>
 						<PriceContainer currency="$" amount={product.price} />
 					</Box>
-					<p className="item-card-desc">Amazing Product are here </p>
 					<Box
 						sx={{
 							width: "109.4px",
