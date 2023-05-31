@@ -26,6 +26,8 @@ import "../../views/dashboard/header/style.scss";
 import "./header-menu.styles.scss";
 import { cartBadge } from "../../redux/actions/cartAction";
 import logout from "../../utils/logout";
+import BackToTop from "../Button/back-to-top";
+
 const MenuContainer = styled(Box)(({ theme }) => ({
 	zIndex: "40",
 	position: "fixed",
@@ -170,173 +172,176 @@ export default function HeaderMain() {
 		},
 	}));
 	return (
-		<ContainerFluid>
-			<Box sx={contentContainer}>
-				<Box
-					component="div"
-					sx={logoContainer}
-					onClick={() => navigate("/")}
-				>
-					<img src={logo} alt="Amigos E-shop" />
-					<Box component="span" sx={logoName} data-testid="logoName">
-						Amigos
+		<>
+			<ContainerFluid>
+				<Box sx={contentContainer}>
+					<Box
+						component="div"
+						sx={logoContainer}
+						onClick={() => navigate("/")}
+					>
+						<img src={logo} alt="Amigos E-shop" />
+						<Box component="span" sx={logoName} data-testid="logoName">
+							Amigos
+						</Box>
 					</Box>
-				</Box>
-				<NavDropDown data-testid="nav-container">
-					<NavContainer>
-						<NavLink
-							component={RouterLink}
-							to="/products/all"
-							underline="none"
-						>
-							Category
-						</NavLink>
-						<NavLink component={RouterLink} to="/" underline="none">
-							Deals
-						</NavLink>
-						<NavLink component={RouterLink} to="/" underline="none">
-							What&apos;s New
-						</NavLink>
-						<NavLink component={RouterLink} to="/" underline="none">
-							Delivery
-						</NavLink>
-					</NavContainer>
+					<NavDropDown data-testid="nav-container">
+						<NavContainer>
+							<NavLink
+								component={RouterLink}
+								to="/products/all"
+								underline="none"
+							>
+								Category
+							</NavLink>
+							<NavLink component={RouterLink} to="/" underline="none">
+								Deals
+							</NavLink>
+							<NavLink component={RouterLink} to="/" underline="none">
+								What&apos;s New
+							</NavLink>
+							<NavLink component={RouterLink} to="/" underline="none">
+								Delivery
+							</NavLink>
+						</NavContainer>
 
-					<SearchInputContainer>
-						<SearchInput />
-					</SearchInputContainer>
-					<HeaderAccount>
-						<NavLink
-							component={RouterLink}
-							underline="none"
-							onClick={handleOpenModel}
-						>
-							<Box component="div" sx={cartAccount}>
-								<Badge
-									color="primary"
-									badgeContent={
-										user ? (cartItems ? cartItems : 0) : 0
-									}
-									sx={{ marginRight: "10px" }}
-								>
-									<CartIcon sx={{ fill: "none" }} />
-								</Badge>
-							</Box>
-						</NavLink>
-						<NavLink
-							component={RouterLink}
-							to="/user/wishlist"
-							underline="none"
-						>
-							<Box component="div" sx={WishListAccount}>
-								<Badge
-									color="primary"
-									sx={{ marginLeft: "3px" }}
-								>
-									<img
-										src={wishlistIcon}
-										alt="Icon"
-										className="wishlist-icon"
-										style={{ fill: "none" }}
+						<SearchInputContainer>
+							<SearchInput />
+						</SearchInputContainer>
+						<HeaderAccount>
+							<NavLink
+								component={RouterLink}
+								underline="none"
+								onClick={handleOpenModel}
+							>
+								<Box component="div" sx={cartAccount}>
+									<Badge
+										color="primary"
+										badgeContent={
+											user ? (cartItems ? cartItems : 0) : 0
+										}
+										sx={{ marginRight: "10px" }}
+									>
+										<CartIcon sx={{ fill: "none" }} />
+									</Badge>
+								</Box>
+							</NavLink>
+							<NavLink
+								component={RouterLink}
+								to="/user/wishlist"
+								underline="none"
+							>
+								<Box component="div" sx={WishListAccount}>
+									<Badge
+										color="primary"
+										sx={{ marginLeft: "3px" }}
+									>
+										<img
+											src={wishlistIcon}
+											alt="Icon"
+											className="wishlist-icon"
+											style={{ fill: "none" }}
+										/>
+									</Badge>
+								</Box>
+							</NavLink>
+							{(!user && (
+								<Box component="div" sx={userAccount}>
+									<UserIcon
+										sx={{ fill: "none", marginRight: "0px" }}
 									/>
-								</Badge>
-							</Box>
-						</NavLink>
-						{(!user && (
-							<Box component="div" sx={userAccount}>
-								<UserIcon
-									sx={{ fill: "none", marginRight: "0px" }}
-								/>
-								{!user && (
-									<PopupMenu>
-										<button className="dropDownMenu">
-											<Unicons.UilAngleDown
-												size="20"
-												color="#848181"
-											/>
-										</button>
-										<div
-											className="dropDownCard"
-											style={{ marginRight: "70px" }}
-										>
-											<div className="menu-list">
-												<RouterLink
-													to="/login"
-													className="menu-title"
-												>
-													Login
-												</RouterLink>
-												<Unicons.UilAngleRight
+									{!user && (
+										<PopupMenu>
+											<button className="dropDownMenu">
+												<Unicons.UilAngleDown
 													size="20"
 													color="#848181"
 												/>
+											</button>
+											<div
+												className="dropDownCard"
+												style={{ marginRight: "70px" }}
+											>
+												<div className="menu-list">
+													<RouterLink
+														to="/login"
+														className="menu-title"
+													>
+														Login
+													</RouterLink>
+													<Unicons.UilAngleRight
+														size="20"
+														color="#848181"
+													/>
+												</div>
 											</div>
+										</PopupMenu>
+									)}
+								</Box>
+							)) || (
+								<PopupMenu>
+									<button className="dropDownMenu">
+										<div className="user-profile">
+											<Avatar className="avatar avatar-main-header">
+												{user?.firstName?.substr(0, 1)}
+											</Avatar>
 										</div>
-									</PopupMenu>
-								)}
-							</Box>
-						)) || (
-							<PopupMenu>
-								<button className="dropDownMenu">
-									<div className="user-profile">
-										<Avatar className="avatar avatar-main-header">
-											{user?.firstName?.substr(0, 1)}
-										</Avatar>
-									</div>
-								</button>
-								<div className="dropDownCard main-nav-dropdown-card">
-									<div className="menu-list">
-										<RouterLink
-											to="/customer/orders/history"
-											className="menu-title"
-										>
-											Orders
-										</RouterLink>
-										<Unicons.UilAngleRight
-											size="24"
-											color="#848181"
-										/>
-									</div>
-									<div className="menu-list">
-										<button
-											onClick={() => logout()}
-											className="menu-title"
-											style={{
-												border: "none",
-												background: "inherit",
-												display: "flex",
-												width: "100%",
-												justifyContent: "space-between",
-											}}
-										>
-											Logout
+									</button>
+									<div className="dropDownCard main-nav-dropdown-card">
+										<div className="menu-list">
+											<RouterLink
+												to="/customer/orders/history"
+												className="menu-title"
+											>
+												Orders
+											</RouterLink>
 											<Unicons.UilAngleRight
 												size="24"
 												color="#848181"
 											/>
-										</button>
+										</div>
+										<div className="menu-list">
+											<button
+												onClick={() => logout()}
+												className="menu-title"
+												style={{
+													border: "none",
+													background: "inherit",
+													display: "flex",
+													width: "100%",
+													justifyContent: "space-between",
+												}}
+											>
+												Logout
+												<Unicons.UilAngleRight
+													size="24"
+													color="#848181"
+												/>
+											</button>
+										</div>
 									</div>
-								</div>
-							</PopupMenu>
-						)}
-					</HeaderAccount>
-				</NavDropDown>
-			</Box>
-			<MenuContainer>
-				<IconButton
-					size="large"
-					edge="start"
-					color="inherit"
-					aria-label="menu"
-					sx={{ mr: 2 }}
-					onClick={handleMenuClick}
-					data-testid="menu"
-				>
-					{menuOpen ? <CloseIcon /> : <MenuIcon />}
-				</IconButton>
-			</MenuContainer>
-			<Model />
-		</ContainerFluid>
+								</PopupMenu>
+							)}
+						</HeaderAccount>
+					</NavDropDown>
+				</Box>
+				<MenuContainer>
+					<IconButton
+						size="large"
+						edge="start"
+						color="inherit"
+						aria-label="menu"
+						sx={{ mr: 2 }}
+						onClick={handleMenuClick}
+						data-testid="menu"
+					>
+						{menuOpen ? <CloseIcon /> : <MenuIcon />}
+					</IconButton>
+				</MenuContainer>
+				<Model />
+			</ContainerFluid>
+			<BackToTop/>
+		</>
 	);
 }
 

@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
-import styled from '@mui/material/styles/styled';
-import Box from '@mui/material/Box';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar, Navigation } from 'swiper';
-import 'swiper/swiper.min.css';
-import '../../assets/css/swiper.scrollbar.css';
+import styled from '@mui/material/styles/styled';
+import Box from '@mui/material/Box';
 import SectionTitle from '../SectionHeader';
 import WeeklyCard from './WeeklyCard';
 import useWindowSize from '../../hooks/useWindowResize';
-import eletronicDevicesImg from '../../assets/img/ElectronicDevices.png';
+import product1 from '../../assets/img/ElectronicDevices.png';
+import product2 from '../../assets/img/Nike-Shoes-Air-Max-PNG-Photos.png';
+import product3 from '../../assets/img/computer.png';
+import product4 from '../../assets/img/soft-drink-filante.jpg';
+import product5 from '../../assets/img/tv.png';
+import product6 from '../../assets/img/Toyota-Car-PNG.png';
+import 'swiper/swiper.min.css';
+import '../../assets/css/swiper.scrollbar.css';
 
 const Container = styled(Box)(({ theme }) => ({
 	width: '100%',
@@ -37,7 +42,6 @@ export default function WeeklyProducts() {
 	return (
 		<Container>
 			<SectionTitle>Weekly popular products</SectionTitle>
-			<span>Buy Now</span>
 			<CardsContainer>
 				<Swiper
 					slidesPerView={maxSlides}
@@ -47,34 +51,50 @@ export default function WeeklyProducts() {
 				>
 					<SwiperSlide>
 						<WeeklyCard
-							title="Smart TV"
-							img={eletronicDevicesImg}
+							title="Fridge"
+							img={product1}
 							price={{ amount: 501 }}
 							description="Table with air purifier, stained veneer/black"
 						/>
 					</SwiperSlide>
 					<SwiperSlide>
 						<WeeklyCard
-							title="Smart TV"
-							img={eletronicDevicesImg}
+							title="Nike 23"
+							img={product2}
+							price={{ amount: 21 }}
+							description="The Jordan 23 Engineered Parka is equipped for layering up or down"
+						/>
+					</SwiperSlide>
+					<SwiperSlide>
+						<WeeklyCard
+							title="HP pro"
+							img={product3}
+							price={{ amount: 301 }}
+							description="Discover freedom with the ProBook line from HP®"
+						/>
+					</SwiperSlide>
+					<SwiperSlide>
+						<WeeklyCard
+							title="Soft drinks"
+							img={product4}
 							price={{ amount: 501 }}
-							description="Table with air purifier, stained veneer/black"
+							description="We are here to refresh the world and make a difference. Learn more about the Coca-Cola"
 						/>
 					</SwiperSlide>
 					<SwiperSlide>
 						<WeeklyCard
 							title="Smart TV"
-							img={eletronicDevicesImg}
-							price={{ amount: 501 }}
+							img={product5}
+							price={{ amount: 50 }}
 							description="Table with air purifier, stained veneer/black"
 						/>
 					</SwiperSlide>
 					<SwiperSlide>
 						<WeeklyCard
-							title="Smart TV"
-							img={eletronicDevicesImg}
-							price={{ amount: 501 }}
-							description="Table with air purifier, stained veneer/black"
+							title="Nissan suv"
+							img={product6}
+							price={{ amount: 5001 }}
+							description="Nissan creates vehicles and technologies that enrich people's lives"
 						/>
 					</SwiperSlide>
 				</Swiper>
