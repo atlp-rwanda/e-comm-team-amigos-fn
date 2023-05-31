@@ -41,15 +41,4 @@ describe("Checkout Component Rendering", () => {
 		const addressCard = screen.getByTestId("checkout-address-card");
 		expect(addressCard).toBeInTheDocument();
 	});
-	// it("Opens address modal", () => {
-	// 	act(() => {
-	// 		screen
-	// 			.getByTestId("checkout-open-address-modal-btn")
-	// 			.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-	// 		console.log(screen.debug());
-	// 		const addressModal = screen.getByTestId("checkout-address-modal");
-	// 		expect(addressModal).toBeVisible();
-	// 		// expect(addressModal).not.toBeVisible();
-	// 	});
-	// });
 });

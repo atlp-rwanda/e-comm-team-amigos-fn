@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRelatedProducts } from "../redux/RelatedProducts/actions";
 import AddToCart from "./Product/AddToCart.jsx";
-import Reviews from './review/Reviews.jsx'
+import Reviews from "./review/Reviews.jsx";
 
 const ProductDetails = () => {
 	const relatedProducts = useSelector((state) => state.relatedProductState);
@@ -22,7 +22,8 @@ const ProductDetails = () => {
 		const getProduct = async () => {
 			const response = await fetch(
 				`${
-					process.env.BASE_URL ||
+					// eslint-disable-next-line no-undef
+					process.env.BACKEND_URL ||
 					"https://e-comm-team-amigos-bn-project.onrender.com"
 				}/product/${id}`,
 			);
@@ -74,4 +75,3 @@ const ProductDetails = () => {
 	);
 };
 export default ProductDetails;
-

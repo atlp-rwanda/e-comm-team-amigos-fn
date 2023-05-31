@@ -32,6 +32,7 @@ function Button({
 	dataTestid,
 	onClick,
 	selected,
+	disabled,
 	...props
 }) {
 	// eslint-disable-next-line no-unused-vars
@@ -67,6 +68,7 @@ function Button({
 			variant={variant}
 			onClick={onClick}
 			selected={selected}
+			disabled={disabled}
 		>
 			<Label
 				sx={{
@@ -75,7 +77,7 @@ function Button({
 					lineHeight: fontSize,
 					padding: "0",
 				}}
-				component="p"
+				component="div"
 			>
 				{label}
 			</Label>
@@ -86,7 +88,8 @@ function Button({
 Button.propTypes = {
 	borderRadius: PropTypes.oneOf(["50px", "80px", "10.16px", "0px"]),
 	background: PropTypes.string,
-	label: PropTypes.string.isRequired,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+		.isRequired,
 	type: PropTypes.oneOf(["a", "button", "submit"]),
 	color: PropTypes.string,
 	width: PropTypes.string,
@@ -98,6 +101,7 @@ Button.propTypes = {
 	dataTestid: PropTypes.string,
 	onClick: PropTypes.func,
 	selected: PropTypes.bool,
+	disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -110,6 +114,7 @@ Button.defaultProps = {
 	height: "auto",
 	border: "1.01591px solid #C5C5C5",
 	ative: false,
+	disabled: false,
 };
 
 export default Button;

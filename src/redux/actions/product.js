@@ -70,7 +70,7 @@ export const deleteProductFailure = () => ({
 });
 
 export function deleteProductCall(id) {
-	return async (dispatch, getState) => {
+	return async (dispatch) => {
 		dispatch(deleteProduct()); // loading:true
 		try {
 			const path = `/product/delete/${id}`;

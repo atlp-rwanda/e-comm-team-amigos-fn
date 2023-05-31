@@ -17,18 +17,19 @@ import isOpenReducer from "./reducer/isOpenModel";
 import relatedProductReducer from "./RelatedProducts/reducer";
 import profileReducer from "./profile/reducer";
 import paymentReducer from "./reducer/payment";
-import UpdatePasswordReducer from "./reducer/updatePassword";
+import ordersReducers from "./orders/ordersReducer";
+import viewcartReducer from "./reducer/viewcartReducer";
 import viewWishlistReducer from "./reducer/wishlist/viewWishlist";
 import removeFromWishlistReducer from "./reducer/wishlist/removeFromWishlist";
 import addToWishlistReducer from "./reducer/wishlist/addTowishlist";
-import ordersReducers from "./orders/ordersReducer";
 import clearCartReducer from "./reducer/clearCartReducer";
-import viewcartReducer from "./reducer/viewcartReducer";
+import UpdatePasswordReducer from "./reducer/updatePassword";
+import allproductsReducer from "./allProducts/reducer";
+import chatReducer from "./chat/chatReducer";
 import UpdateCartReducer from "./reducer/updateCartReducer";
 import notificationReducer from "./reducer/notification";
 import cartItems from "./reducer/cartItems";
 
-import chatReducer from "./chat/chatReducer";
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
 	verifyEmail: verifyEmailReducer,
@@ -43,23 +44,23 @@ const rootReducer = combineReducers({
 	productUpdateState: productUpdateReducer,
 	reviews: reviewsReducer,
 	counter: counterReducer,
-	items:cartItems,
+	items: cartItems,
 	cart: addToCartReducer,
 	openModel: isOpenReducer,
 	viewCart: viewcartReducer,
 	relatedProductState: relatedProductReducer,
 	profile: profileReducer,
 	payment: paymentReducer,
-	updatePasswordState: UpdatePasswordReducer,
 	wishlist: viewWishlistReducer,
 	removeWishlist: removeFromWishlistReducer,
 	addToWishlist: addToWishlistReducer,
 	chatState: chatReducer,
 	clearCart: clearCartReducer,
 	updateCartState: UpdateCartReducer,
+	updatePasswordState: UpdatePasswordReducer,
 	orders: ordersReducers,
-
 	notification: notificationReducer,
+	products: allproductsReducer,
 });
 
 export default rootReducer;

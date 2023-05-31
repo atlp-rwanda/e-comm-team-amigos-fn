@@ -2,7 +2,7 @@ import "../../views/wishlist/wishlist.style.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { viewWishlist, removeFromWishlist } from "../../redux/actions/Wishlist";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { handleremoveFromWishlistResponse } from "../../utils/product/handleremovefromWishlist";
 import Loader from "../../components/Loader";
 import { useNavigate } from "react-router-dom";
@@ -102,7 +102,6 @@ const ViewWishlistPage = () => {
 					)}
 				</div>
 			</div>
-			<ToastContainer />
 		</>
 	);
 };
