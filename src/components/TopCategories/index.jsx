@@ -1,17 +1,48 @@
 import { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
-import categoryCardElectronic from "./../../assets/img/CategoryCardElectronic.png";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper.min.css";
-import "../../assets/css/swiper.navigation.css";
+import { styled } from "@mui/material/styles";
 import { Navigation } from "swiper";
-import "./style.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategory } from "../../redux/actions/homeAction";
+import Box from "@mui/material/Box";
+import car from "./../../assets/img/toyota.png";
+import Tshirt from "./../../assets/img/mens-fancy-t-shirt-1629807323-5956513.jpeg";
+import Fashion from "./../../assets/img/Fashion.png";
+import computer from "./../../assets/img/computer.png";
+import string from "./../../assets/img/string.jpg";
+import electronics from "./../../assets/img/electronics.png";
+import fruits from "./../../assets/img/fruits.png";
+import funiture from "./../../assets/img/funiture.jpg";
+import drinks from "./../../assets/img/soft-drink-filante.jpg";
+import women from "./../../assets/img/women'sfashion.png";
+import men from "./../../assets/img/men's fashion.jpeg";
+import shoes from "./../../assets/img/shoes.jpg";
+import tv from "./../../assets/img/tv.png";
 import useWindowSize from "../../hooks/useWindowResize";
 import CategoryCard from "./CategoryCard";
 import SectionTitle from "../SectionHeader";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCategory } from "../../redux/actions/homeAction";
+import "swiper/swiper.min.css";
+import "../../assets/css/swiper.navigation.css";
+import "./style.css";
+
+
+const categoryImages = {
+	'Electronics':electronics,
+	'Fashion': Fashion,
+	'Computer': computer,
+	'Men': Tshirt,
+	"Men's Fashion": men,
+	'Electronic': electronics,
+	'Choes': shoes,
+	'Cars': car,
+	'string': string,
+	'Furniture': funiture,
+	'TV': tv,
+	'fashion': women,
+	'fruits': fruits,
+	'Furniture ': funiture,
+	'soft drinks': drinks,
+  };
 
 const Section = styled(Box)(({ theme }) => ({
 	width: "95%",
@@ -24,6 +55,7 @@ const Section = styled(Box)(({ theme }) => ({
 		paddingRight: "20px",
 	},
 }));
+
 const SlideContent = styled(Box)(({ theme }) => ({
 	margin: "37px", // Default margin value
 
@@ -59,9 +91,10 @@ export default function TopCategories() {
 	useEffect(() => {
 		dispatch(fetchCategory());
 	}, []);
+	console.log("categories:", categories);
 	return (
 		<Section>
-			<SectionHeader>Show Our Top Categories</SectionHeader>
+			<SectionHeader>Our Top Categories</SectionHeader>
 			<Swiper
 				navigation={true}
 				modules={[Navigation]}
@@ -79,7 +112,7 @@ export default function TopCategories() {
 						<SlideContent>
 							<CategoryCard
 								title={category}
-								img={categoryCardElectronic}
+								img={categoryImages[category]}
 							/>
 						</SlideContent>
 					</SwiperSlide>

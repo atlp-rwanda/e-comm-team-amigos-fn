@@ -7,7 +7,7 @@ import colors from '../../constants/colors';
 
 const Card = styled(Paper)(({ theme }) => ({
 	width: '295.37px',
-	height: '332px',
+	height: '432px',
 	background: '#F0E4DA',
 	borderRadius: '20px',
 	paddingTop: '24px',
@@ -48,7 +48,7 @@ const CardDescription = styled(Typography)(({ theme }) => ({
 
 const CardImg = styled('img')(({ theme }) => ({
 	width: '100%',
-	height: '165.21px',
+	height: '265.21px',
 	borderRadius: '0px 0px 15px 15px',
 	position: 'absolute',
 	top: 'auto',

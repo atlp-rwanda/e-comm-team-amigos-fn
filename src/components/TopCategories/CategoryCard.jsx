@@ -7,11 +7,12 @@ import colors from "../../constants/colors";
 const Card = styled(Paper)(({ theme }) => ({
 	width: "180px",
 	height: "306px",
-	background: "#F5F6F6",
+	// background: "#F5F6F6",
 	borderRadius: "20px",
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
+	cursor: "pointer",
 }));
 
 const CardTitle = styled(Typography)(({ theme }) => ({

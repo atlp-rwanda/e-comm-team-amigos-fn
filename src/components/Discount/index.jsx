@@ -1,20 +1,25 @@
 import { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import styled from '@mui/material/styles/styled';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar } from 'swiper';
-import 'swiper/swiper.min.css';
-import '../../assets/css/swiper.scrollbar.css';
-
+import Box from '@mui/material/Box';
+import styled from '@mui/material/styles/styled';
 import SectionTitle from '../SectionHeader';
 import DiscountCard from './DiscountCard';
 import useWindowSize from '../../hooks/useWindowResize';
-
-import scandianavianChairs from './../../assets/img/scandinavianChairs.png';
+import banner1 from './../../assets/img/banner1.png';
+import banner2 from './../../assets/img/banner2.png';
+import banner3 from './../../assets/img/banner3.jpg';
+import banner4 from './../../assets/img/banner4.jpg';
+import banner5 from './../../assets/img/banner5.jpg';
+import banner6 from './../../assets/img/banner6.jpg';
+import banner7 from './../../assets/img/banner7.jpg';
+import banner8 from './../../assets/img/banner8.png';
+import banner9 from './../../assets/img/banner9.png';
+import 'swiper/swiper.min.css';
+import '../../assets/css/swiper.scrollbar.css';
 
 const Container = styled(Box)(({ theme }) => ({
 	width: '1240px',
-	// height: '412px',
 	display: 'flex',
 	flexDirection: 'column',
 	marginLeft: 'auto',
@@ -43,41 +48,50 @@ const DiscountCardsContainer = styled(Swiper)(({ theme }) => ({
 
 const products = [
 	{
-		images: [
-			scandianavianChairs,
-			'https://picsum.photos/295/165',
-			'https://picsum.photos/295/165',
-		],
+		images: banner1,
 		potentialSave: '$99',
+		description: 'Explore Our products',
+	},
+	{
+		images: banner2,
+		potentialSave: '$75',
+		description: 'Explore shoes and men fashion',
+	},
+	{
+		images: banner3,
+		potentialSave: '$25',
+		description: 'Seasonal products',
+	},
+	{
+		images: banner4,
+		potentialSave: '$20',
+		description: 'Our best products for season',
+	},
+	{
+		images: banner5,
+		potentialSave: '$35',
 		description: 'Explore Our Furniture & home Furnishing Range',
 	},
 	{
-		images: [
-			scandianavianChairs,
-			'https://picsum.photos/295/165',
-			'https://picsum.photos/295/165',
-		],
-		potentialSave: '$99',
+		images: banner6,
+		potentialSave: '$10',
 		description: 'Explore Our Furniture & home Furnishing Range',
 	},
 	{
-		images: [
-			scandianavianChairs,
-			'https://picsum.photos/295/165',
-			'https://picsum.photos/295/165',
-		],
-		potentialSave: '$99',
+		images: banner7,
+		potentialSave: '$55',
 		description: 'Explore Our Furniture & home Furnishing Range',
 	},
 	{
-		images: [
-			scandianavianChairs,
-			'https://picsum.photos/295/165',
-			'https://picsum.photos/295/165',
-		],
-		potentialSave: '$99',
+		images: banner8,
+		potentialSave: '$70',
 		description: 'Explore Our Furniture & home Furnishing Range',
 	},
+	{
+		images: banner9,
+		potentialSave: '$34',
+		description: 'Explore Our Furniture & home Furnishing Range',
+	}
 ];
 
 export default function Discounts() {
@@ -100,7 +114,7 @@ export default function Discounts() {
 				{products.map((product, index) => (
 					<SwiperSlide key={index}>
 						<DiscountCard
-							img={product.images[0]}
+							img={product.images}
 							potentialSave={product.potentialSave}
 							description={product.description}
 						/>
