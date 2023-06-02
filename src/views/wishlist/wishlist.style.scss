@@ -1,7 +1,7 @@
 .wishlistcontainer{
     display: flex;
     justify-content: center;
-    height: 80vh;
+    height: 78vh;
 }
 .productlist {
     width: 70%;
@@ -17,7 +17,7 @@
 }
 .subproductlist{
     overflow-y: auto;
-    height: 62vh;
+    height: 65vh;
 }
 .productlist h3{
     font-size: 30px;
@@ -74,7 +74,6 @@
 .productBtn{
     width: 20%;
     height: 100%;
-    // padding: 50px 10px 10px 10px;
     flex-direction: column;
     justify-content: center;
 }

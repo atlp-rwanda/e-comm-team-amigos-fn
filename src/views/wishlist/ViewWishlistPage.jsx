@@ -2,21 +2,20 @@ import "../../views/wishlist/wishlist.style.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { viewWishlist, removeFromWishlist } from "../../redux/actions/Wishlist";
-import { toast } from "react-toastify";
-import { handleremoveFromWishlistResponse } from "../../utils/product/handleremovefromWishlist";
 import Loader from "../../components/Loader";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer";
+
 const ViewWishlistPage = () => {
 	const navigate = useNavigate();
 	const { viewSuccess, viewStart } = useSelector((state) => state.wishlist);
-	const { removeFromWishlistStart, removeFromWishlistSuccess } = useSelector(
+	const { removeFromWishlistStart } = useSelector(
 		(state) => state.removeWishlist,
 	);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(viewWishlist());
-		handleremoveFromWishlistResponse(removeFromWishlistSuccess, toast);
-	}, [dispatch, removeFromWishlistSuccess]);
+	}, [dispatch]);
 
 	const handleRemoveFromWishlist = (id) => {
 		dispatch(removeFromWishlist(id));
@@ -102,6 +101,7 @@ const ViewWishlistPage = () => {
 					)}
 				</div>
 			</div>
+			<Footer />
 		</>
 	);
 };

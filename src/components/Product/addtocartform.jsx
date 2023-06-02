@@ -6,6 +6,7 @@ import { Star, StarDisabled } from "./rating.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { handleCartResponse } from "../../utils/product/handleAddToCartSucess.js";
+import viewCart from "../../redux/actions/viewCart.js";
 import {
 	increment,
 	decrement,
@@ -13,7 +14,6 @@ import {
 	addToCart,
 } from "../../redux/actions/cartAction.js";
 import { addToWishlist } from "../../redux/actions/Wishlist";
-import { handleWishlistResponse } from "../../utils/product/handleWishlistSucess";
 import { cartBadge } from "../../redux/actions/cartAction.js";
 export default function AddtoCart({ product }) {
 	const { wishlistStart, wishlistSuccess } = useSelector(
@@ -41,8 +41,7 @@ export default function AddtoCart({ product }) {
 	};
 	useEffect(() => {
 		handleCartResponse(cartsuccess, toast);
-		handleWishlistResponse(wishlistSuccess, toast);
-	}, [cartsuccess, wishlistSuccess]);
+	}, [cartsuccess]);
 	return (
 		<>
 			<div className="col-2">
@@ -139,6 +138,7 @@ export default function AddtoCart({ product }) {
 								dispatch(
 									cartBadge(viewsuccess?.cartItems?.length),
 								);
+								dispatch(viewCart());
 								dispatch(defaultValue());
 							}}
 							className="addtocart"

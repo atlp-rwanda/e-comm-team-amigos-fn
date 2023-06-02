@@ -8,7 +8,7 @@ import { update_product } from "../../redux/actions/update-product.js";
 import "./style.scss";
 import ImageUploader from "./ImageUploader.jsx";
 import { fetchProduct, updateProductAction } from "../../redux/actions";
-
+  
 const UpdateProduct = ({ currentPage }) => {
 	const { productUpdateSuccess, productUpdateStart } = useSelector(
 		(state) => state.productUpdateState,

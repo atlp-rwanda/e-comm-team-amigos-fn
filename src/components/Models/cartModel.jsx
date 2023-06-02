@@ -26,7 +26,7 @@ const Model = () => {
 	const [selectedProduct, setSelectedProduct] = useState(null);
 	const [isUpdateCartModal, setIsUpdateCartModal] = useState(false);
 	const cartItems = viewsuccess ? viewsuccess?.cartItems : [];
-
+    console.log(viewsuccess);
 	useEffect(() => {
 		dispatch(viewCart());
 		handleClearCartResponse(clearcartsuccess, toast);

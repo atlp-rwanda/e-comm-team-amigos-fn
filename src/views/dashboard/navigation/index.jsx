@@ -2,7 +2,7 @@ import Header from "../header/index.jsx";
 import AsideBar from "../asideBar/index.jsx";
 import { Outlet } from "react-router-dom";
 import ChatModal from "../../chat/chatModal.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.scss";
 import "../../chat/chat.style.scss";
@@ -28,6 +28,9 @@ const DashboardNav = ({ socket }) => {
 	const closeModal = () => {
 		setShowModal(false);
 	};
+	useEffect(() => {
+		document.title = "Amigos | Dashboard";
+	})
 	return (
 		<>
 			<div className="dashboard-container">

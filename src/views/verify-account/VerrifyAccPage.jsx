@@ -36,7 +36,7 @@ function accountVerified(navigate) {
 					<span className="highlight">Account</span> Verified!
 				</p>
 				<button
-					className="primary-btn"
+					className="primary-btn w-100"
 					onClick={() => navigate('/login')}
 				>
 					Login

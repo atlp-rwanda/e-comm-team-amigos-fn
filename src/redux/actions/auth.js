@@ -11,6 +11,12 @@ import {
 	UPDATING_PASSWORD_SUCCESS,
 	UPDATING_PASSWORD_ERROR,
 	USER_NOT_FOUND,
+	DISABLE_USER_START,
+	DISABLE_USER_SUCCESS,
+	DISABLE_USER_FAIL,
+	ENABLE_USER_START,
+	ENABLE_USER_SUCCESS,
+	ENABLE_USER_FAIL,
 } from "../types";
 import axios from "axios";
 import action from "./action";
@@ -168,6 +174,75 @@ export const updatePasswordTime = (email, oldPassword, newPassword) => {
 				updateErrorDisplay.innerHTML = "Email not found!";
 				updateErrorDisplay.style.color = "red";
 			}
+		}
+	};
+};
+
+export const DisableUser = (email, reason) => {
+	return async (dispatch) => {
+		dispatch(action(DISABLE_USER_START, true));
+		try {
+			const token = localStorage.getItem("token");
+			const res = await fetch(
+				"https://e-comm-team-amigos-bn-project.onrender.com/user/disable",
+				{
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify({
+						email: email,
+						reason: reason,
+					}),
+				},
+				
+			);
+			dispatch(action(DISABLE_USER_SUCCESS, res));
+			setTimeout(() => {
+				dispatch({
+					type: DISABLE_USER_SUCCESS,
+					payload: {},
+				});
+			}, 1000);
+			dispatch(action(DISABLE_USER_START, false));
+		} catch (error) {
+			dispatch(action(DISABLE_USER_FAIL, error.message));
+			dispatch(action(DISABLE_USER_START, false));
+		}
+	};
+};
+
+export const EnableUser = (email) => {
+	return async (dispatch) => {
+		dispatch(action(ENABLE_USER_START, true));
+		try {
+			const token = localStorage.getItem("token");
+			const res = await fetch(
+				"https://e-comm-team-amigos-bn-project.onrender.com/user/enable",
+				{
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify({
+						email: email,
+					}),
+				},
+				
+			);
+			dispatch(action(ENABLE_USER_SUCCESS, res));
+			setTimeout(() => {
+				dispatch({
+					type: ENABLE_USER_SUCCESS,
+					payload: {},
+				});
+			}, 1000);
+			dispatch(action(ENABLE_USER_START, false));
+		} catch (error) {
+			dispatch(action(ENABLE_USER_FAIL, error.message));
+			dispatch(action(ENABLE_USER_START, false));
 		}
 	};
 };

@@ -6,12 +6,15 @@ export const handleLoginResponse = (loginSuccess, navigation, toast) => {
 		setTimeout(() => {
 			const role = getUserRole();
 			const customer=role?.filter(role => role === "Customer");
-			if (customer[0]) {
-				navigation("/");
-			}
-			else {
-				navigation("/dashboard");
-			}
+			for (var i = 0; i < role.length; i++) {
+			   if (role[i]!== "Admin") {
+				   navigation("/");
+		    	}
+			    else {
+				   navigation("/dashboard");
+			    }
+	     	}
+
 		}, 5000);
 	} else {
 		toast(loginSuccess?.message || loginSuccess?.error);
