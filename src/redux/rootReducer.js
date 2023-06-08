@@ -31,6 +31,8 @@ import cartItems from "./reducer/cartItems";
 import chatReducer from "./chat/chatReducer";
 import disableUserReducer from "./reducer/disableUser/disableUser";
 import enableUserReducer from "./reducer/disableUser/enableUser";
+import editUserProfileReducer from './reducer/userProfile/editUserProfile';
+import viewProfileReducer from "./reducer/userProfile/viewUserProfile";
 
 const rootReducer = combineReducers({
 	signupForm: signupFormReducer,
@@ -59,12 +61,13 @@ const rootReducer = combineReducers({
 	chatState: chatReducer,
 	clearCart: clearCartReducer,
 	updateCartState: UpdateCartReducer,
-	updatePasswordState: UpdatePasswordReducer,
 	orders: ordersReducers,
 	notification: notificationReducer,
 	products: allproductsReducer,
 	disableUserState: disableUserReducer,
 	enableUserState: enableUserReducer,
+	editUserProfileState: editUserProfileReducer,
+	userProfile: viewProfileReducer,
 });
 
 export default rootReducer;

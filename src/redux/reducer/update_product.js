@@ -23,7 +23,7 @@ const productUpdateReducer = (state = productState, { type, payload }) => {
 			return {
 				...state,
 				productUpdateFail: payload,
-			};
+			}; 
 		case PRODUCT_UPDATE_START:
 			return {
 				...state,

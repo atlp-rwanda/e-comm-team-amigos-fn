@@ -1,44 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import * as Yup from 'yup';
+import * as Yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
-import { viewUserProfile, editUserProfile } from '../redux/actions/userProfileEdit';
-import './../assets/css/userUpdate.scss';
-import '../assets/css/userUpdateError.scss';
+import { viewUserProfile, editUserProfile } from "../redux/actions/userProfileEdit";
+import {handleUserProfile} from "../utils/profileUpdate/handleUserProfile";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
+import"./../assets/css/userUpdate.scss";
+import "../assets/css/userUpdateError.scss";
+import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { getUserRole }from "../utils/auth/isAuthorized";
 
 const updateProfileSchema = Yup.object().shape({
   firstName: Yup.string()
-    .min(2, 'FirstName must be at least 2 characters')
-    .required('FirstName is required'),
+    .min(2, "FirstName must be at least 2 characters")
+    .required("FirstName is required"),
   lastName: Yup.string()
-    .min(2, 'LastName must be at least 2 characters')
-    .required('LastName is required'),
+    .min(2, "LastName must be at least 2 characters")
+    .required("LastName is required"),
   address: Yup.string().required('Address is required'),
   telephone: Yup.string()
-    .matches(/^\d{10}$/, 'Invalid telephone')
-    .required('Telephone is required'),
+    .matches(/^\d{10}$/, "Invalid telephone")
+    .required("Telephone is required"),
   preferredLanguage: Yup.string()
-    .min(4, 'preferredLanguage must be at least 4 characters')
-    .required('preferredLanguage is required'),
+    .min(4, "preferredLanguage must be at least 4 characters"),
   preferredCurrency: Yup.string()
-    .min(2, 'preferredCurrency must be at least 2 characters')
-    .required('preferredCurrency is required'),
+    .min(2, 'preferredCurrency must be at least 2 characters'),
     billingAddress: Yup.string()
     .min(2, 'billingAddress must be at least 6 characters'),
   gender: Yup.string()
-    .min(3, 'Gender must be at least 3 characters')
-    .required('Gender is required'),
-  birthdate: Yup.string().matches(/^\d{4}-\d{2}-\d{2}$/, 'Invalid date format (yyyy-MM-dd)')
-  .required('Birthdate is required'),
+    .min(3, 'Gender must be at least 3 characters'),
+  birthdate: Yup.string().matches(/^\d{4}-\d{2}-\d{2}$/, 'Invalid date format (yyyy-MM-dd)'),
 });
 
 function UpdateProfileForm() {
   const dispatch = useDispatch();
-  const { profileViewSuccess } = useSelector(state => state.userProfile);
-  
+  const { profileViewSuccess, profileViewStart } = useSelector(state => state.userProfile);
+  const {editingSuccess, editingStart} = useSelector(state => state.editUserProfileState);
+  const navigation = useNavigate();
   useEffect(() => {
     dispatch(viewUserProfile());
-  }, [dispatch]);
-
+    handleUserProfile(editingSuccess, navigation, toast);
+  }, [dispatch, editingSuccess?.status]);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -81,7 +85,6 @@ function UpdateProfileForm() {
     try {
       const validatedData = await validateForm(formData);
       dispatch(editUserProfile(validatedData));
-      console.log(validatedData);
     } catch (error) {
       // Handle validation errors here
       console.error('Validation error:', error);
@@ -107,11 +110,15 @@ function UpdateProfileForm() {
       });
     }
   }, [profileViewSuccess]);
-  console.log(profileViewSuccess);
 
   return (
+    <>
+    {getUserRole().includes("Customer") && !getUserRole().includes("Merchant")&& <Header/> }
     <div className='container'>
       <h1>My Profile</h1>
+      {profileViewStart ? (
+          <p>Loading...</p>
+        ) : (
       <form className='profile-form' onSubmit={handleSubmit}>
         <div className="profile-container">
           <div className="left-profile">
@@ -175,9 +182,9 @@ function UpdateProfileForm() {
                 name="billingAddress"
                 value={formData.billingAddress}
                 onChange={handleChange}
-                className={profileViewSuccess.billingAddress ? "" : "input-error"}
+                className={formData.billingAddress ? "" : "input-error"}
               />
-              {profileViewSuccess.billingAddress && formData.billingAddress  ? null : (
+              {formData.billingAddress  ? null : (
                 <div className="error-message">billingAddress is required</div>
               )}
             </div>
@@ -190,9 +197,9 @@ function UpdateProfileForm() {
                 name="preferredLanguage"
                 value={formData.preferredLanguage}
                 onChange={handleChange}
-                className={profileViewSuccess.preferredLanguage ? "" : "input-error"}
+                className={formData.preferredLanguage ? "" : "input-error"}
               />
-              {profileViewSuccess.preferredLanguage && formData.preferredLanguage ? null : (
+              { formData.preferredLanguage ? null : (
                 <div className="error-message">preferredLanguage is required</div>
               )}
             </div>
@@ -203,9 +210,9 @@ function UpdateProfileForm() {
                 name="preferredCurrency"
                 value={formData.preferredCurrency}
                 onChange={handleChange}
-                className={profileViewSuccess.preferredCurrency ? "" : "input-error"}
+                className={formData.preferredCurrency ? "" : "input-error"}
               />
-              {profileViewSuccess.preferredCurrency && formData.preferredCurrency ? null : (
+              {formData.preferredCurrency ? null : (
                 <div className="error-message">preferredCurrency is required</div>
               )}
             </div>
@@ -216,9 +223,9 @@ function UpdateProfileForm() {
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
-                className={profileViewSuccess.gender ? "" : "input-error"}
+                className={formData.gender ? "" : "input-error"}
               />
-              {profileViewSuccess.gender && formData.gender ? null : (
+              {formData.gender ? null : (
                 <div className="error-message">Gender is required</div>
               )}
             </div>
@@ -229,19 +236,24 @@ function UpdateProfileForm() {
                 name="birthdate"
                 value={formData.birthdate}
                 onChange={handleChange}
-                className={profileViewSuccess.birthdate ? "" : "input-error"}
+                className={formData.birthdate ? "" : "input-error"}
               />
-              {profileViewSuccess.birthdate && formData.birthdate ? null : (
+              {formData.birthdate ? null : (
                 <div className="error-message">Birthdate is required</div>
               )}
             </div>
           </div>
         </div>
         <div className="profile-btn">
-          <button type="submit">Submit changes</button>
+        <button type="submit" name="button" disabled={editingStart}>{editingStart ? 'Loading...' : 'Submit changes'}</button>
         </div>
       </form>
+        )}
     </div>
+   <ToastContainer
+			/>
+      {getUserRole().includes("Customer") && !getUserRole().includes("Merchant")  && <Footer/> }
+   </>
   );
 }
 
